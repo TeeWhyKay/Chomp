@@ -8,6 +8,7 @@
     Be the first to leave a review for <%= @restaurant.name %>
   <% else %>
     <% @restaurant.reviews.each do |review| %>
+      <h4><%= review.title %> <span><i class="fas fa-star"></i><%= review.rating %></span></h4>
       <p><%= review.content %></p>
     <% end %>
   <% end %>
