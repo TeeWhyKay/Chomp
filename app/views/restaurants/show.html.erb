@@ -2,12 +2,23 @@
   <div class="restaurant-wrapper row justify-content-center">
     <div class="col-12 col-lg-8">
       <div class="my-3 mx-auto text-center">
+
         <h1><%= @restaurant.name %></h1>
         <p id="restaurant-address"><%= @restaurant.address %></p>
         <%= image_tag @restaurant.photo_url, id: "restaurant-image", class: "center-cropped mb-3"%>
-        <h2 id="review-count">
+
+        <h2 id="average-review">
+          <% @restaurant.average_rating.to_i.times do |star| %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <% unchecked_stars = (5 - @restaurant.average_rating).to_i %>
+          <% unchecked_stars.times do |star| %>
+            <i class="far fa-star"></i>
+          <% end %>
+          <%= @restaurant.average_rating %>
           <%= pluralize @restaurant.reviews.size, "review" %>
         </h2>
+
       </div>
 
       <div id="reviews">
@@ -15,7 +26,14 @@
           Be the first to leave a review for <%= @restaurant.name %>
         <% else %>
           <% @restaurant.reviews.each do |review| %>
-            <h3><span class="rating"><i class="fas fa-star"></i><%= review.rating %></span> <%= review.title %></h3>
+            <h3><%= review.title %></h3>
+            <% review.rating.times do |star| %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <% unchecked_stars = (5 - review.rating).to_i %>
+            <% unchecked_stars.times do |star| %>
+              <i class="far fa-star"></i>
+            <% end %>
             <p><%= review.content %></p>
           <% end %>
         <% end %>

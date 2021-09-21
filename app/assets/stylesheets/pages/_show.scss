@@ -9,7 +9,7 @@
     font-size: 24px;
   }
 
-  span.rating {
+  .fa-star {
     color: $pink;
   }
 
@@ -26,13 +26,6 @@
   object-position: center;
 }
 
-#review-count {
+#average-review {
   font-size: 18px;
 }
-
-
-
-// #restaurant-image {
-//   max-width: 90%;
-
-// }
