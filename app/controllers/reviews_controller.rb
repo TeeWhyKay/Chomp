@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.new(review_params)
     @review.restaurant = @restaurant
+    @review.user = current_user
     if @review.save
       redirect_to restaurant_path(@restaurant)
     else
@@ -13,6 +14,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content)
+    params.require(:review).permit(:rating, :title, :content)
   end
 end
