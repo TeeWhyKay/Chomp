@@ -26,15 +26,17 @@
           Be the first to leave a review for <%= @restaurant.name %>
         <% else %>
           <% @restaurant.reviews.each do |review| %>
-            <h3><%= review.title %></h3>
-            <% review.rating.times do |star| %>
-              <i class="fas fa-star"></i>
-            <% end %>
-            <% unchecked_stars = (5 - review.rating).to_i %>
-            <% unchecked_stars.times do |star| %>
-              <i class="far fa-star"></i>
-            <% end %>
-            <p><%= review.content %></p>
+            <div id="review-<%= review.id %>">
+              <h3><%= review.title %></h3>
+              <% review.rating.times do |star| %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% unchecked_stars = (5 - review.rating).to_i %>
+              <% unchecked_stars.times do |star| %>
+                <i class="far fa-star"></i>
+              <% end %>
+              <p><%= review.content %></p>
+            </div>
           <% end %>
         <% end %>
       </div>
