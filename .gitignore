@@ -24,19 +24,3 @@
 
 /public/assets
 .byebug_history
-
-# Ignore master key for decrypting credentials and more.
-/config/master.key
-
-/public/packs
-/public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
-# Ignore .env file containing credentials.
-.env*
-
-# Ignore Mac and Linux file system files
-*.swp
-.DS_Store
