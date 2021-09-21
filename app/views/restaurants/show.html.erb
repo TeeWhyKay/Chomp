@@ -1,27 +1,32 @@
 <div class="container">
-  <div class="restaurant-wrapper">
-    <h1><%= @restaurant.name %></h1>
-    <p id="restaurant-address"><%= @restaurant.address %></p>
-    <h2 id="review-count">
-      <%= pluralize @restaurant.reviews.size, "review" %>
-    </h2>
+  <div class="restaurant-wrapper row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="my-3 mx-auto text-center">
+        <h1><%= @restaurant.name %></h1>
+        <p id="restaurant-address"><%= @restaurant.address %></p>
+        <%= image_tag @restaurant.photo_url, id: "restaurant-image", class: "center-cropped mb-3"%>
+        <h2 id="review-count">
+          <%= pluralize @restaurant.reviews.size, "review" %>
+        </h2>
+      </div>
 
-    <div id="reviews">
-      <% if @restaurant.reviews.blank? %>
-        Be the first to leave a review for <%= @restaurant.name %>
-      <% else %>
-        <% @restaurant.reviews.each do |review| %>
-          <h3><span class="rating"><i class="fas fa-star"></i><%= review.rating %></span> <%= review.title %></h3>
-          <p><%= review.content %></p>
+      <div id="reviews">
+        <% if @restaurant.reviews.blank? %>
+          Be the first to leave a review for <%= @restaurant.name %>
+        <% else %>
+          <% @restaurant.reviews.each do |review| %>
+            <h3><span class="rating"><i class="fas fa-star"></i><%= review.rating %></span> <%= review.title %></h3>
+            <p><%= review.content %></p>
+          <% end %>
         <% end %>
+      </div>
+
+      <%= simple_form_for([ @restaurant, @review ], remote: true) do |f| %>
+        <%= f.input :rating, collection: [['1 - Blegh!', 1], ['2 - Below Average', 2], ['3 - Alright', 3], ['4 - Not Bad', 4], ['5 - Amazing!', 5]], selected: 3 %>
+        <%= f.input :title, as: :string %>
+        <%= f.input :content, as: :text %>
+        <%= f.button :submit %>
       <% end %>
     </div>
-
-    <%= simple_form_for([ @restaurant, @review ], remote: true) do |f| %>
-      <%= f.input :rating, collection: [['1 - Blegh!', 1], ['2 - Below Average', 2], ['3 - Alright', 3], ['4 - Not Bad', 4], ['5 - Amazing!', 5]], selected: 3 %>
-      <%= f.input :title, as: :string %>
-      <%= f.input :content, as: :text %>
-      <%= f.button :submit %>
-    <% end %>
   </div>
 </div>
