@@ -12,3 +12,8 @@
     <% end %>
   <% end %>
 </div>
+
+<%= simple_form_for([ @restaurant, @review ]) do |f| %>
+  <%= f.input :content, as: :text %>
+  <%= f.button :submit %>
+<% end %>
