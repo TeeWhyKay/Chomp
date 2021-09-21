@@ -15,7 +15,7 @@
           <% unchecked_stars.times do |star| %>
             <i class="far fa-star"></i>
           <% end %>
-          <%= @restaurant.average_rating %>
+          <%= @restaurant.average_rating.round(2) %>
           <%= pluralize @restaurant.reviews.size, "review" %>
         </h2>
 
