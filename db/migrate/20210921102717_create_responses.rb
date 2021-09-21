@@ -8,7 +8,7 @@ class CreateResponses < ActiveRecord::Migration[6.0]
       t.float :latitude
       t.float :longitude
       t.references :user, null: false, foreign_key: true
-      t.references :chompsession, null: false, foreign_key: true
+      t.references :chomp_session, null: false, foreign_key: true
 
       t.timestamps
     end
