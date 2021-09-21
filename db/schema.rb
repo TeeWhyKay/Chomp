@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_081127) do
+ActiveRecord::Schema.define(version: 2021_09_21_082544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chomp_sessions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "date"
+    t.string "unique_identifier"
+    t.string "status"
+    t.integer "session_expiry"
+    t.bigint "user_id", null: false
+    t.bigint "restaurant_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_chomp_sessions_on_restaurant_id"
+    t.index ["user_id"], name: "index_chomp_sessions_on_user_id"
+  end
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
@@ -39,4 +53,6 @@ ActiveRecord::Schema.define(version: 2021_09_21_081127) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chomp_sessions", "restaurants"
+  add_foreign_key "chomp_sessions", "users"
 end
