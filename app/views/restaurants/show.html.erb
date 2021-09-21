@@ -1,0 +1,14 @@
+<h1><%= @restaurant.name %> <small><%= @restaurant.address %></small></h1>
+<h2>
+  <%= pluralize @restaurant.reviews.size, "review" %>
+</h2>
+
+<div id="reviews">
+  <% if @restaurant.reviews.blank? %>
+    Be the first to leave a review for <%= @restaurant.name %>
+  <% else %>
+    <% @restaurant.reviews.each do |review| %>
+      <p><%= review.content %></p>
+    <% end %>
+  <% end %>
+</div>
