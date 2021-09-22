@@ -1,0 +1,31 @@
+.restaurant-wrapper {
+  font-size: 18px;
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  .fa-star {
+    color: $pink;
+  }
+
+  img {
+  border-radius: 8px;
+  height: 300px;
+  width: 100%;
+  }
+
+}
+
+.center-cropped {
+  object-fit: cover;
+  object-position: center;
+}
+
+#average-review {
+  font-size: 18px;
+}

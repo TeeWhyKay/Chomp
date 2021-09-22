@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module Chomp
   class Application < Rails::Application
+    config.action_view.embed_authenticity_token_in_remote_forms = true
+
     config.generators do |generate|
       generate.assets false
       generate.helper false
@@ -22,3 +24,6 @@ module Chomp
     # the framework and any gems in your application.
   end
 end
+
+config.assets.enabled = true
+config.assets.paths << "#{Rails.root}/app/assets/fonts"
