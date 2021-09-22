@@ -62,7 +62,8 @@ puts "Seeding Chomp sessions"
 3.times do
   ChompSession.create(
     name: ['Somerset Dinner', 'EOY CosFest', 'Brunch@Yishun'].sample,
-    date: Time.now,
+    date: Date.today,
+    time: Time.now,
     status: ["pending", "closed"].sample,
     restaurant: Restaurant.last,
     user: User.last
