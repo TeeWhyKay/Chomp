@@ -21,24 +21,25 @@ Restaurant.destroy_all
 puts "seeding db with restaurants"
 apikey = "ytxKCmRhV2kPY8fEpKXN63SuuQSkVmPw"
 # api to download images based on uuid
-url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}&apikey=#{apikey}"
 url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&language=en&apikey=#{apikey}"
 count = 0
+# cuisine_arr = []
 loop do
   count += 1
-  address_serialized = URI.open(url).read
-  address_parsed = JSON.parse(address_serialized)
-  next_token = address_parsed["nextToken"]
+  fnb_serialized = URI.open(url).read
+  fnb_parsed = JSON.parse(fnb_serialized)
+  next_token = fnb_parsed["nextToken"]
   puts "next token is: #{next_token}"
-  length_of_results = address_parsed["data"]["results"].length
+  length_of_results = fnb_parsed["data"]["results"].length
   length_of_results.times do |index|
-    address = address_parsed["data"]["results"][index]["address"]
+    restaurant = fnb_parsed["data"]["results"][index]
+    address = restaurant["address"]
     full_address = "
     #{address['block']}
     #{address['streetName']}
     #{address['floorNumber']}-#{address['unitNumber']}
     #{address['buildingName']} #{address['postalCode']}, Singapore"
-    time = address_parsed["data"]["results"][index]["businessHour"]
+    time = restaurant["businessHour"]
     if time.empty?
       opening_time = ["10:00", "10:30", "11:00"].sample
       closing_time = ["22:00", "22:30", "23:00"].sample
@@ -46,20 +47,27 @@ loop do
       opening_time = time.first["openTime"]
       closing_time = time.first["closeTime"]
     end
+    # take the first thumbnail provided, if any
+    uuid = restaurant['thumbnails'].first['uuid'] if !restaurant['thumbnails'].empty? && !restaurant['thumbnails'].first['uuid'].empty?
+    url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}&apikey=#{apikey}"
+    # puts url_to_download_restaurant_img
     restaurant = Restaurant.create(
-      name: address_parsed["data"]["results"][index]["name"],
+      name: restaurant["name"],
       address: full_address,
-      longitude: address_parsed["data"]["results"][index]["location"]["longitude"],
-      latitude: address_parsed["data"]["results"][index]["location"]["latitude"],
+      longitude: restaurant["location"]["longitude"],
+      latitude: restaurant["location"]["latitude"],
       opening_time: opening_time,
       closing_time: closing_time,
-      # rating: address_parsed["data"]["results"][index]["rating"],
-      cuisine: address_parsed["data"]["results"][index]["cuisine"]
+      # rating: restaurant["rating"],
+      cuisine: restaurant["cuisine"]
     )
-    puts "seeded #{address_parsed["data"]["results"][index]["name"]}"
+    # cuisine_arr << restaurant["cuisine"] unless restaurant["cuisine"].empty?
+    puts "seeded #{restaurant["name"]}"
   end
   # break if next_token==""
   break if count == 1
   url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&nextToken=#{next_token}&language=en&apikey=#{apikey}"
 end
+puts "cuisine array length = #{cuisine_arr.length}"
+pp cuisine_arr
 puts "seeding restaurant completed"
