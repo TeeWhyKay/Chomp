@@ -24,3 +24,6 @@ module Chomp
     # the framework and any gems in your application.
   end
 end
+
+config.assets.enabled = true
+config.assets.paths << "#{Rails.root}/app/assets/fonts"
