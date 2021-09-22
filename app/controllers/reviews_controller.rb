@@ -10,20 +10,9 @@ class ReviewsController < ApplicationController
     count_rating(@restaurant, @review)
 
     respond_to do |format|
-      if @review.save
-        format.html { redirect_to restaurant_path(@restaurant, anchor: "review-#{@review.id}") }
-        # format.json # Follow the classic Rails flow and look for a create.json view
-      else
-        format.html { render 'restaurants/show' }
-      end
+      @review.save ? format.html { redirect_to restaurant_path(@restaurant, anchor: "review-#{@review.id}") } : format.html { render 'restaurants/show' }
       format.json # Follow the classic Rails flow and look for a create.json view
     end
-
-    # if @review.save
-    #   redirect_to restaurant_path(@restaurant, anchor: "review-#{@review.id}")
-    # else
-    #   render 'restaurants/show'
-    # end
   end
 
   private
@@ -35,11 +24,6 @@ class ReviewsController < ApplicationController
     rating_count = restaurant_instance.reviews.count
     # If the restaurant has 0 ratings so far, let the 1st rating be the new rating
     new_average_rating = rating_count.zero? ? new_rating : (sum_of_rating + new_rating).fdiv(rating_count + 1)
-    # if rating_count.zero?
-    #   new_average_rating = new_rating
-    # else
-    #   new_average_rating = (sum_of_rating + new_rating).fdiv(rating_count + 1)
-    # end
     restaurant_instance.average_rating = new_average_rating
     restaurant_instance.save
   end
