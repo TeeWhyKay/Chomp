@@ -7,7 +7,7 @@
         <p id="restaurant-address"><%= @restaurant.address %></p>
         <%= image_tag @restaurant.photo_url, id: "restaurant-image", class: "center-cropped mb-3"%>
 
-        <h2 id="average-review">
+        <h2 id="average-review" class="text-left">
           <% @restaurant.average_rating.to_i.times do |star| %>
             <i class="fas fa-star"></i>
           <% end %>
@@ -16,8 +16,10 @@
             <i class="far fa-star"></i>
           <% end %>
           <%= @restaurant.average_rating.round(2) %>
-          <%= pluralize @restaurant.reviews.size, "review" %>
+          <span class="text-muted"><%= @restaurant.reviews.size %></span>
         </h2>
+
+        <p class="text-left">Restaurant description here.</p>
 
       </div>
 
