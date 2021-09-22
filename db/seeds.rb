@@ -23,7 +23,7 @@ apikey = "ytxKCmRhV2kPY8fEpKXN63SuuQSkVmPw"
 # api to download images based on uuid
 url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&language=en&apikey=#{apikey}"
 count = 0
-
+client = Pexels::Client.new
 loop do
   count += 1
   fnb_serialized = URI.open(url).read
@@ -59,11 +59,14 @@ loop do
       cuisine: restaurant["cuisine"]
     )
     uuid = restaurant['thumbnails'].first['uuid'] if !restaurant['thumbnails'].empty? && !restaurant['thumbnails'].first['uuid'].empty?
-    unless uuid.nil?
+    if uuid.nil?
+      # photos = client.photos.search('restaurant', size: :small, orientation: :landscape)
+      file = URI.open("https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=130")
+    else
       url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}?apikey=#{apikey}"
       file = URI.open(url_to_download_restaurant_img)
-      restaurant_instance.image.attach(io: file, filename: 'restaurant["name"].png', content_type: 'image/png')
     end
+    restaurant_instance.image.attach(io: file, filename: 'restaurant["name"].png', content_type: 'image/png')
     restaurant_instance.save
     puts "seeded #{restaurant["name"]}"
   end
