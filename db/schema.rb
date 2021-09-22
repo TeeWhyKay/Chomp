@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_21_082544) do
+ActiveRecord::Schema.define(version: 2021_09_21_102717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,21 @@ ActiveRecord::Schema.define(version: 2021_09_21_082544) do
     t.index ["user_id"], name: "index_chomp_sessions_on_user_id"
   end
 
+  create_table "responses", force: :cascade do |t|
+    t.integer "budget"
+    t.string "location"
+    t.string "email"
+    t.string "cuisine"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "user_id", null: false
+    t.bigint "chomp_session_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chomp_session_id"], name: "index_responses_on_chomp_session_id"
+    t.index ["user_id"], name: "index_responses_on_user_id"
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -38,6 +53,18 @@ ActiveRecord::Schema.define(version: 2021_09_21_082544) do
     t.datetime "closing_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "rating"
+    t.bigint "user_id", null: false
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,4 +82,8 @@ ActiveRecord::Schema.define(version: 2021_09_21_082544) do
 
   add_foreign_key "chomp_sessions", "restaurants"
   add_foreign_key "chomp_sessions", "users"
+  add_foreign_key "responses", "chomp_sessions"
+  add_foreign_key "responses", "users"
+  add_foreign_key "reviews", "restaurants"
+  add_foreign_key "reviews", "users"
 end
