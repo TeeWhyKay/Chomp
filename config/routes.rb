@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     resources :reviews, only: :create
   end
   resources :chomp_sessions, only: [:new, :create, :show]
+  get 'success', to: 'chomp_sessions#success'
 end
