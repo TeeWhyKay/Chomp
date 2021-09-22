@@ -21,32 +21,40 @@
 
       </div>
 
-      <div id="reviews">
-        <% if @restaurant.reviews.blank? %>
-          Be the first to leave a review for <%= @restaurant.name %>
-        <% else %>
-          <% @restaurant.reviews.each do |review| %>
-            <div id="review-<%= review.id %>">
-              <h3><%= review.title %></h3>
-              <% review.rating.times do |star| %>
-                <i class="fas fa-star"></i>
+      <div data-controller="insert-in-list">
+        <div id="reviews">
+          <div data-insert-in-list-target="items">
+            <% if @restaurant.reviews.blank? %>
+              Be the first to leave a review for <%= @restaurant.name %>
+            <% else %>
+              <% @restaurant.reviews.each do |review| %>
+                <div id="review-<%= review.id %>">
+                  <h3><%= review.title %></h3>
+                  <% review.rating.times do |star| %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% unchecked_stars = (5 - review.rating).to_i %>
+                  <% unchecked_stars.times do |star| %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                  <p><%= review.content %></p>
+                </div>
               <% end %>
-              <% unchecked_stars = (5 - review.rating).to_i %>
-              <% unchecked_stars.times do |star| %>
-                <i class="far fa-star"></i>
-              <% end %>
-              <p><%= review.content %></p>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <%= simple_form_for([ @restaurant, @review ], remote: true,
+                        data: {
+                          insert_in_list_target: "form",
+                        action: 'submit->insert-in-list#send'
+                      }) do |f| %>
+          <%= f.input :rating, collection: [['1 - Blegh!', 1], ['2 - Below Average', 2], ['3 - Alright', 3], ['4 - Not Bad', 4], ['5 - Amazing!', 5]], selected: 3 %>
+          <%= f.input :title, as: :string %>
+          <%= f.input :content, as: :text %>
+          <%= f.button :submit %>
         <% end %>
       </div>
-
-      <%= simple_form_for([ @restaurant, @review ], remote: true) do |f| %>
-        <%= f.input :rating, collection: [['1 - Blegh!', 1], ['2 - Below Average', 2], ['3 - Alright', 3], ['4 - Not Bad', 4], ['5 - Amazing!', 5]], selected: 3 %>
-        <%= f.input :title, as: :string %>
-        <%= f.input :content, as: :text %>
-        <%= f.button :submit %>
-      <% end %>
     </div>
   </div>
 </div>
