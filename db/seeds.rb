@@ -20,7 +20,8 @@ puts "clearing db"
 Restaurant.destroy_all
 puts "seeding db with restaurants"
 apikey = "ytxKCmRhV2kPY8fEpKXN63SuuQSkVmPw"
-url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/10191b8e2d015b5498b8d7793385b400ae1&apikey=#{apikey}"
+# api to download images based on uuid
+url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}&apikey=#{apikey}"
 url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&language=en&apikey=#{apikey}"
 count = 0
 loop do
