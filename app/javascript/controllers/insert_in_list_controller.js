@@ -3,6 +3,7 @@ import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
   static targets = ['items', 'form'];
+  static values = { position: String }
 
   send(event) {
     event.preventDefault();
@@ -15,7 +16,7 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
         if (data.inserted_item) {
-          this.itemsTarget.insertAdjacentHTML('beforeend', data.inserted_item);
+          this.itemsTarget.insertAdjacentHTML(this.positionValue, data.inserted_item);
         }
         this.formTarget.outerHTML = data.form;
       })

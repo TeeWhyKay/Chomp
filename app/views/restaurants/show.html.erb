@@ -21,9 +21,9 @@
 
       </div>
 
-      <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
-          <%= render partial: "restaurants/review", locals: { restaurant: @restaurant } %>
+      <div data-controller="insert-in-list" data-insert-in-list-position-value="afterbegin">
           <%= render partial: "reviews/form", locals: { restaurant: @restaurant, review: @review } %>
+          <%= render partial: "restaurants/review", locals: { restaurant: @restaurant } %>
       </div>
     </div>
   </div>
