@@ -7,9 +7,6 @@ class ResponsesController < ApplicationController
     @response = Response.new(response_params)
     if @response.save
       redirect_to root_path
-
-    else
-      render new
     end
   end
 

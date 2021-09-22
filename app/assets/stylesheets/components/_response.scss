@@ -1,0 +1,51 @@
+.tag-item {
+  height: 100px;
+  width: 100px;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 18px;
+  text-align: center;
+  padding: 40px 0 0 0;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+}
+
+.tag-selector:checked + label {
+  border: 3px solid green;
+  padding: 35px 0 0 ;
+}
+
+.submit-btn {
+  padding: 5px;
+  background-color: blue;
+}
+
+fieldset.response_cuisine {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+[for^='response'] {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background-size: cover;
+}
+
+[for='response_cuisine_western'] {
+  background-image: url('https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80');
+}
+
+[for='response_cuisine_thai'] {
+  background-image: url('https://images.pexels.com/photos/5409015/pexels-photo-5409015.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+}
