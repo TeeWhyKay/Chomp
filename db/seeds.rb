@@ -8,12 +8,16 @@ require 'open-uri'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "clearing db"
+# should i destroy other datas like users, etc
+Restaurant.destroy_all
 puts "seeding db with restaurants"
 apikey = "ytxKCmRhV2kPY8fEpKXN63SuuQSkVmPw"
+url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/10191b8e2d015b5498b8d7793385b400ae1&apikey=#{apikey}"
 url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&language=en&apikey=#{apikey}"
-# count = 0
-2.times do
-  # count += 1
+count = 0
+loop do
+  count += 1
   address_serialized = URI.open(url).read
   address_parsed = JSON.parse(address_serialized)
   next_token = address_parsed["nextToken"]
@@ -41,7 +45,13 @@ url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&l
       latitude: address_parsed["data"]["results"][index]["location"]["latitude"],
       opening_time: opening_time,
       closing_time: closing_time,
+      # rating: address_parsed["data"]["results"][index]["rating"],
+      cuisine: address_parsed["data"]["results"][index]["cuisine"]
     )
     puts "seeded #{address_parsed["data"]["results"][index]["name"]}"
   end
+  # break if next_token==""
+  break if count == 1
+  url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&nextToken=#{next_token}&language=en&apikey=#{apikey}"
 end
+puts "seeding restaurant completed"
