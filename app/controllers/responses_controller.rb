@@ -9,6 +9,9 @@ class ResponsesController < ApplicationController
     redirect_to root_path
   end
 
+  private
+  
   def response_params
     params.require(:response).permit(:budget, :location)
+  end
 end
