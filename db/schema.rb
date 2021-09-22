@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2021_09_22_030810) do
     t.datetime "closing_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "photo_url"
+    t.float "average_rating"
     t.string "cuisine"
   end
 
