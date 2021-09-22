@@ -68,4 +68,4 @@ puts "Seeding Chomp sessions"
     user: User.last
   )
 end
-puts "Seeding ChompSessions completed"
+puts "Seeding ChompSessions completed, but will only work if you created a user account"
