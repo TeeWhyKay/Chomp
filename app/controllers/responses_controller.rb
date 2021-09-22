@@ -5,12 +5,16 @@ class ResponsesController < ApplicationController
 
   def create
     @response = Response.new(response_params)
-    @response.save
-    redirect_to root_path
+    if @response.save
+      redirect_to root_path
+
+    else
+      render new
+    end
   end
 
   private
-  
+
   def response_params
     params.require(:response).permit(:budget, :location)
   end

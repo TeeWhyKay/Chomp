@@ -1,2 +1,6 @@
-<h1>Responses#new</h1>
-<p>Find me in app/views/responses/new.html.erb</p>
+<%= simple_form_for @response do |f| %>
+  <%= f.input :budget %>
+  <%= f.input :location %>
+  <%= f.input :cuisine %>
+  <%= f.button :submit %>
+<% end %>
