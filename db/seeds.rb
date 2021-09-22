@@ -1,9 +1,21 @@
 require 'open-uri'
 
+
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Clearing restaurants db"
+
 puts "clearing db"
+
 # should i destroy other datas like users, etc
 Restaurant.destroy_all
-puts "seeding db with restaurants"
+puts "Seeding db with restaurants"
 apikey = "ytxKCmRhV2kPY8fEpKXN63SuuQSkVmPw"
 # api to download images based on uuid
 url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&language=en&apikey=#{apikey}"
@@ -59,4 +71,19 @@ loop do
   break if count == 1
   url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&nextToken=#{next_token}&language=en&apikey=#{apikey}"
 end
-puts "seeding restaurant completed"
+puts "Seeding restaurants completed"
+
+puts "Destroying Chomp sessions"
+ChompSession.destroy_all
+puts "Seeding Chomp sessions"
+3.times do
+  ChompSession.create(
+    name: ['Somerset Dinner', 'EOY CosFest', 'Brunch@Yishun'].sample,
+    date: Date.today,
+    time: Time.now,
+    status: ["pending", "closed"].sample,
+    restaurant: Restaurant.last,
+    user: User.last
+  )
+end
+puts "Seeding ChompSessions completed, but will only work if you created a user account"
