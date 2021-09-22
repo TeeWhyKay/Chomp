@@ -8,10 +8,10 @@ require 'open-uri'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "clearing db"
+puts "Clearing restaurants db"
 # should i destroy other datas like users, etc
 Restaurant.destroy_all
-puts "seeding db with restaurants"
+puts "Seeding db with restaurants"
 apikey = "ytxKCmRhV2kPY8fEpKXN63SuuQSkVmPw"
 url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/10191b8e2d015b5498b8d7793385b400ae1&apikey=#{apikey}"
 url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&language=en&apikey=#{apikey}"
@@ -54,4 +54,6 @@ loop do
   break if count == 1
   url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&nextToken=#{next_token}&language=en&apikey=#{apikey}"
 end
-puts "seeding restaurant completed"
+puts "Seeding restaurants completed"
+
+puts "Destroying Chomp sessions"
