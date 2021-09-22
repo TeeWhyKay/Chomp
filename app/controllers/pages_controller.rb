@@ -6,9 +6,9 @@ class PagesController < ApplicationController
       if ChompSession.find_by(id: params["chomped"].to_i)
         redirect_to ChompSession.find_by(id: params["chomped"].to_i)
       else
-        redirect_to root_path
+        # if no, redirect back to landing page with error message
+        redirect_to root_path, notice: "Session not found"
       end
-      # if no, redirect back to landing page with error message
     end
   end
 end
