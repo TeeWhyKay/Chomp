@@ -8,12 +8,20 @@ class ReviewsController < ApplicationController
 
     # Updating restaurant's average rating with new review rating
     count_rating(@restaurant, @review)
+    if @review.save
 
-    respond_to do |format|
-      @review.save ? format.html { redirect_to restaurant_path(@restaurant, anchor: "review-#{@review.id}") } : format.html { render 'restaurants/show' }
-      format.json # Follow the classic Rails flow and look for a create.json view
+      respond_to do |format|
+        format.html { redirect_to restaurant_path(@restaurant, anchor: "review-#{@review.id}") }
+        format.json
+      end
+    else
+      respond_to do |format|
+        format.html { render 'restaurants/show' }
+        format.json
+        end
     end
   end
+
 
   private
 

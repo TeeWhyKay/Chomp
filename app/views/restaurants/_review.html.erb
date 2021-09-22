@@ -1,9 +1,10 @@
+
 <div id="reviews">
   <div data-insert-in-list-target="items">
-    <% if @restaurant.reviews.blank? %>
-      Be the first to leave a review for <%= @restaurant.name %>
+    <% if restaurant.reviews.blank? %>
+      Be the first to leave a review for <%= restaurant.name %>
     <% else %>
-      <% @restaurant.reviews.each do |review| %>
+      <% restaurant.reviews.each do |review| %>
         <div id="review-<%= review.id %>">
           <h3><%= review.title %></h3>
           <% review.rating.times do |star| %>
