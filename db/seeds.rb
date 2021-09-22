@@ -23,7 +23,7 @@ apikey = "ytxKCmRhV2kPY8fEpKXN63SuuQSkVmPw"
 # api to download images based on uuid
 url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&language=en&apikey=#{apikey}"
 count = 0
-# cuisine_arr = []
+
 loop do
   count += 1
   fnb_serialized = URI.open(url).read
@@ -48,10 +48,7 @@ loop do
       closing_time = time.first["closeTime"]
     end
     # take the first thumbnail provided, if any
-    uuid = restaurant['thumbnails'].first['uuid'] if !restaurant['thumbnails'].empty? && !restaurant['thumbnails'].first['uuid'].empty?
-    url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}&apikey=#{apikey}"
-    # puts url_to_download_restaurant_img
-    restaurant = Restaurant.create(
+    restaurant_instance = Restaurant.new(
       name: restaurant["name"],
       address: full_address,
       longitude: restaurant["location"]["longitude"],
@@ -61,13 +58,17 @@ loop do
       # rating: restaurant["rating"],
       cuisine: restaurant["cuisine"]
     )
-    # cuisine_arr << restaurant["cuisine"] unless restaurant["cuisine"].empty?
+    uuid = restaurant['thumbnails'].first['uuid'] if !restaurant['thumbnails'].empty? && !restaurant['thumbnails'].first['uuid'].empty?
+    unless uuid.nil?
+      url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}?apikey=#{apikey}"
+      file = URI.open(url_to_download_restaurant_img)
+      restaurant_instance.image.attach(io: file, filename: 'restaurant["name"].png', content_type: 'image/png')
+    end
+    restaurant_instance.save
     puts "seeded #{restaurant["name"]}"
   end
   # break if next_token==""
   break if count == 1
   url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&nextToken=#{next_token}&language=en&apikey=#{apikey}"
 end
-puts "cuisine array length = #{cuisine_arr.length}"
-pp cuisine_arr
 puts "seeding restaurant completed"
