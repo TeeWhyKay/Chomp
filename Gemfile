@@ -33,6 +33,12 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'turbolinks_render'
 
+# cloudinary for thumbnail uploads
+gem 'cloudinary', '~> 1.16.0'
+
+# pexels for random photos
+gem 'pexels'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
