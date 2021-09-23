@@ -19,6 +19,15 @@ class ResponsesController < ApplicationController
     end
   end
 
+  def reverse_geocode
+    # assume user is not a guest
+    #  current_user.lat = params[:latitude]
+    #  current_user.lng = params[:longitude]
+    #  address = current_user.reverse_geocode
+    @response = Response.new(latitude: params[:latitude], longitude: params[:longitude])
+    @response.reverse_geocode
+  end
+
   # def show
   #   @response = Response.find(params[:id])
   # end

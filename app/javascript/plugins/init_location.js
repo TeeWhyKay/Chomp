@@ -1,3 +1,4 @@
+import Rails from '@rails/ujs'
 const initLocation = () => {
   // const hiddenLocationInput = document.querySelector('#location');
   const locationBtn = document.querySelector('#get_location');
@@ -20,7 +21,7 @@ const initLocation = () => {
         const longitude = data.coords.longitude
         fetch('/reverse_geocode', {
           method: 'POST',
-          headers: { 'Accept': 'text/json', 'X-CSRF-token': csrfToken()},
+          headers: { 'Accept': 'text/json', 'X-CSRF-token': Rails.csrfToken()},
           body: JSON.stringify({
             latitude: latitude,
             longitude: longitude})
