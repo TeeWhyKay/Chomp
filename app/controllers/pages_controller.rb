@@ -4,7 +4,8 @@ class PagesController < ApplicationController
       # check if chomp session is found
       # if yes, redirect to the session page
       if ChompSession.find_puid(params["chomped"])
-        redirect_to ChompSession.find_puid(params["chomped"])
+        # redirect_to ChompSession.find_puid(params["chomped"])
+        redirect_to new_chomp_session_response_path(ChompSession.find_puid(params["chomped"]))
       else
         # if no, redirect back to landing page with error message
         redirect_to root_path, notice: "Session not found"

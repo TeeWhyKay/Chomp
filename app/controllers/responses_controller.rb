@@ -1,26 +1,27 @@
 class ResponsesController < ApplicationController
-  def new
-    @chomp_session = ChompSession.find(params[:chomp_session_id])
-    @response = Response.new
-  end
+  # def new
+  #   @response = Response.new
+  #   @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
+  # end
 
   def create
     @response = Response.new(response_params)
     @response.user = current_user
-    @response.chomp_session = ChompSession.find_by_public_uid(params[:chomp_session_id])
+    @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
+    @response.chomp_session = ChompSession.find_puid(params[:chomp_session_id])
     @response.cuisine.reject { |c| c.empty? }
 
     if @response.save
-      redirect_to root_path
-
+      redirect_to chomp_session_success_url(@chomp_session)
+      # change later to waiting page
     else
       render :new
     end
   end
 
-  def show
-    @response = Response.find(params[:id])
-  end
+  # def show
+  #   @response = Response.find(params[:id])
+  # end
 
   private
 
