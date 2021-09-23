@@ -1,6 +1,7 @@
 import Rails from '@rails/ujs'
 const initLocation = () => {
-  // const hiddenLocationInput = document.querySelector('#location');
+  // pass the accurate lat, long as hidden field
+  const hiddenLocationInput = document.querySelector('#location');
   const locationBtn = document.querySelector('#get_location');
 
   if (locationBtn != null) {
@@ -25,36 +26,18 @@ const initLocation = () => {
           body: JSON.stringify({
             latitude: latitude,
             longitude: longitude})
-        })
+        }).then(() => {
+          const locationField = document.querySelector('#response_location');
+          locationField.value = "Test address";
+        });
+        // .then(response => response.json())
+        //   .then((data) => {
+        //     console.log(data);
+        //     const locationField = document.querySelector('#response_location');
+        //     locationField.value = "Test address";
+        //   });
 
         // populateAddress(latitude, longitude)
-
-        // ruby
-
-        // routes
-        // get "/responses/address", to: "responses#address"
-
-        // def address
-        //  lat = params[:lat]
-        //  lng = params[:lng]
-        //  something.search(lat, lng) => [results]
-
-        // respond_to do
-            // return json
-        // end
-
-        // javascript
-        // fetch(/responses/address?lat=${lat}&lng=${lng}, {
-          //
-        // }).then(res => res.json()
-          //
-        // ).then(
-          // true?
-            // where is our input form? document.querySelector
-            // formField.?? = ??
-          // false
-            // ??
-        // )
       });
     });
   }

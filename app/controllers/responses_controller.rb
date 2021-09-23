@@ -25,7 +25,11 @@ class ResponsesController < ApplicationController
     #  current_user.lng = params[:longitude]
     #  address = current_user.reverse_geocode
     @response = Response.new(latitude: params[:latitude], longitude: params[:longitude])
-    @response.reverse_geocode
+    address = @response.reverse_geocode
+    # how to pass this partial response? and make use of it during response creation?
+    respond_to do |format|
+      return format.json { render json: @response }
+    end
   end
 
   # def show
