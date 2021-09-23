@@ -85,6 +85,10 @@ end
 
 puts "Seeding restaurants completed"
 
+puts "Creating New User"
+User.create!(email: "test@test.com", username: "tester", password: "password")
+puts "New User created"
+
 puts "Destroying Chomp sessions"
 ChompSession.destroy_all
 puts "Seeding Chomp sessions"
