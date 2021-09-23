@@ -66,14 +66,15 @@ cuisine_arr.each do |cuisine|
       )
       price += 1
       uuid = restaurant['thumbnails'].first['uuid'] if !restaurant['thumbnails'].empty? && !restaurant['thumbnails'].first['uuid'].empty?
-      if uuid.nil?
-        # photos = client.photos.search('restaurant', size: :small, orientation: :landscape)
-        file = URI.open("https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=130")
-      else
-        url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}?apikey=#{apikey}"
-        file = URI.open(url_to_download_restaurant_img)
-      end
-      restaurant_instance.image.attach(io: file, filename: 'restaurant["name"].png', content_type: 'image/png')
+      # if uuid.nil?
+      #   # photos = client.photos.search('restaurant', size: :small, orientation: :landscape)
+      #   file = URI.open("https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=130")
+      # else
+      #   url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}?apikey=#{apikey}"
+      #   file = URI.open(url_to_download_restaurant_img)
+      # end
+      #file = URI.open("https://source.unsplash.com/N_Y88TWmGwA/640x426)
+      # restaurant_instance.image.attach(io: file, filename: 'restaurant["name"].png', content_type: 'image/png')
       restaurant_instance.save
       puts "seeded #{restaurant["name"]}"
     end
@@ -99,4 +100,3 @@ puts "Seeding Chomp sessions"
   )
 end
 puts "Seeding ChompSessions completed, but will only work if you created a user account"
-
