@@ -7,8 +7,8 @@ class ResponsesController < ApplicationController
   def create
     @response = Response.new(response_params)
     @response.user = current_user
-    @response.chomp_session = ChompSession.find(params[:chomp_session_id])
-    @response.cuisine.reject { |c|  c.empty? }
+    @response.chomp_session = ChompSession.find_by_public_uid(params[:chomp_session_id])
+    @response.cuisine.reject { |c| c.empty? }
 
     if @response.save
       redirect_to root_path
