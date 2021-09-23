@@ -1,5 +1,5 @@
 <div class="container">
-  <%= simple_form_for([@chomp_session, @response]) do |f| %>
+  <%= simple_form_for([@chomp_session, @response], remote: true) do |f| %>
     <%= f.input :budget,
                 required: true %>
     <%= f.input :location,
