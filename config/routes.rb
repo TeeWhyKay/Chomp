@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :chomp_sessions, only: [:new, :create, :show] do
-    resources :responses, only: [:new, :create]
+    resources :responses, only: [:show, :new, :create]
   end
 
   get 'success', to: 'chomp_sessions#success'
