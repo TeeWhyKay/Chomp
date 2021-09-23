@@ -14,6 +14,22 @@ class ChompSessionsController < ApplicationController
     end
   end
 
+  def edit
+    @chomp_session = ChompSession.find_puid(params[:id])
+  end
+
+  def update
+    @chomp_session = ChompSession.find_puid(params[:id])
+    @chomp_session.update(chomp_params)
+    if @chomp_session.save
+      update_mail = ChompSessionMailer.with(chomp_session: @chomp_session).update_chomp
+      update_mail.deliver_now
+      redirect_to chomp_session_success_url(@chomp_session)
+    else
+      render :new
+    end
+  end
+
   def success
     @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
   end

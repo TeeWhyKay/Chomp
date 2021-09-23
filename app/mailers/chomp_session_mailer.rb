@@ -13,4 +13,13 @@ class ChompSessionMailer < ApplicationMailer
       subject:  "Chomp Session: '#{@chomp_session.name}' is created!"
     )
   end
+
+  def update_chomp
+    @chomp_session = params[:chomp_session]
+
+    mail(
+      to:       @chomp_session.user.email,
+      subject:  "Chomp Session: '#{@chomp_session.name}' is updated!"
+    )
+  end
 end
