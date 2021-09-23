@@ -3,7 +3,7 @@ class ChompSessionsController < ApplicationController
     @chomp_session = ChompSession.new
   end
 
-  
+
   def create
     @chomp_session = ChompSession.new(chomp_params)
     @chomp_session.user = current_user
@@ -18,7 +18,7 @@ class ChompSessionsController < ApplicationController
   def success
     @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
   end
-  
+
   def show
   end
 
