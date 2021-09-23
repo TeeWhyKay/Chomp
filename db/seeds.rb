@@ -73,6 +73,10 @@ loop do
 end
 puts "Seeding restaurants completed"
 
+puts "Creating New User"
+User.create!(email: "test@test.com", username: "tester", password: "password")
+puts "New User created"
+
 puts "Destroying Chomp sessions"
 ChompSession.destroy_all
 puts "Seeding Chomp sessions"
@@ -87,3 +91,13 @@ puts "Seeding Chomp sessions"
   )
 end
 puts "Seeding ChompSessions completed, but will only work if you created a user account"
+
+puts "Creating fake response for testing"
+response = Response.new(budget: 5, location: "34 Upper Cross Street, Singapore", email: "test@test.com", cuisine: "[Chinese]" )
+response.user = User.first
+cs = ChompSession.first
+response.chomp_session = cs
+response.save!
+puts "Seeding fake response"
+
+puts "Seeding completed!"
