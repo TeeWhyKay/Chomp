@@ -20,13 +20,13 @@
   font-size: 20px;
   text-align: center;
   padding: 120px 0 0 0;
-  border: 1px solid #EAEAEA;
+  border: transparent;
   border-radius: 4px;
 }
 
 .tag-selector:checked + label {
   border: 3px solid rgba(0, 128, 0, 0.781);
-  padding: 35px 0 0 ;
+  padding: 118px 0 0 ;
 }
 
 
@@ -66,6 +66,7 @@ fieldset.response_cuisine {
 }
 
 [for='response_cuisine_halal'] {
+  filter: grayscale(20%);
   background-image: url('https://cdn.pixabay.com/photo/2015/01/02/13/58/grilled-chicken-586547_960_720.jpg');
 }
 
@@ -90,5 +91,6 @@ fieldset.response_cuisine {
 }
 
 [for='response_cuisine_desserts'] {
+  filter: grayscale(20%);
   background-image: url('https://cdn.pixabay.com/photo/2016/03/23/15/00/ice-cream-1274894_960_720.jpg');
 }
