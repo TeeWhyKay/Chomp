@@ -6,8 +6,12 @@ class ChompSessionMailer < ApplicationMailer
   #   en.chomp_session_mailer.create_confirmation.subject
   #
   def create_confirmation
-    @greeting = "Hi"
+    # Might need optimization
+    @chomp_session = params[:chomp_session]
 
-    mail to: "to@example.org"
+    mail(
+      to: @chomp_session.user.email,
+      subject: "Chomp Session: '#{@chomp_session.name}' is created!"
+    )
   end
 end
