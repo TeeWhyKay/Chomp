@@ -28,7 +28,7 @@ class ResponsesController < ApplicationController
     address = @response.reverse_geocode
     # how to pass this partial response? and make use of it during response creation?
     respond_to do |format|
-      return format.json { render json: @response }
+      return format.json { render json: { address: address } }
     end
   end
 
