@@ -1,5 +1,5 @@
-<p>Hi <%= @user.username %>!</p>
+<p>Hi <%= @user.username %>,</p>
 
-<p>Your account has been created.</p>
+<p>Thank you for signing up to Chomp :).</p>
 
-<a href="#">Get Chomping!</a>
+<%= link_to "Get Chomping!", new_chomp_session_url %>

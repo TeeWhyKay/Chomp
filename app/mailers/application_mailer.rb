@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'notification@letschomp.co'
+  default from: 'hi@ngminxuan.com'
   layout 'mailer'
 end
