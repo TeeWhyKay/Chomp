@@ -1,5 +1,5 @@
-<p>Hi <%= @user.email %>,</p>
+<p>Hi <%= @user.username %>,</p>
 
-<p>Today we'll talk about SMTP and Postmark!</p>
+<p>Thank you for creating an account with Chomp :)!</p>
 
-<p>See ya!</p>
+<%= link_to "Get Chomping!", new_chomp_session_url, style: "text-decoration: none;" %>
