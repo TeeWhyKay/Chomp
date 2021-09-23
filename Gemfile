@@ -32,6 +32,7 @@ gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'turbolinks_render'
+gem 'postmark-rails'
 
 # cloudinary for thumbnail uploads
 gem 'cloudinary', '~> 1.16.0'
@@ -56,6 +57,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener'
 end
 
 group :test do
