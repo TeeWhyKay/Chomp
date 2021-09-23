@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_09_23_042950) do
 
   # These are extensions that must be enabled in order to support this database
@@ -38,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_09_23_042950) do
 
   create_table "chomp_sessions", force: :cascade do |t|
     t.string "name"
-    t.datetime "date"
+    t.date "date"
     t.string "unique_identifier"
     t.string "status"
     t.integer "session_expiry"
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_09_23_042950) do
     t.bigint "restaurant_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.time "time"
     t.index ["restaurant_id"], name: "index_chomp_sessions_on_restaurant_id"
     t.index ["user_id"], name: "index_chomp_sessions_on_user_id"
   end
