@@ -1,4 +1,5 @@
 class ChompSessionsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :show
   def new
     @chomp_session = ChompSession.new
   end

@@ -1,4 +1,5 @@
 class ResponsesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:create, :show, :edit, :update]
   def create
     @response = Response.new(response_params)
     @response.user = current_user
@@ -20,6 +21,9 @@ class ResponsesController < ApplicationController
   end
 
   def edit
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
     @response = Response.find(params[:id])
     @chomp_session = @response.chomp_session
   end
