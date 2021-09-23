@@ -6,10 +6,7 @@ Rails.application.routes.draw do
   resources :restaurants, only: [ :index, :show ] do
     resources :reviews, only: :create
   end
-
   resources :chomp_sessions, only: [:new, :create, :show] do
     resources :responses, only: [:show, :new, :create]
   end
-
   get 'success', to: 'chomp_sessions#success'
-end
