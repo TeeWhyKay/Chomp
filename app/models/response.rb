@@ -5,4 +5,6 @@ class Response < ApplicationRecord
   validates :location, presence: true
   geocoded_by :location
   after_validation :geocode, unless: ->(obj){ obj.latitude.present? and obj.longitude.present? }
+  serialize :cuisine, Array
+  collection = [ "Asian", "Chinese", "Western", "Japanese", "Italian", "Halal", "Indian", "Thai", "Korean", "Local", "Steamboat", "Desserts" ]
 end
