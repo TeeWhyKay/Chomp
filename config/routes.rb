@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :chomp_sessions, only: [:new, :create]
   resources :chomp_sessions, only: :show do
-    resources :responses, only: [:show, :new, :create]
+    resources :responses, only: [:new, :create]
     get 'success', to: 'chomp_sessions#success'
   end
 end
