@@ -1,15 +1,21 @@
-<div class="container">
-  <%= simple_form_for([@chomp_session, @response], remote: true) do |f| %>
-    <%= f.input :budget,
-                required: true %>
-    <%= f.input :location,
-                required: true %>
-      <%= f.input :cuisine,
-                  as: :check_boxes,
-                  input_html: { class: "tag-selector" },
-                  item_wrapper_class: 'tag-item mr-3 mb-3',
-                  collection: [ "Asian", "Chinese", "Western", "Japanese", "Italian", "Halal", "Indian", "Thai", "Korean", "Local", "Steamboat", "Desserts" ] %>
-    <%= f.button :submit,
-                  class: "btn btn-primary" %>
-  <% end %>
+<div class="container mb-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-login">
+        <%= simple_form_for([@chomp_session, @response], remote: true) do |f| %>
+          <%= f.input :budget,
+                      required: true %>
+          <%= f.input :location,
+                      required: true %>
+            <%= f.input :cuisine,
+                        as: :check_boxes,
+                        input_html: { class: "tag-selector" },
+                        item_wrapper_class: 'tag-item mr-3 mb-3',
+                        collection: [ "Asian", "Chinese", "Western", "Japanese", "Italian", "Halal", "Indian", "Thai", "Korean", "Local", "Steamboat", "Desserts" ] %>
+          <%= f.button :submit,
+                        class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,9 +1,4 @@
 class ResponsesController < ApplicationController
-  # def new
-  #   @response = Response.new
-  #   @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
-  # end
-
   def create
     @response = Response.new(response_params)
     @response.user = current_user
@@ -19,15 +14,20 @@ class ResponsesController < ApplicationController
     end
   end
 
-  # def show
-  #   @response = Response.find(params[:id])
-  # end
+  def show
+    @response = Response.find(params[:id])
+    @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
+  end
+
+  def edit
+    @response = Response.find(params[:id])
+    @chomp_session = @response.chomp_session
+  end
+
+  def update
+  end
 
   private
-
-  # def find_response
-  #   @response_id = Response.find(params[:response_id])
-  # end
 
   def response_params
     params.require(:response).permit(:budget, :location, cuisine: [])
