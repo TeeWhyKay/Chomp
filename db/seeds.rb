@@ -61,7 +61,6 @@ cuisine_arr.each do |cuisine|
         url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}?apikey=#{apikey}"
         file = URI.open(url_to_download_restaurant_img)
       end
-      # skipping cloudinary image upload for now as it slows down the seeding alot
       restaurant_instance.image.attach(io: file, filename: 'restaurant["name"].png', content_type: 'image/png')
       restaurant_instance.save
       puts "seeded #{restaurant["name"]}"
