@@ -4,14 +4,12 @@
                 required: true %>
     <%= f.input :location,
                 required: true %>
-
       <%= f.input :cuisine,
                   as: :check_boxes,
                   input_html: { class: "tag-selector" },
                   item_wrapper_class: 'tag-item mr-3 mb-3',
                   collection: ["Western", "Chinese", "Malay", "Thai", "Indonesian", "Japanese", "Korean", "Indian", "Spanish", "French", "Italian"] %>
-
     <%= f.button :submit,
-                  class: "submit-btn" %>
+                  class: "btn btn-primary" %>
   <% end %>
 </div>

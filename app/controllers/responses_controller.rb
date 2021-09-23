@@ -5,11 +5,10 @@ class ResponsesController < ApplicationController
 
   def create
     @response = Response.new(response_params)
-    if @response.save!
-      redirect_to root_path
+    if @response.save
+      redirect_to success_path
 
     else
-      raise
       render :new
     end
   end

@@ -21,15 +21,10 @@
 }
 
 .tag-selector:checked + label {
-  border: 3px solid green;
+  border: 3px solid rgba(0, 128, 0, 0.781);
   padding: 35px 0 0 ;
 }
 
-.submit-btn {
-  padding: 5px;
-  border-radius: 5px;
-  background-color: rgb(255, 0, 0);
-}
 
 fieldset.response_cuisine {
   display: flex;
