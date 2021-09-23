@@ -19,6 +19,8 @@ class ChompSessionsController < ApplicationController
   end
 
   def show
+    @response = Response.new
+    @chomp_session = ChompSession.find_puid(params[:id])
   end
 
   private
