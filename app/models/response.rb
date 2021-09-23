@@ -5,5 +5,5 @@ class Response < ApplicationRecord
   validates :location, presence: true
   serialize :cuisine, Array
 
-collection = ["Western", "Chinese", "Malay", "Indonesian", "Japanese", "Korean", "Indian", "Spanish", "French", "Italian"]
+collection = [ "Asian", "Chinese", "Western", "Japanese", "Italian", "Halal", "Indian", "Thai", "Korean", "Local", "Steamboat", "Desserts" ]
 end
