@@ -1,0 +1,20 @@
+<div class="container d-flex flex-column justify-content-center my-5 w-50 p-5" style="background-color:white">
+
+    <h1 class="success-header">Group created</h1>
+    <p class="success-body">Congratulations! Your group has been created, share this link with you friends and get started on planning your next trip!</p>
+    <div class="mb-3">
+      <span class="session-link p-2">http://localhost:3000/chomp_sessions/<%= params["chomp_session_id"] %></span>
+    </div>
+    <p>A confirmation email has been sent to <strong><%= current_user.email %></strong>. Please check your inbox/junk folder.</p>
+
+    <h4>Session Details</h4>
+    <p> >> <%= @chomp_session.name %></p>
+    <p>Meeting Date: <%= @chomp_session.date %></p>
+    <p>Meeting Time: <%= @chomp_session.time.strftime("%I:%M %p") %></p>
+
+    <div class="d-flex justify-content-center ">
+      <%= link_to "Submit my preferences", chomp_session_path(@chomp_session), class: "btn btn-secondary btn-lg"%>
+    </div>
+</div>
+
+

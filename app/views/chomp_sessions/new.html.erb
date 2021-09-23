@@ -1,1 +1,10 @@
-<h1>hello</h1>
+<div class="container d-flex flex-column justify-content-center my-5 w-75 p-5" style="background-color:white">
+  <h2 class="mb-3">New Session</h2>
+    <%= simple_form_for(@chomp_session, remote: true) do |f| %>
+    <%= f.input :name, label:"Meeting Name", required: false, placeholder:"Your Meeting Created on #{Time.now}" %>
+    <%= f.input :date, html5: true, min: "#{Date.today.iso8601}"%>
+    <%= f.input :time, html5: true, min: "#{Time.now.iso8601}" %>
+    <%= f.input :session_expiry, label:"Link Expiry Time (Hours)", hint: "Set the time that you want your poll to be active" %>
+    <%= f.submit value:"Create Invite Link", class:"btn btn-success btn-block" %>
+    <% end %>
+</div>

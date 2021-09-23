@@ -1,6 +1,6 @@
 <div class="container d-flex flex-column justify-content-center my-5 w-50 p-5" style="background-color:white">
     <%= image_tag ("profile.png"), alt: "chomp-logo", class: "w-100 my-3" %>
-    <%= simple_form_for :chomp_session, url: root_path, method: :get do |f| %>
+    <%= simple_form_for :chomp_session, remote: true, url: root_path, method: :get do |f| %>
         <div class="search-form-control form-group">
             <input class="form-control text-center" type="text" name="chomped" id="chomped" placeholder="Enter Session Code"/>
         </div>
