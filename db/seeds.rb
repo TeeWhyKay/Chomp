@@ -104,3 +104,11 @@ puts "Seeding Chomp sessions"
 end
 puts "Seeding ChompSessions completed, but will only work if you created a user account"
 
+puts "Seeding fake response for testing"
+response = Response.new(budget: 5, location: "34 Upper Cross Street, Singapore", email: "test@test.com", cuisine: "[Chinese]" )
+response.user = User.first
+response.chomp_session = ChompSession.first
+response.save!
+puts "Seeded fake response "
+
+puts "Seeding completed!"

@@ -39,6 +39,9 @@ gem 'cloudinary', '~> 1.16.0'
 # pexels for random photos
 gem 'pexels'
 
+# geocoder for geocoding models
+gem 'geocoder'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
