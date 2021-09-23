@@ -10,7 +10,7 @@ class ChompSessionMailer < ApplicationMailer
 
     mail(
       to:       @chomp_session.user.email,
-      subject:  "Chomp Session: #{@chomp_session.name} created!"
+      subject:  "Chomp Session: '#{@chomp_session.name}' is created!"
     )
   end
 end

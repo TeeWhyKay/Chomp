@@ -1,5 +1,5 @@
-<h1>ChompSession#create_chomp</h1>
+<h1><em><%= @chomp_session.name %></em> is created!</h1>
 
-<p>
-  <%= @greeting %>, find me in app/views/chomp_session_mailer/create_chomp.html.erb
-</p>
+<p>Chomping is now in progress...</p>
+<p>You'll have to wait <%= pluralize(@chomp_session.session_expiry, 'hour') %> before a decision is made for you.</p>
+<p>Meanwhile, go do whatever you want! Who knows, you might even come up with a decision us...</p>

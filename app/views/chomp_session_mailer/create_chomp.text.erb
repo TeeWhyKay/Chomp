@@ -1,3 +1,5 @@
-ChompSession#create_chomp
+<%= @chomp_session.name %> is created!
 
-<%= @greeting %>, find me in app/views/chomp_session_mailer/create_chomp.text.erb
+Chomping is now in progress...
+You'll have to wait <%= pluralize(@chomp_session.session_expiry, 'hour') %> before a decision is made for you.
+Meanwhile, go do whatever you want! Who knows, you might even come up with a decision us...
