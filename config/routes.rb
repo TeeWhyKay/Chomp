@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     resources :responses, only: [:create]
     get 'success', to: 'chomp_sessions#success'
   end
+
+  post '/reverse_geocode', to: 'resources#reverse_geocode'
 end
