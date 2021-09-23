@@ -1,4 +1,5 @@
 class ChompSession < ApplicationRecord
+  include PublicUid::ModelConcern
   belongs_to :user
   belongs_to :restaurant, optional: true
   validates :name, :date, :time, presence: true
