@@ -1,0 +1,94 @@
+.form-group {
+  color: black;
+}
+
+.tag-item {
+  height: 300px;
+  width: 300px;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  padding: 120px 0 0 0;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+}
+
+.tag-selector:checked + label {
+  border: 3px solid rgba(0, 128, 0, 0.781);
+  padding: 35px 0 0 ;
+}
+
+
+fieldset.response_cuisine {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+[for^='response_cuisine'] {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  text-shadow: 2px 2px hsl(0, 3%, 16%);
+  background-size: cover;
+}
+
+[for='response_cuisine_asian'] {
+  background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80')
+}
+
+[for='response_cuisine_chinese'] {
+  background-image: url('https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80');
+}
+
+[for='response_cuisine_western'] {
+  background-image: url('https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80');
+}
+
+
+[for='response_cuisine_japanese'] {
+  background-image: url('https://images.unsplash.com/photo-1622134258105-d98468d64808?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=912&q=80');
+}
+
+[for='response_cuisine_italian'] {
+  background-image: url('https://images.unsplash.com/photo-1498579150354-977475b7ea0b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80');
+}
+
+[for='response_cuisine_halal'] {
+  background-image: url('https://cdn.pixabay.com/photo/2015/01/02/13/58/grilled-chicken-586547_960_720.jpg');
+}
+
+[for='response_cuisine_indian'] {
+  background-image: url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80');
+}
+
+[for='response_cuisine_thai'] {
+  background-image: url('https://images.unsplash.com/photo-1559314809-0d155014e29e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+}
+
+[for='response_cuisine_korean'] {
+  background-image: url('https://images.unsplash.com/photo-1609501676725-7186f017a4b7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80');
+}
+
+[for='response_cuisine_local'] {
+  background-image: url('https://images.pexels.com/photos/8179013/pexels-photo-8179013.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+}
+
+[for='response_cuisine_steamboat'] {
+  background-image: url('https://cdn.pixabay.com/photo/2021/01/14/07/20/beef-5916072_960_720.jpg');
+}
+
+[for='response_cuisine_desserts'] {
+  background-image: url('https://cdn.pixabay.com/photo/2016/03/23/15/00/ice-cream-1274894_960_720.jpg');
+}
