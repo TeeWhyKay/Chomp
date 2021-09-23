@@ -33,6 +33,7 @@
 fieldset.response_cuisine {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 [for^='response_cuisine'] {
