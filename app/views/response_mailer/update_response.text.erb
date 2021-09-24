@@ -1,3 +1,11 @@
-Response#update_response
+Your response for '<%= @response.name %>' is updated!
 
-<%= @greeting %>, find me in app/views/response_mailer/update_response.text.erb
+Chomping is in progress...
+You'll have to wait less than <%= pluralize(@chomp_session.session_expiry, 'hour') %> before a decision is made for you.
+Whew! Didn't know you're so indecisive you have to change the response.
+Hopefully that was just to fix a typo... Right?
+Meanwhile, continue doing whatever you were up to! Let us stress over where you should eat at instead.
+
+Meetup details:
+Date: <%= @chomp_session.date %>
+Time: <%= @chomp_session.time.strftime("%I:%M %p") %>

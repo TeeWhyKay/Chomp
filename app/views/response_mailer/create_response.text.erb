@@ -1,3 +1,9 @@
-Response#create_response
+Your response for '<%= @response.name %>' is saved
 
-<%= @greeting %>, find me in app/views/response_mailer/create_response.text.erb
+Chomping is in progress...
+You'll have to wait less than <%= pluralize(@chomp_session.session_expiry, 'hour') %> before a decision is made for you.
+Meanwhile, go do whatever you want! Who knows, you might even come up with a decision before us... unless you can't decide.
+
+Meetup details:
+Date: <%= @chomp_session.date %>
+Time: <%= @chomp_session.time.strftime("%I:%M %p") %>
