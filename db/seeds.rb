@@ -1,19 +1,6 @@
 require 'open-uri'
 
-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 puts "Clearing restaurants db"
-
-puts "clearing db"
-
-# should i destroy other datas like users, etc
 Restaurant.destroy_all
 puts "Seeding db with restaurants"
 apikey = "ytxKCmRhV2kPY8fEpKXN63SuuQSkVmPw"
@@ -85,9 +72,16 @@ end
 
 puts "Seeding restaurants completed"
 
-puts "Creating New User"
-User.create!(email: "test@test.com", username: "tester", password: "password")
-puts "New User created"
+puts "Destroying all Users to make humans extinct..."
+User.destroy_all
+puts "Creating New User called Adam"
+User.create!(email: "test@test.com", username: "Adam", password: "password")
+puts "Mankind is born (New User created)"
+
+puts "Creating an Admin User called Eve"
+User.create!(email: "admin@silverpierce.com", username: "Eve", password: "password", admin: true)
+puts "Another human! (New Admin created)"
+puts "Feel like a god!"
 
 puts "Destroying Chomp sessions"
 ChompSession.destroy_all

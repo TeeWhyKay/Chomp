@@ -23,6 +23,9 @@ module Chomp
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # For sidekiq
+    config.active_job.queue_adapter = :sidekiq
+
     config.assets.enabled = true
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
   end

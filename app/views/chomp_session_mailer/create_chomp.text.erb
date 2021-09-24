@@ -1,0 +1,9 @@
+<%= @chomp_session.name %> is created!
+
+Chomping is now in progress...
+You'll have to wait <%= pluralize(@chomp_session.session_expiry, 'hour') %> before a decision is made for you.
+Meanwhile, go do whatever you want! Who knows, you might even come up with a decision us...
+
+Meetup details:
+Date: <%= @chomp_session.date %>
+Time: <%= @chomp_session.time.strftime("%I:%M %p") %>

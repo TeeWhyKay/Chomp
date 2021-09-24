@@ -1,5 +1,5 @@
 class Response < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :chomp_session
   validates :budget, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 5 }
   validates :address, presence: true
