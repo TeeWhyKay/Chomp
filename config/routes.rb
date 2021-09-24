@@ -12,4 +12,10 @@ Rails.application.routes.draw do
     resources :responses, only: [:create]
     get 'success', to: 'chomp_sessions#success'
   end
+
+  # Sidekiq Web UI, only for admins.
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
