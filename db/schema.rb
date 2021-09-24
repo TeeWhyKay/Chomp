@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_09_24_070226) do
 
   create_table "responses", force: :cascade do |t|
     t.integer "budget"
-    t.string "location"
+    t.string "address"
     t.string "cuisine"
     t.float "latitude"
     t.float "longitude"

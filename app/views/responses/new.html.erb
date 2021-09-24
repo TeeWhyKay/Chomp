@@ -2,7 +2,7 @@
   <%= simple_form_for([@chomp_session, @response], remote: true) do |f| %>
     <%= f.input :budget,
                 required: true %>
-    <%= f.input :location,
+    <%= f.input :address,
                 required: true %>
       <%= f.input :cuisine,
                   as: :check_boxes,

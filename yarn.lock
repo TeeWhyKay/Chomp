@@ -7048,6 +7048,11 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
+stimulus-clipboard@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/stimulus-clipboard/-/stimulus-clipboard-2.0.0.tgz#2e6d4e93713ac7271ba5113254bdff31331c0f32"
+  integrity sha512-Tku0vMM96WSgTiudbWsMvnI20TZfdNOkyvXAfyzV1LH/ewBwb1LOD306PuejeQJSBeW9nDG2Krwc/vE5sU3irQ==
+
 stimulus@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-2.0.0.tgz#713c8b91a72ef90914b90955f0e705f004403047"
