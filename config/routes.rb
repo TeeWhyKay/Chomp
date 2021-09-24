@@ -13,5 +13,5 @@ Rails.application.routes.draw do
     get 'success', to: 'chomp_sessions#success'
   end
 
-  post '/reverse_geocode', to: 'responses#reverse_geocode'
+  post '/reverse_geocode', to: 'responses#reverse_geocode', :defaults => { :format => 'json' }
 end

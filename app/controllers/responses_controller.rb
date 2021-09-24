@@ -23,14 +23,17 @@ class ResponsesController < ApplicationController
 
   def reverse_geocode
     # assume user is not a guest
+    location = request.body.read
+    location_json = JSON.parse(location)
     #  current_user.lat = params[:latitude]
     #  current_user.lng = params[:longitude]
     #  address = current_user.reverse_geocode
-    # @response = Response.new(latitude: params[:latitude], longitude: params[:longitude])
-    # address = @response.reverse_geocode
-    address = "test address"
+    @response = Response.new(location_json)
+    address = @response.reverse_geocode
+    # address = "test address"
     # how to pass this partial response? and make use of it during response creation?
     respond_to do |format|
+      format.html
       format.json { render json: { address: address } }
     end
   end
@@ -47,6 +50,10 @@ class ResponsesController < ApplicationController
 
   def response_params
     params.require(:response).permit(:budget, :address, cuisine: [])
+  end
+
+  def location_params
+    params.permit!
   end
 
   def split_location(location)
