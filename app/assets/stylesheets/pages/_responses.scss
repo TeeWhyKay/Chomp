@@ -1,10 +1,16 @@
-.form-group {
-  color: black;
+label,
+.col-form-label {
+  font-family: loveloblack;
+}
+
+#cuisine-selections {
+  display: flex;
 }
 
 .tag-item {
-  height: 300px;
-  width: 300px;
+  height: 130px;
+  width: 130px;
+  margin: 5px;
 }
 
 .tag-selector {
@@ -19,16 +25,14 @@
   width: 100%;
   font-size: 20px;
   text-align: center;
-  padding: 120px 0 0 0;
-  border: transparent;
+  padding-top: 50px;
   border-radius: 4px;
+  filter: brightness(0.8) grayscale(80%);
 }
 
 .tag-selector:checked + label {
-  border: 3px solid rgba(0, 128, 0, 0.781);
-  padding: 118px 0 0 ;
+  filter: brightness(1) grayscale(0%) contrast(125%);
 }
-
 
 fieldset.response_cuisine {
   display: flex;

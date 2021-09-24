@@ -1,19 +1,22 @@
-<div class="container">
+<div>
   <%= simple_form_for([chomp_session, response], remote: true) do |f| %>
     <%= hidden_field_tag 'location', 'none'%>
     <%= f.input :budget,
-                required: true, input_html: { min: '5' } %>
+                collection: [5, 10, 15, 20, 25], selected: 5,
+                required: true %>
     <label for="response_location">Location *</label>
     <div class="search-form-control form-group">
       <%= f.input :address, label: false, required: true %>
       <a href="#" id="get_location"><i class="fas fa-map-marker-alt"></i></a>
     </div>
-    <%= f.input :cuisine,
-                as: :check_boxes,
-                input_html: { class: "tag-selector" },
-                item_wrapper_class: 'tag-item mr-3 mb-3',
-                collection: [ "Asian", "Chinese", "Western", "Japanese", "Italian", "Halal", "Indian", "Thai", "Korean", "Local", "Steamboat", "Desserts" ] %>
+    <div id="cuisine-selections">
+      <%= f.input :cuisine,
+                  as: :check_boxes,
+                  input_html: { class: "tag-selector" },
+                  item_wrapper_class: "tag-item",
+                  collection: [ "Asian", "Chinese", "Western", "Japanese", "Italian", "Halal", "Indian", "Thai", "Korean", "Local", "Steamboat", "Desserts" ] %>
+    </div>
     <%= f.button :submit,
-                  class: "btn btn-primary" %>
+                  class: "btn btn-primary btn-lg" %>
   <% end %>
 </div>
