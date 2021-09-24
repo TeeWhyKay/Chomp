@@ -8,6 +8,8 @@ class ChompSessionsController < ApplicationController
     @chomp_session.user = current_user
     @chomp_session.name = "Your Meeting Created on #{Time.now}" if @chomp_session.name == ""
     if @chomp_session.save
+      create_mail = ChompSessionMailer.with(chomp_session: @chomp_session).create_chomp
+      create_mail.deliver_later
       redirect_to chomp_session_success_url(@chomp_session)
     else
       render :new
@@ -23,7 +25,7 @@ class ChompSessionsController < ApplicationController
     @chomp_session.update(chomp_params)
     if @chomp_session.save
       update_mail = ChompSessionMailer.with(chomp_session: @chomp_session).update_chomp
-      update_mail.deliver_now
+      update_mail.deliver_later
       redirect_to chomp_session_success_url(@chomp_session)
     else
       render :new
