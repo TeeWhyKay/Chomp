@@ -10,7 +10,7 @@ class ResponsesController < ApplicationController
     @response.cuisine.reject { |c| c.empty? }
 
     if @response.save
-      ResponseMailer.with(response: @response).create_response.deliver_later if user_signed_in?
+      ResponseMailer.with(response: @response, chomp_session: @chomp_session).create_response.deliver_later if user_signed_in?
       redirect_to chomp_session_response_url(@chomp_session, @response)
     else
       render :new
@@ -30,7 +30,7 @@ class ResponsesController < ApplicationController
     @response.update(response_params)
     @chomp_session = @response.chomp_session
     if @response.save
-      ResponseMailer.with(response: @response).update_response.deliver_later if user_signed_in?
+      ResponseMailer.with(response: @response, chomp_session: @chomp_session).update_response.deliver_later if user_signed_in?
       redirect_to chomp_session_response_url(@chomp_session, @response)
     else
       render :new

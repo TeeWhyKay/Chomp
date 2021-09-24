@@ -6,20 +6,22 @@ class ResponseMailer < ApplicationMailer
   #   en.response_mailer.create_response.subject
   #
   def create_response
-    @response = params[:response]
 
+    @response = params[:response]
+    @chomp_session = params[:chomp_session]
     mail(
       to:       @response.user.email,
-      subject:  "Your response for '#{@response.chomp_session.name}' is saved!"
+      subject:  "Your response for '#{@chomp_session.name}' is saved!"
     )
   end
 
   def update_response
     @response = params[:response]
+    @chomp_session = params[:chomp_session]
 
     mail(
       to:       @response.user.email,
-      subject:  "Your response for '#{@response.chomp_session.name}' is updated!"
+      subject:  "Your response for '#{@chomp_session.name}' is updated!"
     )
   end
 end
