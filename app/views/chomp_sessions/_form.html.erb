@@ -3,5 +3,5 @@
   <%= f.input :date, html5: true, min: "#{Date.today.iso8601}"%>
   <%= f.input :time, html5: true, min: "#{Time.now.iso8601}" %>
   <%= f.input :session_expiry, label:"Link Expiry Time (Hours)", hint: "Set the time that you want your poll to be active" %>
-  <%= f.submit value:"Create Invite Link", class:"btn btn-success btn-block" %>
+  <%= f.submit value:"Create Invite Link", class:"btn btn-primary btn-block" %>
 <% end %>
