@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_09_24_030033) do
 
   # These are extensions that must be enabled in order to support this database
@@ -59,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_09_24_030033) do
     t.string "cuisine"
     t.float "latitude"
     t.float "longitude"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.bigint "chomp_session_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -76,9 +77,9 @@ ActiveRecord::Schema.define(version: 2021_09_24_030033) do
     t.datetime "closing_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "cuisine"
     t.string "photo_url"
     t.float "average_rating"
-    t.string "cuisine"
     t.float "google_rating"
     t.integer "pricing"
   end

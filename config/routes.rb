@@ -9,9 +9,10 @@ Rails.application.routes.draw do
 
   resources :chomp_sessions, only: [:new, :create, :edit, :update]
   resources :chomp_sessions, only: :show do
-    resources :responses, only: [:create]
+    resources :responses, only: [:create, :show, :update]
     get 'success', to: 'chomp_sessions#success'
   end
+  resources :responses, only: [:edit]
 
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"

@@ -2,7 +2,8 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-8">
       <div class="form-login">
-        <%= render partial: "responses/form", locals: {chomp_session: @chomp_session, response: @response} %>
+        <h2 class="mb-3">Edit Preferences</h2>
+          <%= render partial: "form", locals: {chomp_session: @chomp_session, response: @response} %>
       </div>
     </div>
   </div>
