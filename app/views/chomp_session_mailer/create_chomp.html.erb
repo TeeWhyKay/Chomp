@@ -6,4 +6,4 @@
 
 <p><strong>Meetup details:</strong><br>
 Date: <%= @chomp_session.date %><br>
-Time: <%= @chomp_session.time %></p>
+Time: <%= @chomp_session.time.strftime("%I:%M %p") %></p>

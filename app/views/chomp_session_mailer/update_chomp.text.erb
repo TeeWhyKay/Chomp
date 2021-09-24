@@ -8,4 +8,4 @@ Meanwhile, continue doing whatever you were up to! Let us stress over where you 
 
 Meetup details:
 Date: <%= @chomp_session.date %>
-Time: <%= @chomp_session.time %>
+Time: <%= @chomp_session.time.strftime("%I:%M %p") %>
