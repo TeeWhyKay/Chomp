@@ -19,7 +19,7 @@ class ResponseMailer < ApplicationMailer
 
     mail(
       to:       @response.user.email,
-      subject:  "Your response for uwu is updated!"
+      subject:  "Your response for '#{@response.chomp_session.name}' is updated!"
     )
   end
 end
