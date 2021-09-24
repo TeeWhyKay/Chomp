@@ -1,0 +1,23 @@
+<div class="container mb-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-login">
+        <h1 class="success-header">Opinion submitted!</h1>
+        <p class="success-body">Congratulations! Your opinion will be taken into consideration so you don’t feel left out. 
+        Feel free to share the link to pester your friends!</p>
+
+        <p>Meeting Date: <%= @chomp_session.date %></p>
+        <p>Meeting Time: <%= @chomp_session.time.strftime("%I:%M %p") %></p>
+        <div class="mb-3">
+          <span class="session-link p-2">http://localhost:3000/chomp_sessions/<%= params["chomp_session_id"] %></span>
+        </div>
+        <p>Made a mistake? Have no fear! Edit your preferences again.</p>
+
+        <div class="d-flex justify-content-center">
+          <%= link_to "Edit preferences", edit_response_path(@response), class: "btn btn-secondary btn-lg" %>
+        </div>
+        <p style="font-size:0.7rem">*Note: You will need to sign in/up before you can edit your response*</p>
+      </div>
+    </div>
+  </div>
+</div>
