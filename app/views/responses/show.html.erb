@@ -6,8 +6,13 @@
         <p class="success-body">Congratulations! Your opinion will be taken into consideration so you don’t feel left out.
         Feel free to share the link to pester your friends!</p>
 
-        <p>Meeting Date: <%= @chomp_session.date %></p>
-        <p>Meeting Time: <%= @chomp_session.time.strftime("%I:%M %p") %></p>
+        <p>
+          <span class="meetup-desc-title">Meetup details:</span><br>
+          Name: <%= @chomp_session.name %><br>
+          Date: <%= @chomp_session.date %><br>
+          Time: <%= @chomp_session.time.strftime("%I:%M %p") %>
+        </p>
+
         <div data-controller="clipboard" data-clipboard-success-content="Copied!" class="clipboard-form-control form-group mb-3">
           <input type="text" value="http://localhost:3000/chomp_sessions/<%= params["chomp_session_id"] %>" data-clipboard-target="source" class="clipboard-text w-100 pl-2"/>
 
