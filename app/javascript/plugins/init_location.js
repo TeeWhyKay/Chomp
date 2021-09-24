@@ -1,4 +1,4 @@
-import Rails from '@rails/ujs'
+import { csrfToken } from '@rails/ujs'
 
 
 const initLocation = () => {
@@ -14,18 +14,21 @@ const initLocation = () => {
         console.log(data.coords.longitude)
         const latitude = data.coords.latitude
         const longitude = data.coords.longitude
-        fetch('/reverse_geocode', {
-          method: 'POST',
-          headers: { 'Accept': 'text/json', 'X-CSRF-token': Rails.csrfToken()},
-          body: JSON.stringify({
-            latitude: latitude,
-            longitude: longitude})
-        }).then(response => response.json())
-          .then((data) => {
-            console.log(data);
-            const locationField = document.querySelector('#response_location');
-            locationField.value = "Yes!";
-          });
+
+        // fetch('/reverse_geocode', {
+        //   method: 'POST',
+        //   headers: { 'Accept': 'text/json', 'X-CSRF-token': csrfToken()},
+        //   body: JSON.stringify({
+        //     latitude: latitude,
+        //     longitude: longitude})
+        // }).then(response => response.json())
+        //   .then((data) => {
+        //     console.log(data);
+        //     const locationField = document.querySelector('#response_address');
+        //     locationField.value = "Yes!";
+        //   });
+        const locationField = document.querySelector('#response_address');
+        locationField.value = `${latitude},${longitude}`
       });
     });
   }

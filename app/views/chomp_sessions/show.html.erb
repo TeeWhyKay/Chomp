@@ -4,10 +4,8 @@
                 required: true %>
     <label for="response_location">Location</label>
     <div class="search-form-control form-group">
-      <%= f.input :address, label: false %>
-      <%# <button name="button" type="button" class="btn btn-flat"> %>
-        <a href="#" id="get_location"><i class="fas fa-map-marker-alt"></i></a>
-      <%# </button> %>
+      <%= f.input :address, label: false, required: true %>
+      <a href="#" id="get_location"><i class="fas fa-map-marker-alt"></i></a>
     </div>
     <%= f.input :cuisine,
                 as: :check_boxes,
