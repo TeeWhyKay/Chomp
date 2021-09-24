@@ -8,7 +8,7 @@ class ResponsesController < ApplicationController
     @response.cuisine.reject { |c| c.empty? }
 
     if @response.save
-      redirect_to chomp_session_success_url(@chomp_session)
+      redirect_to chomp_session_response_url(@chomp_session, @response)
       # change later to waiting page
     else
       render :new
@@ -29,6 +29,14 @@ class ResponsesController < ApplicationController
   end
 
   def update
+    @response = Response.find(params[:id])
+    @response.update(response_params)
+    @chomp_session = @response.chomp_session
+    if @response.save
+      redirect_to chomp_session_response_url(@chomp_session, @response)
+    else
+      render :new
+    end
   end
 
   private
