@@ -76,9 +76,9 @@ ActiveRecord::Schema.define(version: 2021_09_23_093142) do
     t.datetime "closing_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "cuisine"
     t.string "photo_url"
     t.float "average_rating"
+    t.string "cuisine"
     t.float "google_rating"
     t.integer "pricing"
   end
@@ -104,6 +104,11 @@ ActiveRecord::Schema.define(version: 2021_09_23_093142) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

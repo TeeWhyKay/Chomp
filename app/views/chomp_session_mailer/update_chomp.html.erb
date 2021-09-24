@@ -1,0 +1,11 @@
+<h3><strong><%= @chomp_session.name %></strong> is updated!</h3>
+
+<p>Chomping is now in progress...<em>again</em>...</p>
+<p>You'll have to wait <strong><%= pluralize(@chomp_session.session_expiry, 'hour') %></strong> before a decision is made for you.</p>
+<p>Whew! Didn't know you're so indecisive you have to change the meetup details.</p>
+<p>Hopefully that was just to fix a typo... Right?</p>
+<p>Meanwhile, continue doing whatever you were up to! Let us stress over where you should eat at instead.</p>
+
+<p><strong>Meetup details:</strong><br>
+Date: <%= @chomp_session.date %><br>
+Time: <%= @chomp_session.time %></p>
