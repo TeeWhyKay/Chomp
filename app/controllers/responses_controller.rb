@@ -5,12 +5,14 @@ class ResponsesController < ApplicationController
   # end
 
   def create
+    coords = split_location(params[:location]) unless params[:location].empty?
     @response = Response.new(response_params)
     @response.user = current_user
     @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
     @response.chomp_session = ChompSession.find_puid(params[:chomp_session_id])
     @response.cuisine.reject { |c| c.empty? }
-
+    @response.latitude = coords[:latitude]
+    @response.longitude = coords[:longitude]
     if @response.save
       redirect_to chomp_session_success_url(@chomp_session)
       # change later to waiting page
@@ -45,5 +47,11 @@ class ResponsesController < ApplicationController
 
   def response_params
     params.require(:response).permit(:budget, :address, cuisine: [])
+  end
+
+  def split_location(location)
+    str_arr = location.split(',')
+    str_arr.map { |str| str.to_f }
+    return { latitude: str_arr[0], longitude: str_arr[1] }
   end
 end

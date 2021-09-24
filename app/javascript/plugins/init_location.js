@@ -9,7 +9,7 @@ const initLocation = () => {
     locationBtn.addEventListener('click', (event) => {
       event.preventDefault()
       navigator.geolocation.getCurrentPosition((data) => {
-        // hiddenLocationInput.value = `${data.coords.latitude},${data.coords.longitude}`
+        hiddenLocationInput.value = `${data.coords.latitude},${data.coords.longitude}`
         console.log(data.coords.latitude)
         console.log(data.coords.longitude)
         const latitude = data.coords.latitude
