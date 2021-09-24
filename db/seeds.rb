@@ -52,15 +52,15 @@ cuisine_arr.each do |cuisine|
         pricing: price
       )
       price += 1
-      uuid = restaurant['thumbnails'].first['uuid'] if !restaurant['thumbnails'].empty? && !restaurant['thumbnails'].first['uuid'].empty?
-      if uuid.nil?
-        # photos = client.photos.search('restaurant', size: :small, orientation: :landscape)
-        file = URI.open("https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=130")
-      else
-        url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}?apikey=#{apikey}"
-        file = URI.open(url_to_download_restaurant_img)
-      end
-      restaurant_instance.image.attach(io: file, filename: 'restaurant["name"].png', content_type: 'image/png')
+      # uuid = restaurant['thumbnails'].first['uuid'] if !restaurant['thumbnails'].empty? && !restaurant['thumbnails'].first['uuid'].empty?
+      # if uuid.nil?
+      #   # photos = client.photos.search('restaurant', size: :small, orientation: :landscape)
+      #   file = URI.open("https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=130")
+      # else
+      #   url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}?apikey=#{apikey}"
+      #   file = URI.open(url_to_download_restaurant_img)
+      # end
+      # restaurant_instance.image.attach(io: file, filename: 'restaurant["name"].png', content_type: 'image/png')
       restaurant_instance.save
       puts "seeded #{restaurant["name"]}"
     end
@@ -92,17 +92,16 @@ puts "Seeding Chomp sessions"
     date: Date.today,
     time: Time.now,
     status: ["pending", "closed"].sample,
-    restaurant: Restaurant.last,
-    user: User.last
+    user: User.second
   )
 end
 puts "Seeding ChompSessions completed, but will only work if you created a user account"
 
 puts "Seeding fake response for testing"
-response = Response.new(budget: 5, location: "34 Upper Cross Street, Singapore", email: "test@test.com", cuisine: ["Chinese"] )
+response = Response.new(budget: 5, address: "19 Cuppage Rd, Singapore 229451", cuisine: ["Chinese"] )
 response.user = User.first
 response.chomp_session = ChompSession.first
 response.save!
-puts "Seeded fake response "
+puts "Seeded fake response"
 
 puts "Seeding completed!"
