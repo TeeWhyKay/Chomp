@@ -12,8 +12,11 @@ Rails.application.routes.draw do
     resources :responses, only: [:create, :show, :update]
     get 'success', to: 'chomp_sessions#success'
   end
-  
+
+  get 'chomp_sessions/:chomp_session_id/result', to: 'chomp_sessions#result', as: 'chomp_session_result'
+
   post '/reverse_geocode', to: 'responses#reverse_geocode', :defaults => { :format => 'json' }
+
 
   resources :responses, only: [:edit]
 
