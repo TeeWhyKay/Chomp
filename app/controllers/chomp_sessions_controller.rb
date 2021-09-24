@@ -1,6 +1,6 @@
 class ChompSessionsController < ApplicationController
-  before_action :set_chomp_session, only: %i[edit update show]
   skip_before_action :authenticate_user!, only: :show
+  before_action :set_chomp_session, only: %i[edit update show]
 
   def new
     @chomp_session = ChompSession.new
