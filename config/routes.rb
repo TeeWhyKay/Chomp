@@ -13,9 +13,9 @@ Rails.application.routes.draw do
     get 'success', to: 'chomp_sessions#success'
   end
   
-  post '/reverse_geocode', to: 'responses#reverse_geocode', :defaults => { :format => 'json' }
-
   resources :responses, only: [:edit]
+
+  post '/reverse_geocode', to: 'responses#reverse_geocode', :defaults => { :format => 'json' }
 
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"

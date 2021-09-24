@@ -1,0 +1,23 @@
+.clipboard-text {
+    background-color: #d4d1d1;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'loveloblack';
+}
+
+.clipboard-form-control {
+  position: relative;
+}
+
+.clipboard-form-control .btn-flat {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 5px;
+  border-radius: 5px;
+}
+
+.clipboard-form-control .clipboard-text {
+  height: 3.5rem;
+  border: 1px solid #E7E7E7;
+}
