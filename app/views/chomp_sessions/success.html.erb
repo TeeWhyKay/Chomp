@@ -22,7 +22,7 @@
         <p>Meeting Time: <%= @chomp_session.time.strftime("%I:%M %p") %></p>
 
         <div class="d-flex align-items-center flex-column">
-          <%= link_to "Submit my preferences", chomp_session_path(@chomp_session), class: "btn btn-dark btn-lg" %>
+          <%= link_to "Submit my preferences", chomp_session_path(@chomp_session), class: "btn btn-primary btn-lg" %>
           <%= link_to "Edit Chomp settings", edit_chomp_session_path(@chomp_session), class: "btn btn-outline-dark btn-lg" %>
         </div>
 
