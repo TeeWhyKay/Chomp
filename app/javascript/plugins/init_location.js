@@ -10,8 +10,8 @@ const initLocation = () => {
       event.preventDefault()
       navigator.geolocation.getCurrentPosition((data) => {
         hiddenLocationInput.value = `${data.coords.latitude},${data.coords.longitude}`
-        console.log(data.coords.latitude)
-        console.log(data.coords.longitude)
+        // console.log(data.coords.latitude)
+        // console.log(data.coords.longitude)
         const latitude = data.coords.latitude
         const longitude = data.coords.longitude
 
@@ -26,8 +26,6 @@ const initLocation = () => {
             const locationField = document.querySelector('#response_address');
             locationField.value = data.address ;
           });
-        // const locationField = document.querySelector('#response_address');
-        // locationField.value = `${latitude},${longitude}`
       });
     });
   }
