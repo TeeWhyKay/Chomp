@@ -1,17 +1,19 @@
 class ResponsesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:create, :show, :edit, :update]
+  skip_before_action :authenticate_user!
+  before_action :set_response, only: %i[show edit update]
+
   def create
     coords = split_location(params[:location]) unless params[:location].empty?
     @response = Response.new(response_params)
     @response.user = current_user
     @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
-    @response.chomp_session = ChompSession.find_puid(params[:chomp_session_id])
+    @response.chomp_session = @chomp_session
     @response.cuisine.reject { |c| c.empty? }
     @response.latitude = coords[:latitude]
     @response.longitude = coords[:longitude]
     if @response.save
+      ResponseMailer.with(response: @response, chomp_session: @chomp_session).create_response.deliver_later if user_signed_in?
       redirect_to chomp_session_response_url(@chomp_session, @response)
-      # change later to waiting page
     else
       render :new
     end
@@ -35,23 +37,19 @@ class ResponsesController < ApplicationController
   end
 
   def show
-    @response = Response.find(params[:id])
     @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
   end
 
   def edit
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
-    @response = Response.find(params[:id])
+    redirect_to new_user_session_path unless user_signed_in?
     @chomp_session = @response.chomp_session
   end
 
   def update
-    @response = Response.find(params[:id])
     @response.update(response_params)
     @chomp_session = @response.chomp_session
     if @response.save
+      ResponseMailer.with(response: @response, chomp_session: @chomp_session).update_response.deliver_later if user_signed_in?
       redirect_to chomp_session_response_url(@chomp_session, @response)
     else
       render :new
@@ -72,5 +70,9 @@ class ResponsesController < ApplicationController
     str_arr = location.split(',')
     str_arr.map { |str| str.to_f }
     return { latitude: str_arr[0], longitude: str_arr[1] }
+  end
+
+  def set_response
+    @response = Response.find(params[:id])
   end
 end
