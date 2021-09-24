@@ -1,5 +1,7 @@
 class ResponsesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:create, :show, :edit, :update]
+  skip_before_action :authenticate_user!
+  before_action :set_response, only: %i[show edit update]
+
   def create
     @response = Response.new(response_params)
     @response.user = current_user
@@ -16,20 +18,15 @@ class ResponsesController < ApplicationController
   end
 
   def show
-    @response = Response.find(params[:id])
     @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
   end
 
   def edit
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
-    @response = Response.find(params[:id])
+    redirect_to new_user_session_path unless user_signed_in?
     @chomp_session = @response.chomp_session
   end
 
   def update
-    @response = Response.find(params[:id])
     @response.update(response_params)
     @chomp_session = @response.chomp_session
     if @response.save
@@ -43,5 +40,9 @@ class ResponsesController < ApplicationController
 
   def response_params
     params.require(:response).permit(:budget, :location, cuisine: [])
+  end
+
+  def set_response
+    @response = Response.find(params[:id])
   end
 end
