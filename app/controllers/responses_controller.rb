@@ -6,7 +6,7 @@ class ResponsesController < ApplicationController
     @response = Response.new(response_params)
     @response.user = current_user
     @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
-    @response.chomp_session = ChompSession.find_puid(params[:chomp_session_id])
+    @response.chomp_session = @chomp_session
     @response.cuisine.reject { |c| c.empty? }
 
     if @response.save
