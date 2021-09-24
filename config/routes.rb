@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :responses, only: [:create, :show, :update]
     get 'success', to: 'chomp_sessions#success'
   end
+  
+  post '/reverse_geocode', to: 'responses#reverse_geocode', :defaults => { :format => 'json' }
+
   resources :responses, only: [:edit]
 
   # Sidekiq Web UI, only for admins.
