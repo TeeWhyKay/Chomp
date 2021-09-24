@@ -10,8 +10,8 @@ class ResponsesController < ApplicationController
     @response.cuisine.reject { |c| c.empty? }
 
     if @response.save
+      ResponseMailer.with(response: @response).create_response.deliver_later unless @response.user.nil?
       redirect_to chomp_session_response_url(@chomp_session, @response)
-      # change later to waiting page
     else
       render :new
     end
@@ -30,6 +30,7 @@ class ResponsesController < ApplicationController
     @response.update(response_params)
     @chomp_session = @response.chomp_session
     if @response.save
+      ResponseMailer.with(response: @response).update_response.deliver_later unless @response.user.nil?
       redirect_to chomp_session_response_url(@chomp_session, @response)
     else
       render :new
