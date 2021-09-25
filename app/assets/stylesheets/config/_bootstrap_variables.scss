@@ -23,3 +23,6 @@ $border-radius-lg: 8px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+#bootstrap-overrides.btn-info {
+  color: $sunset-red;
+}
