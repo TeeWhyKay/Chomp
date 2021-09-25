@@ -38,6 +38,7 @@ class ResponsesController < ApplicationController
 
   def show
     @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
+    redirect_to restaurant_path(@chomp_session.restaurant) if @chomp_session.status == "closed"
   end
 
   def edit
