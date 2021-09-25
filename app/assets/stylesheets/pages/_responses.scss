@@ -28,10 +28,12 @@ label,
   padding-top: 50px;
   border-radius: 4px;
   filter: brightness(0.8) grayscale(80%);
+  transition: 200ms;
 }
 
 .tag-selector:checked + label {
   filter: brightness(1) grayscale(0%) contrast(125%);
+  transition: 200ms;
 }
 
 fieldset.response_cuisine {
