@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to restaurant_path(@review.restaurant) }
-      format.text { render partial: 'reviews/appended_review', locals: { review: @review }, formats: [:html] }
+      format.text { render partial: 'appended_review', locals: { review: @review }, formats: [:html] }
     end
   end
 
