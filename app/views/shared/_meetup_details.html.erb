@@ -1,6 +1,5 @@
 <p>
-  <span class="meetup-desc meetup-desc-title">Meetup details:</span><br>
-  <span class="meetup-desc">Name:</span> <%= @chomp_session.name %><br>
+  <span class="meetup-desc meetup-desc-title"><%= @chomp_session.name %></span> by <%= @chomp_session.user.username %><br>
   <span class="meetup-desc">Date:</span> <%= @chomp_session.date %><br>
   <span class="meetup-desc">Time:</span> <%= @chomp_session.time.strftime("%I:%M %p") %>
 </p>
