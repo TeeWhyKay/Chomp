@@ -1,7 +1,7 @@
 <div data-controller="edit-review" data-edit-review-target="card">
   <div id="review<%= review.id %>" class="review m-4" data-edit-review-target="infos">
 
-    <%= render partial: "restaurants/stars", locals: {review: review}, formats: :html %>
+    <%= render partial: "restaurants/stars", locals: {review: @review}, formats: :html %>
     <i class="far fa-edit review-edit-btn ml-2" data-action="click->edit-review#displayForm"></i>
 
     <h3 class="review-title mt-2"><%= review.title %></h3>
@@ -10,5 +10,5 @@
   </div>
 
   <%# PARTIAL HERE FOR REVIEW FORM %>
-  <%= render partial: "reviews/edit_review_form", locals: {restaurant: restaurant, review: review}, formats: :html %>
+  <%= render partial: "reviews/edit_review_form", locals: {restaurant: @restaurant, review: @review}, formats: :html %>
 </div>
