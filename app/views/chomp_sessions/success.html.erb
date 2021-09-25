@@ -5,11 +5,11 @@
 
         <h1 class="success-header">Group created</h1>
         <p class="success-body">Congratulations! Your group has been created, share this link with you friends and get started on planning your next trip!</p>
-        
+
         <div data-controller="clipboard" data-clipboard-success-content="Copied!" class="clipboard-form-control form-group mb-3">
           <input type="text" value="http://localhost:3000/chomp_sessions/<%= params["chomp_session_id"] %>" data-clipboard-target="source" class="clipboard-text w-100 pl-2"/>
 
-          <button type="button" data-action="clipboard#copy" data-clipboard-target="button" class="btn-flat btn-outline-dark">
+          <button type="button" data-action="clipboard#copy" data-clipboard-target="button" class="btn-flat border-0">
             <i class="fas fa-clipboard"></i> Copy
           </button>
         </div>
@@ -23,12 +23,10 @@
 
         <div class="d-flex align-items-center flex-column">
           <%= link_to "Submit my preferences", chomp_session_path(@chomp_session), class: "btn btn-primary btn-lg" %>
-          <%= link_to "Edit Chomp settings", edit_chomp_session_path(@chomp_session), class: "btn btn-outline-dark btn-lg" %>
+          <%= link_to "Edit Chomp settings", edit_chomp_session_path(@chomp_session), class: "btn btn-info btn-lg" %>
         </div>
 
-        
       </div>
     </div>
   </div>
 </div>
-

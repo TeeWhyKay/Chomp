@@ -1,14 +1,13 @@
 .success-header {
-    font-family: 'loveloline_bold';
+  font-family: $chomp-font;
 }
 
 .success-body {
-    font-family: 'loveloblack';
+  font-family: $chomp-font-black;
 }
 
 .session-link {
-    background-color: #d4d1d1;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    word-wrap: break-word;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  word-wrap: break-word;
 }

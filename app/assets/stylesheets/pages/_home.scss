@@ -1,1 +1,17 @@
 // Specific CSS for your home-page
+#home-form {
+  [type="submit"] {
+    height: 3.5rem;
+    width: 3.5rem;
+    background-color: $sunset-red;
+    border: none;
+    color: $light-yellow;
+
+    &:hover {
+      background-color: $sunset-red-dark;
+    }
+  }
+  .form-control {
+    border-radius: 0;
+  }
+}
