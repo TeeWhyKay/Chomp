@@ -1,10 +1,6 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 
-// Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "loveloline_bold", "Helvetica", "sans-serif";
-
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
@@ -43,3 +39,11 @@ $headers-font: "loveloline_bold", "Helvetica", "sans-serif";
     font-style: normal;
 
 }
+
+$chomp-font: "loveloline_bold";
+$chomp-font-light: "loveloline_light";
+$chomp-font-black: "loveloblack";
+
+// Define fonts for body and headers
+$body-font: "Work Sans", "Helvetica", "sans-serif";
+$headers-font: $chomp-font, "Helvetica", "sans-serif";
