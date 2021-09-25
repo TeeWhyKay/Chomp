@@ -5,16 +5,19 @@
       Be the first to leave a review for <%= restaurant.name %>
     <% else %>
       <% restaurant.reviews.each do |review| %>
-        <div id="review-<%= review.id %>">
-          <h3><%= review.title %></h3>
-          <% review.rating.times do |star| %>
-            <i class="fas fa-star"></i>
-          <% end %>
-          <% unchecked_stars = (5 - review.rating).to_i %>
-          <% unchecked_stars.times do |star| %>
-            <i class="far fa-star"></i>
-          <% end %>
-          <p><%= review.content %></p>
+        <div id="review<%= review.id %>" class="review m-4">
+
+            <% review.rating.times do |star| %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <% unchecked_stars = (5 - review.rating).to_i %>
+            <% unchecked_stars.times do |star| %>
+              <i class="far fa-star"></i>
+            <% end %>
+            <h3 class="review-title mt-2"><%= review.title %></h3>
+
+          <p class="review-content mt-2"><%= review.content %></p>
+
         </div>
       <% end %>
     <% end %>

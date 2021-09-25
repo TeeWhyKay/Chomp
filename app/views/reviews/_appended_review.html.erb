@@ -1,5 +1,5 @@
 <div id="review-<%= review.id %>">
-  <h3><%= review.title %></h3>
+  <h3 class="review-title"><%= review.title %></h3>
   <% review.rating.times do |star| %>
     <i class="fas fa-star"></i>
   <% end %>
@@ -7,5 +7,5 @@
   <% unchecked_stars.times do |star| %>
     <i class="far fa-star"></i>
   <% end %>
-  <p><%= review.content %></p>
+  <p class="review-content"><%= review.content %></p>
 </div>

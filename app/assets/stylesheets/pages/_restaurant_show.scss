@@ -5,12 +5,13 @@
     font-size: 36px;
   }
 
-  h3 {
-    font-size: 24px;
+  .review-title {
+    font-size: 20px;
+    font-family: $chomp-font-black;
   }
 
   .fa-star {
-    color: $pink;
+    color: $sunset-red;
   }
 
   img {
@@ -19,6 +20,9 @@
   width: 100%;
   }
 
+  .review-content {
+    font-size: 18px;
+  }
 }
 
 .center-cropped {
