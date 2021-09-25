@@ -10,8 +10,13 @@
     font-family: $chomp-font-black;
   }
 
-  .fa-star {
+  .fa-star,
+  .fa-edit {
     color: $sunset-red;
+  }
+
+  .fa-edit:hover {
+    color: $orange;
   }
 
   img {

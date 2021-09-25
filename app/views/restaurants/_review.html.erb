@@ -5,17 +5,24 @@
       Be the first to leave a review for <%= restaurant.name %>
     <% else %>
       <% restaurant.reviews.reverse.each do |review| %>
-        <div id="review<%= review.id %>" class="review m-4">
+        <div data-controller="edit-review">
+          <div id="review<%= review.id %>" class="review m-4" data-edit-review-targets="infos">
 
-          <%= render partial: "stars", locals: {review: review} %>
+            <%= render partial: "stars", locals: {review: review} %>
 
-          <%= link_to root_path do %>
-            <i class="far fa-edit review-edit-btn ml-2"></i>
-          <% end %>
+            <i class="far fa-edit review-edit-btn ml-2" data-action="click->edit-review#displayForm"></i>
 
-          <h3 class="review-title mt-2"><%= review.title %></h3>
-          <p class="review-content mt-2"><%= review.content %></p>
+            <%= simple_form_for [ restaurant, review ], html: { class: 'd-none', data: { edit_review_target: 'form' } } do |f| %>
+              <%= f.input :rating %>
+              <%= f.input :title %>
+              <%= f.input :content %>
+              <%= f.submit :Edit, class: "btn btn-outline-primary" %>
+            <% end %>
 
+            <h3 class="review-title mt-2"><%= review.title %></h3>
+            <p class="review-content mt-2"><%= review.content %></p>
+
+          </div>
         </div>
       <% end %>
     <% end %>
