@@ -9,14 +9,14 @@ class ChompSessionMailer < ApplicationMailer
   def create_chomp
     mail(
       to: @chomp_session.user.email,
-      subject: "Chomp Session: '#{@chomp_session.name}' is created!"
+      subject: "Chomp Session: '#{@chomp_session.name}' is created! (#{@chomp_session.public_uid})"
     )
   end
 
   def update_chomp
     mail(
       to: @chomp_session.user.email,
-      subject: "Chomp Session: '#{@chomp_session.name}' is updated!"
+      subject: "Chomp Session: '#{@chomp_session.name}' is updated! (#{@chomp_session.public_uid})"
     )
   end
 

@@ -1,5 +1,7 @@
 <h3><strong><%= @chomp_session.name %></strong> is created!</h3>
 
+<h4>Chomp code: <strong><%= @chomp_session.public_uid %></strong></h4>
+
 <p>Chomping is now in progress...</p>
 <p>You'll have to wait <strong><%= pluralize(@chomp_session.session_expiry, 'hour') %></strong> before a decision is made for you.</p>
 <p>Meanwhile, go do whatever you want! Who knows, you might even come up with a decision before us... unless you can't decide.</p>
