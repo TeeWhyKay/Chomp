@@ -1,9 +1,10 @@
 <div class="container mb-4">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-8">
-      <div class="form-login">
-        <%= image_tag ("https://res.cloudinary.com/du5rqng8z/image/upload/v1632458798/letschomp/profile_hbuanz.png"), alt: "chomp-logo", class: "w-100 my-3" %>
-        <%= link_to "Create a group and share", new_chomp_session_path, class: "btn btn-primary btn-block"%>
+      <div class="form-login" id="home">
+        <%= image_tag ("https://res.cloudinary.com/dkswe4dtq/image/upload/v1632579567/isolated-monochrome-white_ltg3cl.svg"), alt: "chomp-logo", class: "w-100 pt-5 my-3" %>
+        <h3>Can't decide what to eat? Let Chomp decide for you</h3>
+        <%= link_to "Create a group and share", new_chomp_session_path, class: "btn btn-primary btn-block mt-3"%>
         <%= simple_form_for :chomp_session, url: root_path, method: :get do |f| %>
           <div id="home-form" class="search-form-control form-group d-flex align-items-center">
             <input class="form-control text-center rounded-left" type="text" name="chomped" id="chomped" placeholder="Enter Session Code"/>

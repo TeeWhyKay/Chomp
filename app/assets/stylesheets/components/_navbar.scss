@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  // background: white;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -13,9 +13,13 @@
 
 #navbarDropdown {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 #navbarDropdown:hover {
   text-decoration: none;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white;
 }

@@ -1,4 +1,9 @@
 // Specific CSS for your home-page
+body {
+  background-image: url('https://images.pexels.com/photos/5778894/pexels-photo-5778894.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+  background-size: cover;
+}
+
 #home-form {
   [type="submit"] {
     height: 3.5rem;
@@ -14,4 +19,12 @@
   .form-control {
     border-radius: 0;
   }
+}
+
+h3 {
+  font-family: 'PT Sans', sans-serif;
+  color: white;
+  text-shadow: 2px 2px black;
+  margin-top: 5px;
+  text-align: center;
 }
