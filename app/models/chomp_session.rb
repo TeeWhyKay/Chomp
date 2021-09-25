@@ -1,6 +1,7 @@
 class ChompSession < ApplicationRecord
-
-  include PublicUid::ModelConcern
+  UID_RANGE = 111_111..999_999
+  generate_public_uid generator: PublicUid::Generators::NumberRandom.new(UID_RANGE)
+  
   belongs_to :user
   belongs_to :restaurant, optional: true
   validates :name, :date, :time, presence: true
