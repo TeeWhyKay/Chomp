@@ -1,5 +1,12 @@
-<div id="review-<%= review.id %>">
-  <h3 class="review-title"><%= review.title %></h3>
-  <%= render partial: "stars", locals: {review: review} %>
-  <p class="review-content"><%= review.content %></p>
+<div id="review-<%= review.id %>" class="review m-4">
+
+  <%= render partial: "restaurants/stars", locals: {review: review}, formats: [:html] %>
+
+  <%= link_to root_path do %>
+    <i class="far fa-edit review-edit-btn ml-2"></i>
+  <% end %>
+
+  <h3 class="review-title mt-2"><%= review.title %></h3>
+  <p class="review-content mt-2"><%= review.content %></p>
+
 </div>
