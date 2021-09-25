@@ -7,3 +7,5 @@ Meanwhile, go do whatever you want! Who knows, you might even come up with a dec
 Meetup details:
 Date: <%= @chomp_session.date %>
 Time: <%= @chomp_session.time.strftime("%I:%M %p") %>
+
+Psst... Made a mistake? <%= link_to "Click here", edit_response_url(@response) %> to edit your response.
