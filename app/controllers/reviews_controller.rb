@@ -22,6 +22,15 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+
+    respond_to do |format|
+      format.html { redirect_to restaurant_path(@review.restaurant) }
+      format.text { render partial: 'reviews/appended_review', locals: { review: @review }, formats: [:html] }
+    end
+  end
 
   private
 

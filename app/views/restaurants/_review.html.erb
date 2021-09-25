@@ -16,7 +16,13 @@
 
           </div>
 
-          <%= simple_form_for [ restaurant, review ], html: { class: 'd-none', data: { edit_review_target: 'form' } } do |f| %>
+          <%= simple_form_for [ restaurant, review ],
+            html: { class: 'd-none',
+                    data: {
+                      edit_review_target: 'form',
+                      action: 'submit->edit-movie#update'
+                      }
+                  } do |f| %>
             <%= f.input :rating %>
             <%= f.input :title %>
             <%= f.input :content %>
