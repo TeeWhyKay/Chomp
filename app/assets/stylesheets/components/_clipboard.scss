@@ -1,8 +1,8 @@
 .clipboard-text {
-    background-color: #d4d1d1;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-family: 'loveloblack';
+  background-color: $light-yellow;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: $chomp-font-black;
 }
 
 .clipboard-form-control {
@@ -15,9 +15,15 @@
   bottom: 8px;
   right: 5px;
   border-radius: 5px;
+  background-color: $sunset-red;
+
+  &:hover {
+    color: $light-yellow;
+    background-color: $sunset-red-dark;
+  }
 }
 
 .clipboard-form-control .clipboard-text {
   height: 3.5rem;
-  border: 1px solid #E7E7E7;
+  border: 1px solid $sunset-red;
 }
