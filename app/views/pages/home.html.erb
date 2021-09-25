@@ -3,7 +3,7 @@
     <div class="col-12 col-lg-8">
       <div class="form-login" id="home">
         <%= image_tag ("https://res.cloudinary.com/dkswe4dtq/image/upload/v1632579567/isolated-monochrome-white_ltg3cl.svg"), alt: "chomp-logo", class: "w-100 pt-5 my-3" %>
-        <h3>Can't decide what to eat? Let Chomp decide for you</h3>
+        <h4>Can't decide what to eat? Let Chomp decide for you</h4>
         <%= link_to "Create a group and share", new_chomp_session_path, class: "btn btn-primary btn-block mt-3"%>
         <%= simple_form_for :chomp_session, url: root_path, method: :get do |f| %>
           <div id="home-form" class="search-form-control form-group d-flex align-items-center">
