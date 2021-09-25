@@ -9,14 +9,14 @@ class ResponseMailer < ApplicationMailer
   def create_response
     mail(
       to: @response.user.email,
-      subject: "Your response for '#{@chomp_session.name}' is saved!"
+      subject: "Your response for '#{@chomp_session.name}' is saved! (#{@chomp_session.public_uid})"
     )
   end
 
   def update_response
     mail(
       to: @response.user.email,
-      subject: "Your response for '#{@chomp_session.name}' is updated!"
+      subject: "Your response for '#{@chomp_session.name}' is updated! (#{@chomp_session.public_uid})"
     )
   end
 
