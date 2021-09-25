@@ -36,6 +36,7 @@ class ChompSessionsController < ApplicationController
 
   def show
     @response = Response.new
+    redirect_to restaurant_path(@chomp_session.restaurant) if @chomp_session.status == "closed"
   end
 
   def result

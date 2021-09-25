@@ -21,7 +21,7 @@
         </div>
         <p style="font-size:0.7rem">*Note: You will need to sign in/up before you can edit your response*</p>
         <% if @chomp_session.user == current_user %>
-        <%= link_to "Generate Results", chomp_session_result_path, class: "btn btn-info btn-lg", id: "bootstrap-overrides" %>
+          <%= link_to "Generate Results", chomp_session_result_path, class: "btn btn-info btn-lg", id: "bootstrap-overrides" %>
         <% end %>
       </div>
     </div>
