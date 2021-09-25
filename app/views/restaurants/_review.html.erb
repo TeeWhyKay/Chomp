@@ -7,13 +7,7 @@
       <% restaurant.reviews.each do |review| %>
         <div id="review<%= review.id %>" class="review m-4">
 
-            <% review.rating.times do |star| %>
-              <i class="fas fa-star"></i>
-            <% end %>
-            <% unchecked_stars = (5 - review.rating).to_i %>
-            <% unchecked_stars.times do |star| %>
-              <i class="far fa-star"></i>
-            <% end %>
+            <%= render partial: "stars", locals: {review: review} %>
             <h3 class="review-title mt-2"><%= review.title %></h3>
 
           <p class="review-content mt-2"><%= review.content %></p>

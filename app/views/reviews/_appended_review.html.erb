@@ -1,11 +1,5 @@
 <div id="review-<%= review.id %>">
   <h3 class="review-title"><%= review.title %></h3>
-  <% review.rating.times do |star| %>
-    <i class="fas fa-star"></i>
-  <% end %>
-  <% unchecked_stars = (5 - review.rating).to_i %>
-  <% unchecked_stars.times do |star| %>
-    <i class="far fa-star"></i>
-  <% end %>
+  <%= render partial: "stars", locals: {review: review} %>
   <p class="review-content"><%= review.content %></p>
 </div>
