@@ -6,23 +6,23 @@
     <% else %>
       <% restaurant.reviews.reverse.each do |review| %>
         <div data-controller="edit-review">
-          <div id="review<%= review.id %>" class="review m-4" data-edit-review-targets="infos">
+          <div id="review<%= review.id %>" class="review m-4" data-edit-review-target="infos">
 
             <%= render partial: "stars", locals: {review: review} %>
-
             <i class="far fa-edit review-edit-btn ml-2" data-action="click->edit-review#displayForm"></i>
-
-            <%= simple_form_for [ restaurant, review ], html: { class: 'd-none', data: { edit_review_target: 'form' } } do |f| %>
-              <%= f.input :rating %>
-              <%= f.input :title %>
-              <%= f.input :content %>
-              <%= f.submit :Edit, class: "btn btn-outline-primary" %>
-            <% end %>
 
             <h3 class="review-title mt-2"><%= review.title %></h3>
             <p class="review-content mt-2"><%= review.content %></p>
 
           </div>
+
+          <%= simple_form_for [ restaurant, review ], html: { class: 'd-none', data: { edit_review_target: 'form' } } do |f| %>
+            <%= f.input :rating %>
+            <%= f.input :title %>
+            <%= f.input :content %>
+            <%= f.submit :Edit, class: "btn btn-outline-primary" %>
+          <% end %>
+
         </div>
       <% end %>
     <% end %>
