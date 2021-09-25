@@ -16,9 +16,9 @@
   right: 5px;
   border-radius: 5px;
   background-color: $sunset-red;
+  color: white;
 
   &:hover {
-    color: $light-yellow;
     background-color: $sunset-red-dark;
   }
 }
