@@ -6,6 +6,6 @@ Whew! Didn't know you're so indecisive you have to change the meetup details.
 Hopefully that was just to fix a typo... Right?
 Meanwhile, continue doing whatever you were up to! Let us stress over where you should eat at instead.
 
-Meetup details:
+<%= @chomp_session.name %> by <%= @chomp_session.user.username %>
 Date: <%= @chomp_session.date %>
 Time: <%= @chomp_session.time.strftime("%I:%M %p") %>
