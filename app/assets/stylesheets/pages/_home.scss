@@ -2,6 +2,15 @@
 body {
   background-image: url('https://images.pexels.com/photos/5778894/pexels-photo-5778894.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
   background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.logo {
+  background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
+  border-radius: 5px;
+  height: 100%;
 }
 
 #home-form {
@@ -21,10 +30,10 @@ body {
   }
 }
 
-h4 {
-  font-family: 'Recursive', sans-serif;
+#tagline {
+  font-family: $tagline-font;
   color: white;
+  font-size: 27px;
   text-shadow: 2px 2px black;
-  margin-top: 5px;
   text-align: center;
 }
