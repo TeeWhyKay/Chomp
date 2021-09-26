@@ -49,7 +49,8 @@ cuisine_arr.each do |cuisine|
         closing_time: closing_time,
         google_rating: restaurant["rating"],
         cuisine: restaurant["cuisine"],
-        pricing: price
+        pricing: price,
+        website: restaurant["officialWebsite"]
       )
       price += 1
       # uuid = restaurant['thumbnails'].first['uuid'] if !restaurant['thumbnails'].empty? && !restaurant['thumbnails'].first['uuid'].empty?
