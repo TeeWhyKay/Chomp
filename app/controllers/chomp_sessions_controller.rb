@@ -42,11 +42,8 @@ class ChompSessionsController < ApplicationController
   def result
     @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
     if @chomp_session.status == "pending"
-
-      restaurant = generate_restaurant(@chomp_session)
-
-
-      @restaurant = Restaurant.all.sample
+      @restaurant = generate_restaurant(@chomp_session)
+      @restaurant = Restaurant.all.sample if @restaurant.empty?
       @chomp_session.restaurant = @restaurant
       @chomp_session.status = "closed"
       @chomp_session.save
@@ -78,6 +75,7 @@ class ChompSessionsController < ApplicationController
     responses = chomp_session.responses
     lowest_budget = responses.minimum('budget')
     restaurant_pricing = determine_pricing(lowest_budget)
+
     cuisine_arr = []
     responses.each do |response|
       response_cuisine = response.cuisine
@@ -86,18 +84,27 @@ class ChompSessionsController < ApplicationController
     cuisine_arr.flatten!(1)
     tallied_result = cuisine_arr.tally
     most_frequent_cuisine_kv = tallied_result.max_by { |_, value| value }
+
     # check tie
     tied_results = tally.select { |k,v| v == most_frequent_cuisine[0] }
     if tied_results.length == 1
       result_cuisine = most_frequent_cuisine_kv[0]
-      num_votes = most_frequent_cuisine_kv[1]
+      # num_votes = most_frequent_cuisine_kv[1]
+    else
+      result_cuisine = tied_results.sample
     end
 
     # location
     geographic_center = Geocoder::Calculations.geographic_center(responses)
 
-    # restaurant within 5km of center ordered by rating
-    restaurant = Restaurant.near(geographic_center, 5).reorder('google_rating desc').limit(1)
+    # restaurant within 5km of center ordered by rating and budget
+    restaurant = Restaurant.where("pricing = ?", restaurant_pricing).cuisine_type(result_cuisine).near(geographic_center, 5).reorder('google_rating desc').limit(1)
+
+    if restaurant.empty?
+      restaurant = Restaurant.where("pricing = ?", restaurant_pricing).cuisine_type(result_cuisine).reorder('google_rating desc').limit(1)
+    end
+
+    return restaurant
   end
 
   def determine_pricing(budget)
@@ -111,5 +118,4 @@ class ChompSessionsController < ApplicationController
       1
     end
   end
-
 end
