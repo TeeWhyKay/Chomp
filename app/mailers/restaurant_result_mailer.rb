@@ -12,14 +12,5 @@ class RestaurantResultMailer < ApplicationMailer
       to: response.user.email,
       subject: "#{chomp_session.name}'s decision is out! Enjoy your meetup at #{@restaurant.name}."
     )
-
-    # @responses.each do |response|
-    #   next if response.user.nil?
-
-    #   mail(
-    #     to: response.user.email,
-    #     subject: "#{@chomp_session.name}'s decision is out! Enjoy your meetup at #{@restaurant.name}."
-    #   )
-    # end
   end
 end
