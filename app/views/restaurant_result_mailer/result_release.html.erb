@@ -1,5 +1,14 @@
-<h1>RestaurantResult#result_release</h1>
+<h3><%= @restaurant.name %></h3>
+<h4><%= @restaurant.address.strip %></h4>
 
+<p>Above is the name and address of the restaurant we have selected for your meetup.</p>
 <p>
-  <%= @greeting %>, find me in app/views/restaurant_result_mailer/result_release.html.erb
+  Here's some details of the restaurant that may be useful to you:<br>
+  <% unless @restaurant.cuisine == "" %>
+    Cuisine type: <%= @restaurant.cuisine %><br>
+  <% end %>
+  Operating hours: <%= @restaurant.opening_time.strftime("%I:%M %p") %> ~ <%= @restaurant.closing_time.strftime("%I:%M %p") %><br>
+  Google review score: <%= @restaurant.google_rating %>
 </p>
+
+<p>Thank <em>you</em> for using Chomp!</p>
