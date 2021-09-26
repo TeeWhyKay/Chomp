@@ -1,5 +1,7 @@
 <%= @chomp_session.name %> is created!
 
+Chomp code: <%= @chomp_session.public_uid %>
+
 Chomping is now in progress...
 You'll have to wait <%= pluralize(@chomp_session.session_expiry, 'hour') %> before a decision is made for you.
 Meanwhile, go do whatever you want! Who knows, you might even come up with a decision us...
@@ -7,3 +9,5 @@ Meanwhile, go do whatever you want! Who knows, you might even come up with a dec
 Meetup details:
 Date: <%= @chomp_session.date %>
 Time: <%= @chomp_session.time.strftime("%I:%M %p") %>
+
+Psst... Made a mistake? <%= link_to "Click here", edit_chomp_session_url(@chomp_session) %> to edit the Chomp session details.

@@ -1,5 +1,7 @@
 Your response for '<%= @chomp_session.name %>' is updated!
 
+Chomp code: <%= @chomp_session.public_uid %>
+
 Chomping is in progress...
 You'll have to wait less than <%= pluralize(@chomp_session.session_expiry, 'hour') %> before a decision is made for you.
 Whew! Didn't know you're so indecisive you have to change the response.
@@ -9,3 +11,5 @@ Meanwhile, continue doing whatever you were up to! Let us stress over where you 
 Meetup details:
 Date: <%= @chomp_session.date %>
 Time: <%= @chomp_session.time.strftime("%I:%M %p") %>
+
+Psst... Made a mistake again? <%= link_to "Click here", edit_response_url(@response) %> to edit your response.

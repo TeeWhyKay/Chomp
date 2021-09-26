@@ -2,14 +2,14 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-8">
       <div class="form-login">
-        <h1 class="success-header">Opinion submitted!</h1>
+        <h1 class="success-header animate__animated animate__bounce">Opinion submitted!</h1>
         <p class="success-body">Congratulations! Your opinion will be taken into consideration so you don’t feel left out.
         Feel free to share the link to pester your friends!</p>
 
         <p>Meeting Date: <%= @chomp_session.date %></p>
         <p>Meeting Time: <%= @chomp_session.time.strftime("%I:%M %p") %></p>
         <div data-controller="clipboard" data-clipboard-success-content="Copied!" class="clipboard-form-control form-group mb-3">
-          <input type="text" value="http://localhost:3000/chomp_sessions/<%= params["chomp_session_id"] %>" data-clipboard-target="source" class="clipboard-text w-100 pl-2"/>
+          <input type="text" value="https://www.letschomp.co/<%= params["chomp_session_id"] %>" data-clipboard-target="source" class="clipboard-text w-100 pl-2"/>
 
           <button type="button" data-action="clipboard#copy" data-clipboard-target="button" class="btn-flat btn-outline-info">
             <i class="fas fa-clipboard"></i> Copy
@@ -20,7 +20,9 @@
           <%= link_to "Edit preferences", edit_response_path(@response), class: "btn btn-primary btn-lg" %>
         </div>
         <p style="font-size:0.7rem">*Note: You will need to sign in/up before you can edit your response*</p>
-        <%= link_to "Generate Results", chomp_session_result_path, class: "btn btn-info btn-lg", id: "bootstrap-overrides" %>
+        <% if @chomp_session.user == current_user %>
+          <%= link_to "Generate Results", chomp_session_result_path, class: "btn btn-info btn-lg", id: "bootstrap-overrides" %>
+        <% end %>
       </div>
     </div>
   </div>
