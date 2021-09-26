@@ -37,3 +37,6 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 import "controllers"
+
+// for maps
+import mapboxgl from 'mapbox-gl';

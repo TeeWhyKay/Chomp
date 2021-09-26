@@ -1,0 +1,19 @@
+<div id="map" style="height: 300px; width: 600px"></div>
+
+<script>
+    const obj= @geojson;
+	mapboxgl.accessToken = 'pk.eyJ1IjoidGp3MTk5MyIsImEiOiJja3N5YWRsdnUyaWFzMnFvZGdxbXpoY2ptIn0.6ZmLbaGJhx_04NRRul6_UA';
+    const obj = 
+    const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: geojson[:geometry][:coordinates],
+    zoom: 8
+    });
+    
+    // Create a default Marker and add it to the map.
+    const marker1 = new mapboxgl.Marker()
+    .setLngLat([12.550343, 55.665957])
+    .addTo(map);
+    
+</script>
