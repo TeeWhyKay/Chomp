@@ -10,6 +10,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def send_email
-    UserMailer.with(user: self).welcome.deliver_now
+    UserMailer.with(user: self).welcome.deliver_later
   end
 end
