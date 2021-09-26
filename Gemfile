@@ -47,6 +47,9 @@ gem 'pexels'
 # geocoder for geocoding models
 gem 'geocoder'
 
+# pgsearch for full text search
+gem 'pg_search'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
