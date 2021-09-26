@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
+  before_action :set_restaurant
+
   def create
     # Creating new review
-    @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.new(review_params)
     @review.restaurant = @restaurant
     @review.user = current_user
@@ -22,6 +23,15 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+
+    respond_to do |format|
+      format.html { redirect_to restaurant_path(@restaurant, anchor: "review-#{@review.id}") }
+      format.text { render partial: 'appended_review', locals: { review: @review, restaurant: @restaurant }, formats: [:html] }
+    end
+  end
 
   private
 
@@ -38,5 +48,9 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:rating, :title, :content)
+  end
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 end
