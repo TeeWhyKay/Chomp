@@ -2,8 +2,9 @@
 <div id="banner"></div>
   <div class="row justify-content-center align-items-center">
     <div class="col-12 col-lg-8">
-      <div class="form-login mx-auto">
-        <h1 id="brand-title" class="text-center text-white">Chomp</h1>
+      <div class="form-login mx-auto text-center text-white">
+        <h1 id="brand-title">Chomp</h1>
+        <p id="brand-subtitle">Can't decide what to eat?<br>Let Chomp decide for you</p>
         <%= link_to "Create a group & invite your friends", new_chomp_session_path, class: "btn btn-primary btn-block"%>
         <%= simple_form_for :chomp_session, url: root_path, method: :get do |f| %>
           <div id="home-form" class="search-form-control form-group d-flex align-items-center">

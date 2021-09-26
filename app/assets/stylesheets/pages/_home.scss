@@ -43,6 +43,11 @@
   font-size: 64px;
 }
 
+#brand-subtitle {
+  font-family: $chomp-subtitle-font;
+  font-size: 24px;
+}
+
 .landing-page-content {
   @media (min-width: 768px) {
     .form-login {
