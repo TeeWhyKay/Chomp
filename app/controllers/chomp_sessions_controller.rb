@@ -48,7 +48,12 @@ class ChompSessionsController < ApplicationController
     else
       @restaurant = @chomp_session.restaurant
     end
-    RestaurantResultMailer.with(restaurant: @restaurant, chomp_session: @chomp_session).result_release.deliver_later
+    @responses_arr = Response.where(chomp_session: @chomp_session.id)
+    @responses_arr.each do |response|
+      next if response.user.nil?
+
+      RestaurantResultMailer.with(restaurant: @restaurant, chomp_session: @chomp_session, response: response).result_release.deliver_later
+    end
     redirect_to restaurant_path(@restaurant)
   end
 

@@ -6,15 +6,20 @@ class RestaurantResultMailer < ApplicationMailer
   #
   def result_release
     @restaurant = params[:restaurant]
-    @chomp_session = params[:chomp_session]
-    @responses = Response.where(chomp_session: @chomp_session.id)
-    @responses.each do |response|
-      unless response.user.nil?
-        mail(
-          to: response.user.email,
-          subject: "#{@chomp_session.name}'s decision is out! Enjoy your meetup at #{@restaurant.name}."
-        )
-      end
-    end
+    chomp_session = params[:chomp_session]
+    response = params[:response]
+    mail(
+      to: response.user.email,
+      subject: "#{chomp_session.name}'s decision is out! Enjoy your meetup at #{@restaurant.name}."
+    )
+
+    # @responses.each do |response|
+    #   next if response.user.nil?
+
+    #   mail(
+    #     to: response.user.email,
+    #     subject: "#{@chomp_session.name}'s decision is out! Enjoy your meetup at #{@restaurant.name}."
+    #   )
+    # end
   end
 end
