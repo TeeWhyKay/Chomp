@@ -1,8 +1,10 @@
-<div class="container mb-4">
+<div id="banner">
+</div>
+<div class="container my-5 mx-auto">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-8">
       <div class="form-login">
-        <%= image_tag ("https://res.cloudinary.com/du5rqng8z/image/upload/v1632458798/letschomp/profile_hbuanz.png"), alt: "chomp-logo", class: "w-100 my-3" %>
+        <h1 id="brand-title" class="text-center text-white">Chomp</h1>
         <%= link_to "Create a group & Invite your friends", new_chomp_session_path, class: "btn btn-primary btn-block"%>
         <%= simple_form_for :chomp_session, url: root_path, method: :get do |f| %>
           <div id="home-form" class="search-form-control form-group d-flex align-items-center">
