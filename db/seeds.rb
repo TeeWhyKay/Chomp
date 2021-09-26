@@ -1,6 +1,8 @@
 require 'open-uri'
 
 puts "Clearing restaurants db"
+Response.destroy_all
+ChompSession.destroy_all
 Restaurant.destroy_all
 puts "Seeding db with restaurants"
 apikey = "ytxKCmRhV2kPY8fEpKXN63SuuQSkVmPw"
