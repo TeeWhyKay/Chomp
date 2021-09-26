@@ -1,6 +1,7 @@
 class ChompSessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
   before_action :set_chomp_session, only: %i[edit update show]
+  before_action :set_chomp_session_specific, only: %i[success result]
 
   def new
     @chomp_session = ChompSession.new
@@ -30,9 +31,7 @@ class ChompSessionsController < ApplicationController
     end
   end
 
-  def success
-    @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
-  end
+  def success; end
 
   def show
     @response = Response.new
@@ -40,7 +39,6 @@ class ChompSessionsController < ApplicationController
   end
 
   def result
-    @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
     if @chomp_session.status == "pending"
       # algorithm to get recommendation
       @restaurant = Restaurant.all.sample
@@ -50,6 +48,7 @@ class ChompSessionsController < ApplicationController
     else
       @restaurant = @chomp_session.restaurant
     end
+    RestaurantResultMailer.with(restaurant: @restaurant, chomp_session: @chomp_session).result_release.deliver_later
     redirect_to restaurant_path(@restaurant)
   end
 
@@ -61,5 +60,9 @@ class ChompSessionsController < ApplicationController
 
   def set_chomp_session
     @chomp_session = ChompSession.find_puid(params[:id])
+  end
+
+  def set_chomp_session_specific
+    @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
   end
 end
