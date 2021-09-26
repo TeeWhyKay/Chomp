@@ -1,14 +1,14 @@
-<h3><%= @restaurant.name %></h3>
+<h3><strong><%= @restaurant.name %></strong></h3>
 <h4><%= @restaurant.address.strip %></h4>
 
 <p>Above is the name and address of the restaurant we have selected for your meetup.</p>
 <p>
   Here's some details of the restaurant that may be useful to you:<br>
   <% unless @restaurant.cuisine == "" %>
-    Cuisine type: <%= @restaurant.cuisine %><br>
+    <strong>Cuisine type:</strong> <%= @restaurant.cuisine %><br>
   <% end %>
-  Operating hours: <%= @restaurant.opening_time.strftime("%I:%M %p") %> ~ <%= @restaurant.closing_time.strftime("%I:%M %p") %><br>
-  Google review score: <%= @restaurant.google_rating %>
+  <strong>Operating hours:</strong> <%= @restaurant.opening_time.strftime("%I:%M %p") %> ~ <%= @restaurant.closing_time.strftime("%I:%M %p") %><br>
+  <strong>Google review score:</strong> <%= @restaurant.google_rating %>
 </p>
 
 <p>Thank <em>you</em> for using Chomp!</p>
