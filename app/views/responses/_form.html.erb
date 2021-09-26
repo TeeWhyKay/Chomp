@@ -5,7 +5,11 @@
                 required: true, input_html: { min: '5' } %>
     <label for="response_location">Location *</label>
     <div class="search-form-control form-group">
-      <%= f.input :address, label: false, required: true %>
+      <% if response.address %>
+        <%= f.input :address, label: false, input_html: { value: response.address } %>
+      <% else %>
+        <%= f.input :address, label: false, input_html: { value: "19 Cuppage Rd, Singapore 229451" } %>
+      <% end %>
       <a href="#" id="get_location"><i class="fas fa-map-marker-alt"></i></a>
     </div>
     <%= f.input :cuisine,

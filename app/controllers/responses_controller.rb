@@ -3,7 +3,7 @@ class ResponsesController < ApplicationController
   before_action :set_response, only: %i[show edit update]
 
   def create
-    coords = split_location(params[:location]) unless params[:location].empty?
+    coords = split_location(params[:location]) unless params[:location].empty? # .empty? method does not exist for nilclass
     @response = Response.new(response_params)
     @response.user = current_user
     @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
@@ -69,7 +69,7 @@ class ResponsesController < ApplicationController
 
   def split_location(location)
     str_arr = location.split(',')
-    str_arr.map { |str| str.to_f }
+    str_arr.map(&:to_f)
     return { latitude: str_arr[0], longitude: str_arr[1] }
   end
 
