@@ -1,0 +1,12 @@
+  <%= simple_form_for([ restaurant, review ],
+    html: { class: 'd-none m-4',
+            data: {
+              edit_review_target: 'form',
+              action: 'submit->edit-review#update'
+              }
+          }) do |f| %>
+    <%= f.input :rating, collection: [['1 - Blegh!', 1], ['2 - Below Average', 2], ['3 - Alright', 3], ['4 - Not Bad', 4], ['5 - Amazing!', 5]] %>
+    <%= f.input :title, as: :string %>
+    <%= f.input :content, as: :text %>
+    <%= f.submit :Edit, class: "btn btn-outline-primary" %>
+  <% end %>

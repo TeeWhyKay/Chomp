@@ -2,7 +2,7 @@
   <div class="restaurant-wrapper row justify-content-center">
     <div class="col-12 col-lg-8">
       <div class="form-login">
-        <div class="my-3 mx-auto text-center">
+        <div class="mb-3 mx-auto text-center">
 
           <h1><%= @restaurant.name %></h1>
           <p id="restaurant-meta">
@@ -12,7 +12,7 @@
           <%# <%= image_tag @restaurant.photo_url, id: "restaurant-image", class: "center-cropped mb-3" %>
           <%= image_tag "https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=130", id: "restaurant-image", class: "center-cropped mb-3" %>
 
-          <h2 id="average-review" class="text-left">
+          <p id="average-review" class="text-left">
             <% @restaurant.google_rating.to_i.times do |star| %>
               <i class="fas fa-star"></i>
             <% end %>
@@ -22,7 +22,7 @@
             <% end %>
             <%= @restaurant.google_rating.round(2) %>
             <span class="text-muted">User Reviews: <%= @restaurant.reviews.size %></span>
-          </h2>
+          </p>
 
           <p class="text-left">Restaurant description here.</p>
 
