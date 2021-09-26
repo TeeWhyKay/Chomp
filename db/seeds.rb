@@ -39,6 +39,12 @@ cuisine_arr.each do |cuisine|
         opening_time = time.first["openTime"]
         closing_time = time.first["closeTime"]
       end
+
+      if restaurant["officialWebsite"].empty?
+        website = "https://www.google.com/search?q=#{restaurant['name']}"
+      else
+        website = restaurant["officialWebsite"]
+      end
       # take the first thumbnail provided, if any
       restaurant_instance = Restaurant.new(
         name: restaurant["name"],
@@ -50,7 +56,7 @@ cuisine_arr.each do |cuisine|
         google_rating: restaurant["rating"],
         cuisine: restaurant["cuisine"],
         pricing: price,
-        website: restaurant["officialWebsite"]
+        website: website
       )
       price += 1
       # uuid = restaurant['thumbnails'].first['uuid'] if !restaurant['thumbnails'].empty? && !restaurant['thumbnails'].first['uuid'].empty?
