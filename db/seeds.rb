@@ -42,7 +42,7 @@ cuisine_arr.each do |cuisine|
         closing_time = time.first["closeTime"]
       end
 
-      if restaurant["officialWebsite"].empty?
+      if restaurant["officialWebsite"].empty? || restaurant["officialWebsite"] == /hungrygowhere\.com/
         website = "https://www.google.com/search?q=#{restaurant['name']}"
       else
         website = restaurant["officialWebsite"]
