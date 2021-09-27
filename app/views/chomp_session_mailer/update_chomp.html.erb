@@ -1,6 +1,7 @@
 <h3><strong><%= @chomp_session.name %></strong> is updated!</h3>
 
-<h4>Chomp code: <strong><%= @chomp_session.public_uid %></strong></h4>
+<h4>Chomp code: <strong><%= @chomp_session.public_uid %></strong><br>
+<span style="font-size: 14px;">Or, <%= link_to "click here", chomp_session_url(@chomp_session), style: "text-decoration: none;" %> to submit your response.</span></h4>
 
 <p>Chomping is now in progress...<em>again</em>...</p>
 <p>You'll have to wait <strong><%= pluralize(@chomp_session.session_expiry, 'hour') %></strong> before a decision is made for you.</p>
