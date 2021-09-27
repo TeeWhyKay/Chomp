@@ -10,7 +10,7 @@ class RestaurantResultMailer < ApplicationMailer
     response = params[:response]
     mail(
       to: response.user.email,
-      subject: "#{chomp_session.name}'s decision is out! Enjoy your meetup at #{@restaurant.name}."
+      subject: "#{chomp_session.name}'s decision is out! Enjoy your meetup at #{@restaurant.name}"
     )
   end
 end
