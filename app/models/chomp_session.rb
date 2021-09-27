@@ -12,7 +12,6 @@ class ChompSession < ApplicationRecord
 
   belongs_to :user
   belongs_to :restaurant, optional: true
-  # 1 chompsession has many responses
   has_many :responses
   validates :name, :date, :time, presence: true
   attribute :status, :string, default: "pending"
