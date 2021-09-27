@@ -1,7 +1,9 @@
 <h3><strong><%= @restaurant.name %></strong><br>
 <%= @restaurant.address.strip %></h3>
 
+<p> >> <%= link_to "#{@restaurant.name} on Chomp", restaurant_url(@restaurant), style: "text-decoration: none;" %> << </p>
 <p>Above is the name and address of the restaurant we have selected for your meetup.</p>
+
 <p>
   Here's some details of the restaurant that may be useful to you:<br>
   <% unless @restaurant.cuisine == "" %>
