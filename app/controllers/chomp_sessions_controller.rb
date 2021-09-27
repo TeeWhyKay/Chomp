@@ -39,6 +39,7 @@ class ChompSessionsController < ApplicationController
   end
 
   def result
+    @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
     if @chomp_session.status == "pending"
       # algorithm to get recommendation
       @restaurant = Restaurant.all.sample
