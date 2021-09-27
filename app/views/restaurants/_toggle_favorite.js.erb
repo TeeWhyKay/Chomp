@@ -1,4 +1,5 @@
-var restaurantId = '<%= @restaurant.id%>'
+var restaurantId = '<%= @restaurant.id %>'
+
 function toggleLikeButton(restaurantId, innerHTML) {
   let likeButton = document.querySelector(`.like-icon[data-id='${restaurantId}']`)
   likeButton.classList.toggle('red');

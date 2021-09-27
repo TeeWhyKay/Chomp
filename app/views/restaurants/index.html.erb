@@ -3,9 +3,10 @@
 <ul>
   <% @restaurants.each do |restaurant| %>
     <li>
-      <%= link_to "like", toggle_favorite_restaurant_path(restaurant), remote: true, method: :post %>
+      <%= link_to toggle_favorite_restaurant_path(restaurant), remote: true, method: :post %>
       <%= restaurant.name %>
       <%= link_to "Delete", restaurant, method: :delete, remote: true %>
+      <%= render partial: "like_button", locals: {restaurant: restaurant, user: @user} %>
     </li>
   <% end %>
 </ul>

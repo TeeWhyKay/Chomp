@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     @review = Review.new
+    @user = current_user
   end
 
   def destroy
