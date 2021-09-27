@@ -1,12 +1,8 @@
 <h1>Restaurants</h1>
-
 <ul>
   <% @restaurants.each do |restaurant| %>
     <li>
       <%= restaurant.name %>
-      <%= link_to "Delete", restaurant, method: :delete, remote: true %>
-      <%= link_to toggle_favorite_restaurant_path(restaurant), remote: true, method: :post do%>
-        <%= render partial: "like_button", locals: {restaurant: restaurant, user: @user} %>
       <% end %>
     </li>
   <% end %>

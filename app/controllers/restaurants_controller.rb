@@ -19,7 +19,9 @@ class RestaurantsController < ApplicationController
   end
 
   def toggle_favorite
-    @restaurant = Restaurant.find_by(id: params[:id])
+    @restaurant = Restaurant.find(params[:id])
     current_user.favorited?(@restaurant) ? current_user.unfavorite(@restaurant) : current_user.favorite(@restaurant)
+    current_user.save
+    redirect_to restaurant_path(@restaurant)
   end
 end
