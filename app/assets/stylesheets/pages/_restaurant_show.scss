@@ -61,3 +61,13 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+.restaurant-image-container {
+  i {
+    position: absolute;
+    right: 30px;
+    top: 25px;
+    color: $sunset-red;
+  }
+  position: relative;
+}

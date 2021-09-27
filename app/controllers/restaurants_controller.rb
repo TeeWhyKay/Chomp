@@ -3,6 +3,7 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
+    @favorite_restaurants = current_user.favorited_by_type('Restaurant')
   end
 
   def show
