@@ -17,7 +17,7 @@
           <% else %>
             <tr>
           <% end %>
-          <th scope="row"><%= num %></th>
+          <th scope="row"><%= response.chomp_session.public_uid %></th>
 
           <% if response.chomp_session.status == "pending" %>
             <td><%= response.chomp_session.name %>
