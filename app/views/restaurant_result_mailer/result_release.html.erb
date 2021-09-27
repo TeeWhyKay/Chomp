@@ -1,7 +1,8 @@
-<h3><strong><%= @restaurant.name %></strong><br>
+<h3><strong><%= link_to @restaurant.name, restaurant_url(@restaurant), style: "text-decoration: none;" %></strong><br>
 <%= @restaurant.address.strip %></h3>
 
 <p>Above is the name and address of the restaurant we have selected for your meetup.</p>
+
 <p>
   Here's some details of the restaurant that may be useful to you:<br>
   <% unless @restaurant.cuisine == "" %>
