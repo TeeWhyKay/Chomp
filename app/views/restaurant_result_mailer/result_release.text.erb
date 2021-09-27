@@ -1,6 +1,7 @@
 <%= link_to @restaurant.name, restaurant_url(@restaurant) %>
 <%= @restaurant.address.strip %>
 
+>> <%= link_to "#{@restaurant.name} on Chomp", restaurant_url(@restaurant) %> <<
 Above is the name and address of the restaurant we have selected for your meetup.
 
 Here's some details of the restaurant that may be useful to you:
