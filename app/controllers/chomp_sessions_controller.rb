@@ -39,6 +39,7 @@ class ChompSessionsController < ApplicationController
   end
 
   def result
+    @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
     if @chomp_session.status == "pending"
       @restaurant = generate_restaurant(@chomp_session).first
       @restaurant = Restaurant.all.sample if @restaurant.nil?
