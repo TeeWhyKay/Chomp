@@ -24,7 +24,9 @@
               <i class="far fa-star"></i>
             <% end %>
             <%= @restaurant.google_rating.round(2) %>
-            <span class="text-muted">User Reviews: <%= @restaurant.reviews.size %></span>
+            <span class="text-muted">User Reviews:
+              <span id="review-count"><%= @restaurant.reviews.size %></span>
+            </span>
           </p>
 
           <p id="restaurant-description" class="text-left"><%=h truncate(@restaurant.description, length: 150) %></p>
