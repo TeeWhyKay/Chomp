@@ -61,3 +61,22 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+.card-header {
+  background-color: white;
+  border-bottom: none;
+}
+
+.hidden-card {
+  background-color: white; 
+  border: none;
+}
+
+.map-heading {
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: none;
+}
+  
