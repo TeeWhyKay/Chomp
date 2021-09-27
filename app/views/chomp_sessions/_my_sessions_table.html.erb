@@ -7,7 +7,7 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col"><i class="far fa-clock"></th>
-            <th scope="col">Responses</th>
+            <th scope="col"><i class="fas fa-users"></i></th>
             <th scope="col">Action</th>
             </tr>
         </thead>
@@ -52,6 +52,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        There are currently only <%= Response.where(chomp_session: chomp_session).count %> response(s).<br>
                         Are you sure that you want to end the poll prematurely and generate your restaurant result?
                     </div>
                     <div class="modal-footer">
