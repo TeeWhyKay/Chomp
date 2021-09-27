@@ -76,7 +76,23 @@
   text-decoration: none;
 }
 
-.btn-link:hover {
-  text-decoration: none;
+#accordion > div.rounded-lg {
+  background-color: white; 
+  border: none;
 }
-  
+
+
+.btn-link {
+  text-decoration: none;
+  border: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    border: none;
+  }
+}
+
+button.btn:focus {
+  box-shadow: none;
+}
