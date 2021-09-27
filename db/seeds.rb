@@ -58,6 +58,8 @@ cuisine_arr.each do |cuisine|
         google_rating: restaurant["rating"],
         cuisine: restaurant["cuisine"],
         pricing: price,
+        description: restaurant["description"],
+        body: restaurant["body"].delete('\n'),
         website: website
       )
       price += 1
@@ -106,11 +108,30 @@ puts "Seeding Chomp sessions"
 end
 puts "Seeding ChompSessions completed, but will only work if you created a user account"
 
+# chompSession for response_generation
+ykbday = ChompSession.create(
+    name: "Yong kee's birthday",
+    date: Date.today,
+    time: Time.now,
+    status: "pending",
+    user: User.second
+)
+
 puts "Seeding fake response for testing"
-response = Response.new(budget: 5, address: "19 Cuppage Rd, Singapore 229451", cuisine: ["Chinese"] )
-response.user = User.first
-response.chomp_session = ChompSession.first
-response.save!
-puts "Seeded fake response"
+response1 = Response.new(budget: 20, address: "19 Cuppage Rd, Singapore 229451", cuisine: ["", "Chinese", "Thai", "Japanese"])
+response1.user = User.first
+response1.chomp_session = ykbday
+response1.save!
+
+response2 = Response.new(budget: 5, address: "Upper Cross Street, Singapore, Central, 050034, Singapore", cuisine: [""])
+response2.user = User.second
+response2.chomp_session = ykbday
+response2.save!
+
+response3 = Response.new(budget: 25, address: "Woodlands, Singapore", cuisine: ["", "Asian", "Chinese", "Japanese", "Italian", "Halal", "Thai", "Desserts"])
+response3.chomp_session = ykbday
+response3.save!
+
+puts "Seeded fake responses"
 
 puts "Seeding completed!"
