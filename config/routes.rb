@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   
   get 'dashboard', to: 'chomp_sessions#dashboard'
-  resources :chomp_sessions, only: %i[ new create edit update]
+  resources :chomp_sessions, only: %i[new create edit update]
   resources :chomp_sessions, only: :show do
     resources :responses, only: %i[create show update]
     get 'success', to: 'chomp_sessions#success'
