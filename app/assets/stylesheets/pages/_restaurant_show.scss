@@ -38,3 +38,21 @@
 #average-review {
   font-size: 18px;
 }
+
+#restaurant-meta a {
+  font-family: $chomp-font-black;
+  color: $light-orange;
+  position: relative;
+
+  &:hover {
+    color: $orange;
+    text-decoration: none;
+  }
+
+  i {
+    font-size: 0.7em;
+    position: absolute;
+    top: 6px;
+    right: -20px;
+  }
+}
