@@ -18,9 +18,9 @@
             <%= link_to toggle_favorite_restaurant_path, method: :post do %>
 
               <% if current_user.favorited?(@restaurant) %>
-                <i class="fas fa-kiss-wink-heart"></i>
+                <i class="fas fa-kiss-wink-heart animate__animated animate__rubberBand"></i>
               <% else %>
-                <i class="far fa-meh-blank"></i>
+                <i class="far fa-meh-blank animate__animated animate__rubberBand"></i>
               <% end %>
 
             <% end %>

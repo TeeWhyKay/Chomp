@@ -98,9 +98,9 @@ ActiveRecord::Schema.define(version: 2021_09_27_024317) do
     t.float "average_rating"
     t.float "google_rating"
     t.integer "pricing"
+    t.string "website"
     t.text "description"
     t.text "body"
-    t.string "website"
   end
 
   create_table "reviews", force: :cascade do |t|
