@@ -25,9 +25,23 @@
           </p>
 
           <p class="text-left">Restaurant description here.</p>
-          <h3>Map</h3>
-          <%= render "map" %>
 
+          <div id="accordion" class="mb-5">
+            <div class="card rounded-lg" style="background-color: #EA4B5C;">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed mb-0" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <h2 class="mb-0" style="color: #FDF4D6;">Map <i class="fas fa-chevron-circle-down"></i></h2>
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body" style="background-color: #FDF4D6;">
+                  <%= render "map" %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div data-controller="insert-in-list" data-insert-in-list-position-value="afterbegin">
@@ -38,3 +52,5 @@
     </div>
   </div>
 </div>
+
+

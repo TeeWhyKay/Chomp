@@ -1,0 +1,36 @@
+<% if @chomp_sessions == [] %>
+    <p class="success-body">You have not submitted any responses yet<p>
+<% else %>
+  <table class="table table-light table-sm w-100">
+      <thead class="table-light">
+          <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Meeting <i class="far fa-clock"></i></th>
+          </tr>
+      </thead>
+      <tbody>
+      <% num = 1 %>
+      <% @responses.each do |response| %>
+          <% if response.chomp_session.status == "pending" %>
+            <tr style="background-color: #FDF4D6">
+          <% else %>
+            <tr>
+          <% end %>
+          <th scope="row"><%= num %></th>
+
+          <% if response.chomp_session.status == "pending" %>
+            <td><%= response.chomp_session.name %>
+              <%= link_to edit_response_path(response) do%>
+                <i class="fas fa-edit"></i>
+              <% end %></td>
+          <% else %>
+            <td><%= response.chomp_session.name %></td>
+          <% end %>
+        
+          <td><%= response.chomp_session.date.strftime("%e-%b-%y") %> <%= response.chomp_session.time.strftime("%I:%M %p") %></td>
+          <% num += 1 %>
+      <% end %>
+      </tbody>
+  </table>
+<% end %>
