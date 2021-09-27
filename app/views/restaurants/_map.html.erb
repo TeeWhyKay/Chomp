@@ -1,4 +1,4 @@
-<div id="map" style="height: 300px; width: 700px; border-radius: 8px" class="w-100"></div>
+<div id="map" style="height: 300px; width: 700px" class="w-100 rounded-lg"></div>
 
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoidGp3MTk5MyIsImEiOiJja3N5YWRsdnUyaWFzMnFvZGdxbXpoY2ptIn0.6ZmLbaGJhx_04NRRul6_UA';
@@ -8,7 +8,7 @@
     center: ["<%= @restaurant.longitude  %>", "<%= @restaurant.latitude  %>"],
     zoom: 16
     });
-    
+
     // Create a default Marker and add it to the map.
     const marker1 = new mapboxgl.Marker()
     .setLngLat(["<%= @restaurant.longitude  %>", "<%= @restaurant.latitude  %>"])
