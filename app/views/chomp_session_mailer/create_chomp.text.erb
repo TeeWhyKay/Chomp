@@ -2,6 +2,7 @@
 
 Chomp code: <%= @chomp_session.public_uid %>
 Or, <%= link_to "click here", chomp_session_url(@chomp_session) %> to submit your response.
+Full link: <%= chomp_session_url(@chomp_session) %>
 
 Chomping is now in progress...
 You'll have to wait <%= pluralize(@chomp_session.session_expiry, 'hour') %> before a decision is made for you.
