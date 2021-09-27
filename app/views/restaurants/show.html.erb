@@ -27,7 +27,7 @@
             <span class="text-muted">User Reviews: <%= @restaurant.reviews.size %></span>
           </p>
 
-          <p class="text-left">Restaurant description here.</p>
+          <p id="restaurant-description" class="text-left"><%=h truncate(@restaurant.description, length: 150) %></p>
           <h3>Map</h3>
           <%= render "map" %>
 

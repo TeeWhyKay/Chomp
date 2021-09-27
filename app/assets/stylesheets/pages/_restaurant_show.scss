@@ -56,3 +56,8 @@
     right: -20px;
   }
 }
+
+#restaurant-description {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
