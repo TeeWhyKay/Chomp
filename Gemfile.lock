@@ -143,6 +143,9 @@ GEM
     pexels (0.4.0)
       requests (~> 1.0.2)
     pg (1.2.3)
+    pg_search (2.3.5)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     postmark (1.22.0)
       json
     postmark-rails (0.21.0)
@@ -300,6 +303,7 @@ DEPENDENCIES
   listen (~> 3.2)
   pexels
   pg (>= 0.18, < 2.0)
+  pg_search
   postmark-rails
   pry-byebug
   pry-rails

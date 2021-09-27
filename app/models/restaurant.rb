@@ -9,4 +9,13 @@ class Restaurant < ApplicationRecord
               longitude: :fetched_longitude
   reverse_geocoded_by :latitude, :longitude
   after_validation :geocode, unless: ->(obj){ obj.address.present? and obj.latitude.present? and obj.longitude.present? }
+  include PgSearch::Model
+  pg_search_scope :cuisine_type,
+                  against: {
+                    cuisine: 'A',
+                    description: 'B'
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end
