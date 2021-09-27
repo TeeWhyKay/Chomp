@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2021_09_26_103907) do
     t.integer "pricing"
     t.text "description"
     t.text "body"
+    t.string "website"
   end
 
   create_table "reviews", force: :cascade do |t|
