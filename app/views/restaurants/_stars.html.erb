@@ -1,0 +1,8 @@
+<% review.rating.times do |star| %>
+  <i class="fas fa-star"></i>
+<% end %>
+
+<% unchecked_stars = (5 - review.rating).to_i %>
+<% unchecked_stars.times do |star| %>
+  <i class="far fa-star"></i>
+<% end %>

@@ -8,8 +8,6 @@
 <p>Hopefully that was just to fix a typo... <em>Right?</em></p>
 <p>Meanwhile, continue doing whatever you were up to! Let us stress over where you should eat at instead.</p>
 
-<p><strong>Meetup details:</strong><br>
-Date: <%= @chomp_session.date %><br>
-Time: <%= @chomp_session.time.strftime("%I:%M %p") %></p>
+<%= render "shared/meetup_details" %>
 
 <p><em>Psst...</em> Made a mistake <em>again</em>? <%= link_to "Click here", edit_response_url(@response) %> to edit your response.</p>
