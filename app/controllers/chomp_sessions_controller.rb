@@ -45,13 +45,13 @@ class ChompSessionsController < ApplicationController
   def result
     @chomp_session = ChompSession.find_puid(params[:chomp_session_id])
     if @chomp_session.status == "pending"
-      # send worker to cancel job
-      result = Sidekiq::ScheduledSet.new.find_job(@chomp_session.sidekiq_jid).try(:delete)
       @restaurant = generate_restaurant(@chomp_session).first
       @restaurant = Restaurant.all.sample if @restaurant.nil?
       @chomp_session.restaurant = @restaurant
       @chomp_session.status = "closed"
       @chomp_session.save
+      # send worker to cancel job
+      ChompsessionCancellationJob.perform_later(@chomp_session.id)
     else
       @restaurant = @chomp_session.restaurant
     end
