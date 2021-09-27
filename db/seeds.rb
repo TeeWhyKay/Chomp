@@ -59,7 +59,7 @@ cuisine_arr.each do |cuisine|
         cuisine: restaurant["cuisine"],
         pricing: price,
         description: restaurant["description"],
-        body: restaurant["body"].delete('\n')
+        body: restaurant["body"].delete('\n'),
         website: website
       )
       price += 1
