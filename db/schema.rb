@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_24_070226) do
+ActiveRecord::Schema.define(version: 2021_09_26_064931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2021_09_24_070226) do
     t.float "average_rating"
     t.float "google_rating"
     t.integer "pricing"
+    t.string "website"
   end
 
   create_table "reviews", force: :cascade do |t|

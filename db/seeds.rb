@@ -1,6 +1,8 @@
 require 'open-uri'
 
 puts "Clearing restaurants db"
+Response.destroy_all
+ChompSession.destroy_all
 Restaurant.destroy_all
 puts "Seeding db with restaurants"
 apikey = "ytxKCmRhV2kPY8fEpKXN63SuuQSkVmPw"
@@ -39,6 +41,12 @@ cuisine_arr.each do |cuisine|
         opening_time = time.first["openTime"]
         closing_time = time.first["closeTime"]
       end
+
+      if restaurant["officialWebsite"].empty?
+        website = "https://www.google.com/search?q=#{restaurant['name']}"
+      else
+        website = restaurant["officialWebsite"]
+      end
       # take the first thumbnail provided, if any
       restaurant_instance = Restaurant.new(
         name: restaurant["name"],
@@ -49,7 +57,8 @@ cuisine_arr.each do |cuisine|
         closing_time: closing_time,
         google_rating: restaurant["rating"],
         cuisine: restaurant["cuisine"],
-        pricing: price
+        pricing: price,
+        website: website
       )
       price += 1
       # uuid = restaurant['thumbnails'].first['uuid'] if !restaurant['thumbnails'].empty? && !restaurant['thumbnails'].first['uuid'].empty?

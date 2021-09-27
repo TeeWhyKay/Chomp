@@ -6,7 +6,7 @@ Chomping is in progress...
 You'll have to wait less than <%= pluralize(@chomp_session.session_expiry, 'hour') %> before a decision is made for you.
 Meanwhile, go do whatever you want! Who knows, you might even come up with a decision before us... unless you can't decide.
 
-Meetup details:
+<%= @chomp_session.name %> by <%= @chomp_session.user.username %>
 Date: <%= @chomp_session.date %>
 Time: <%= @chomp_session.time.strftime("%I:%M %p") %>
 
