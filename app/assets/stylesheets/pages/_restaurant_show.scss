@@ -62,6 +62,17 @@
   overflow: hidden;
 }
 
+.restaurant-image-container {
+  i {
+    position: absolute;
+    right: 30px;
+    top: 25px;
+    color: white;
+    font-size: 25px;
+  }
+  position: relative;
+}
+
 .card-header {
   background-color: white;
   border-bottom: none;

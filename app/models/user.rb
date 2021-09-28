@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  acts_as_favoritor
   after_create :send_email
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

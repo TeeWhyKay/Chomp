@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # test
-  resources :restaurants, only: %i[index show] do
+  resources :restaurants, only: :show do
+    member do
+      post 'toggle_favorite'
+    end
     resources :reviews, only: %i[create update]
   end
   

@@ -47,6 +47,9 @@ gem 'pexels'
 # geocoder for geocoding models
 gem 'geocoder'
 
+# act_as_favoritor for favouriting restaurants
+gem 'acts_as_favoritor'
+
 # pgsearch for full text search
 gem 'pg_search'
 

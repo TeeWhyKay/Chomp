@@ -13,8 +13,18 @@
             <%= @restaurant.opening_time.strftime("%I:%M %p") %> ~ <%= @restaurant.closing_time.strftime("%I:%M %p") %>
           </p>
           <%# <%= image_tag @restaurant.photo_url, id: "restaurant-image", class: "center-cropped mb-3" %>
-          <%= image_tag "https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=130", id: "restaurant-image", class: "center-cropped mb-3" %>
+          <div class="restaurant-image-container">
+            <%= image_tag "https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=130", id: "restaurant-image", class: "center-cropped mb-3" %>
+            <%= link_to toggle_favorite_restaurant_path, method: :post do %>
 
+              <% if current_user.favorited?(@restaurant) %>
+                <i class="fas fa-kiss-wink-heart animate__animated animate__rubberBand"></i>
+              <% else %>
+                <i class="far fa-meh-blank animate__animated animate__rubberBand"></i>
+              <% end %>
+
+            <% end %>
+          </div>
           <p id="average-review" class="text-left">
             <% @restaurant.google_rating.to_i.times do |star| %>
               <i class="fas fa-star"></i>

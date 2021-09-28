@@ -1,4 +1,5 @@
 class Restaurant < ApplicationRecord
+  acts_as_favoritable
   has_many :reviews, dependent: :destroy
   has_many :chomp_sessions
   has_one_attached :image
