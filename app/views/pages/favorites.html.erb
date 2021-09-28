@@ -3,7 +3,9 @@
     <p>You do not have any restaurants in your favourites list</p>
   <% else %>
     <% @favorites.each do |favorite| %>
-      <%= favorite.favoritor_type %>
+      <div>
+        <%= favorite.name %>
+      </div>
     <% end %>
   <% end %>
 </div>

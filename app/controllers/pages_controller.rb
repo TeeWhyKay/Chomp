@@ -16,6 +16,6 @@ class PagesController < ApplicationController
   end
 
   def favorites
-    @favorites = current_user.all_favorites
+    @favorites = current_user.favorited_by_type('Restaurant')
   end
 end
