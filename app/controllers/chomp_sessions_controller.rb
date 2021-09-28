@@ -3,6 +3,11 @@ class ChompSessionsController < ApplicationController
   before_action :set_chomp_session, only: %i[edit update show]
   before_action :set_chomp_session_specific, only: %i[success result]
 
+  def dashboard
+    @chomp_sessions = ChompSession.where(user: current_user).order(status: :desc, date: :asc)
+    @responses = Response.where(user: current_user)
+  end
+
   def new
     @chomp_session = ChompSession.new
   end
