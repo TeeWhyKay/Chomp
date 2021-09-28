@@ -3,12 +3,12 @@
     <%= hidden_field_tag 'location', 'none'%>
     <% if response.budget %>
       <%= f.input :budget,
-                  collection: [5, 10, 25, 50], selected: response.budget ,
-                  required: true %>
+                  collection: [5, 10, 25, 50], selected: response.budget,
+                  include_blank: false, include_hidden: false %>
     <% else %>
       <%= f.input :budget,
-                  collection: [5, 10, 25, 50], selected: 5 ,
-                  required: true %>
+                  collection: [5, 10, 25, 50], selected: 5,
+                  include_blank: false, include_hidden: false %>
     <% end %>
     <label for="response_location">Location *</label>
     <div class="search-form-control form-group">
