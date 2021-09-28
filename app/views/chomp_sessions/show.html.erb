@@ -2,7 +2,8 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-8">
       <div class="form-login">
-        <h1 class="mb-3">Input Preferences</h1>
+        <h1 class="mb-3">Input Preferences</h1> 
+        <%= render "timer" %>
         <%= render "shared/meetup_details" %>
         <%= render "email_notification_notice" %>
         <%= render partial: "responses/form", locals: {chomp_session: @chomp_session, response: @response} %>
@@ -10,3 +11,5 @@
     </div>
   </div>
 </div>
+
+
