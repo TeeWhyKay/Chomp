@@ -3,7 +3,7 @@
                   insert_in_list_target: "form",
                   action: 'submit->insert-in-list#send'
                 }) do |f| %>
-  <%= f.input :rating, collection: [['1 - Blegh!', 1], ['2 - Below Average', 2], ['3 - Alright', 3], ['4 - Not Bad', 4], ['5 - Amazing!', 5]] %>
+  <%= f.input :rating, collection: [['1 - Blegh!', 1], ['2 - Below Average', 2], ['3 - Alright', 3], ['4 - Not Bad', 4], ['5 - Amazing!', 5]], selected: 3 %>
   <%= f.input :title, as: :string %>
   <%= f.input :content, as: :text %>
   <%= f.button :submit , class: "btn btn-primary btn-block"%>
