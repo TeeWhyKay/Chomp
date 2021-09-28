@@ -1,6 +1,6 @@
 <div class="timer">
   <p class="time-desc time-desc-title">
-  <span><%= ((@chomp_session.updated_at + 24.hour - Time.now)/3600).round %>H
-  <%= ((@chomp_session.updated_at + 24.hour - Time.now)% 3600 /60).round %>Min</span> before poll closes</p>
+  <span><%= ((@chomp_session.updated_at + @chomp_session.session_expiry.hour - Time.now)/3600).floor %>H
+  <%= ((@chomp_session.updated_at + @chomp_session.session_expiry.hour - Time.now)% 3600 /60).floor %>Min</span> before poll closes</p>
   <div id="clock"></div>
 </div>
