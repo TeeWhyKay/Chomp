@@ -32,7 +32,8 @@ gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'turbolinks_render'
-gem 'postmark-rails'
+gem 'omniauth-google-oauth2'
+gem 'omniauth'
 
 # Sidekiq
 gem 'sidekiq'
@@ -70,6 +71,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener'
+  gem 'dotenv'
 end
 
 group :test do

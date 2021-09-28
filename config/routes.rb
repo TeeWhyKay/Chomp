@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
     resources :reviews, only: %i[create update]
   end
-  
+
   get 'dashboard', to: 'chomp_sessions#dashboard'
   resources :chomp_sessions, only: %i[new create edit update]
   resources :chomp_sessions, only: :show do

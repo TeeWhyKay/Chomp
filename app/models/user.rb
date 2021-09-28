@@ -8,9 +8,12 @@ class User < ApplicationRecord
   has_many :chomp_sessions, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[github google_oauth2]
 
   def send_email
     UserMailer.with(user: self).welcome.deliver_later
   end
+
+
 end
