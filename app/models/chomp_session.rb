@@ -3,7 +3,7 @@ class ChompSession < ApplicationRecord
   generate_public_uid generator: PublicUid::Generators::NumberRandom.new(UID_RANGE)
 
   def self.find_puid(param)
-    find_by! public_uid: param.split('-').first
+    find_by public_uid: param.split('-').first
   end
 
   def to_param

@@ -41,3 +41,6 @@ yarn-debug.log*
 *.swp
 .DS_Store
 .env*
+
+# ignore dump.rdb
+dump.rdb
