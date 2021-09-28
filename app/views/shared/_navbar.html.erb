@@ -1,10 +1,10 @@
 <% if current_page?(controller: '/pages', action: 'home') %>
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" id="home-navbar">
+<div class="navbar navbar-expand-sm navbar-dark navbar-lewagon" id="home-navbar">
 <% else %>
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
 <% end %>
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://res.cloudinary.com/du5rqng8z/image/upload/v1632547642/letschomp/logo-horizontal-Tred-Blight_aiksfd.svg", alt: "chomp logo" %>
+    <%= image_tag "https://res.cloudinary.com/du5rqng8z/image/upload/v1632547642/letschomp/logo-horizontal-Tred-Blight_aiksfd.svg", alt: "chomp logo", id: "chomp-logo-shadow" %>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,7 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link mr-2" %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link btn mr-2" %>
         </li>
         <li class="nav-item">
           <%= link_to "Sign Up", new_user_registration_path, class: "nav-link btn bg-white text-primary" %>
