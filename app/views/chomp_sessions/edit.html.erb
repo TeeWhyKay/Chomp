@@ -3,6 +3,7 @@
     <div class="col-12 col-lg-8">
       <div class="form-login">
         <h2 class="mb-3">Edit Session</h2>
+          <%= render "shared/meetup_details" %>
           <%= render partial: "form", locals: {chomp_session: @chomp_session} %>
       </div>
     </div>

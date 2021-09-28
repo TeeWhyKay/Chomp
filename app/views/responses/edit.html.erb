@@ -4,6 +4,7 @@
       <div class="form-login">
         <h1 class="mb-3">Edit Preferences</h1>
           <%= render "shared/meetup_details" %>
+          <%= render "chomp_sessions/email_notification_notice" %>
           <%= render partial: "form", locals: {chomp_session: @chomp_session, response: @response} %>
       </div>
     </div>
