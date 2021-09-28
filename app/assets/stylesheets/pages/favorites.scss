@@ -1,7 +1,21 @@
-.container-favorites {
+.favorites-card {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
   p {
-    margin: 2rem;
+    font-size: 1rem;
   }
   font-family: $chomp-font-black;
-  font-size: 30px;
+  margin: 2rem;
+}
+
+.img-card {
+  justify-content: flex-end;
+  height: 200px;
+  weight: 200px;
 }
