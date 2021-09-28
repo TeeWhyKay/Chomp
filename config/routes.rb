@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
     resources :reviews, only: %i[create update]
   end
-  
+
   get 'dashboard', to: 'chomp_sessions#dashboard'
   resources :chomp_sessions, only: %i[new create edit update]
   resources :chomp_sessions, only: :show do
@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   post '/reverse_geocode', to: 'responses#reverse_geocode', defaults: { format: 'json' }
 
+  get '/favorites', to: 'pages#favorites'
+  
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do

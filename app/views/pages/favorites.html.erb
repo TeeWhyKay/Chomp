@@ -1,0 +1,9 @@
+<div class="container-favorites">
+  <% if current_user.all_favorites.empty? %>
+    <p>You do not have any restaurants in your favourites list</p>
+  <% else %>
+    <% @favorites.each do |favorite| %>
+      <%= favorite.favoritor_type %>
+    <% end %>
+  <% end %>
+</div>

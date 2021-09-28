@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
-  
+
   def home
     if params["chomped"]
       # check if chomp session is found
@@ -13,5 +13,9 @@ class PagesController < ApplicationController
         redirect_to root_path, notice: "Session not found"
       end
     end
+  end
+
+  def favorites
+    @favorites = current_user.all_favorites
   end
 end
