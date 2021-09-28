@@ -1,0 +1,21 @@
+<div class="container mb-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="form-login">
+        <h2 class="mb-3">My Sessions</h2>
+          <%= render 'my_sessions_table' %>
+        <h2 class="mb-3">My Responses</h2>
+          <%= render 'my_responses_table' %>
+        <div class="legend-dashboard mt-5">
+          <h5>Legend</h5>
+          <i class="fas fa-square" style= "color: #FDF4D6"></i> - Currently Active<br>
+          <i class="fas fa-check-square"></i> - Result has been generated<br>
+          <i class="fas fa-edit"></i> - Edit<br>
+          <i class="fas fa-link"></i> - Link to Previously Generated Result<br>
+          <i class="far fa-pause-circle"></i> - Generate Result<br>
+          <i class="fas fa-users"></i> - Number of Responses
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

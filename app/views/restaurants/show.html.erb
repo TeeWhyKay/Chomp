@@ -38,16 +38,32 @@
           </p>
 
           <p id="restaurant-description" class="text-left"><%=h truncate(@restaurant.description, length: 150) %></p>
-          <h3>Map</h3>
-          <%= render "map" %>
 
+          <div id="accordion" class="mb-5">
+            <div class="card rounded-lg">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed mb-0" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <h2 class="map-heading success-body mb-0"><i class="fas fa-angle-double-down"></i> Map <i class="fas fa-angle-double-down"></i></h2>
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body hidden-card">
+                  <%= render "map" %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div data-controller="insert-in-list" data-insert-in-list-position-value="afterbegin">
-            <%= render partial: "reviews/form", locals: { restaurant: @restaurant, review: @review } %>
-            <%= render partial: "restaurants/review", locals: { restaurant: @restaurant } %>
+          <%= render partial: "reviews/form", locals: { restaurant: @restaurant, review: @review } %>
+          <%= render partial: "restaurants/review", locals: { restaurant: @restaurant } %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+

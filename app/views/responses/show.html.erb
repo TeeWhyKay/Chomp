@@ -16,9 +16,11 @@
           </button>
         </div>
         <p>Made a mistake? Have no fear! Edit your preferences again.</p>
+        <% if user_signed_in? %>
         <div class="d-flex justify-content-center">
           <%= link_to "Edit preferences", edit_response_path(@response), class: "btn btn-primary btn-lg" %>
         </div>
+        <% end %>
         <p style="font-size:0.7rem">*Note: You will need to sign in/up before you can edit your response*</p>
         <% if @chomp_session.user == current_user %>
           <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModalCenter">
