@@ -97,12 +97,22 @@ puts "Feel like a god!"
 puts "Destroying Chomp sessions"
 ChompSession.destroy_all
 puts "Seeding Chomp sessions"
-5.times do
+3.times do
   ChompSession.create(
     name: ['Somerset Dinner', 'EOY CosFest', 'Brunch@Yishun'].sample,
     date: Date.today,
     time: Time.now,
-    status: ["pending", "closed"].sample,
+    status: "closed",
+    user: User.second,
+    restaurant: Restaurant.all.sample
+  )
+end
+2.times do
+  ChompSession.create(
+    name: ['Somerset Dinner', 'EOY CosFest', 'Brunch@Yishun'].sample,
+    date: Date.today,
+    time: Time.now,
+    status: "pending",
     user: User.second
   )
 end
