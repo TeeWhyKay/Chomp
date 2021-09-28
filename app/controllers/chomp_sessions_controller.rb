@@ -1,3 +1,4 @@
+require 'sidekiq/api'
 class ChompSessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
   before_action :set_chomp_session, only: %i[edit update show]
@@ -17,6 +18,9 @@ class ChompSessionsController < ApplicationController
     @chomp_session.user = current_user
     @chomp_session.name = "Your Meeting Created on #{Time.now}" if @chomp_session.name == ""
     if @chomp_session.save
+      job = GenerateRestaurantJob.set(wait_until: @chomp_session.session_expiry.hours.from_now).perform_later(@chomp_session.id)
+      @chomp_session.sidekiq_jid = job.provider_job_id
+      @chomp_session.save
       ChompSessionMailer.with(chomp_session: @chomp_session).create_chomp.deliver_later
       redirect_to chomp_session_success_url(@chomp_session)
     else
@@ -51,6 +55,8 @@ class ChompSessionsController < ApplicationController
       @chomp_session.restaurant = @restaurant
       @chomp_session.status = "closed"
       @chomp_session.save
+      # send worker to cancel job
+      ChompsessionCancellationJob.perform_later(@chomp_session.id)
     else
       @restaurant = @chomp_session.restaurant
     end
