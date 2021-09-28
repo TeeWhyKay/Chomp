@@ -10,6 +10,12 @@ class GenerateRestaurantJob < ApplicationJob
       chomp_session.status = "closed"
       chomp_session.save
     end
+    responses_arr = chomp_session.responses
+    responses_arr.each do |response|
+      next if response.user.nil?
+
+      RestaurantResultMailer.with(restaurant: restaurant, chomp_session: chomp_session, response: response).result_release.deliver_later
+    end
   end
 
   private
