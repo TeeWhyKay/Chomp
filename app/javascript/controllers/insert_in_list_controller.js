@@ -2,7 +2,7 @@ import { Controller } from "stimulus";
 import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ['items', 'form'];
+  static targets = ['items', 'form', 'zeroReviewsNotice'];
   static values = { position: String }
 
   send(event) {
@@ -17,6 +17,17 @@ export default class extends Controller {
       .then((data) => {
         if (data.inserted_item) {
           this.itemsTarget.insertAdjacentHTML(this.positionValue, data.inserted_item);
+
+          // Update review count
+          const reviewCount = document.querySelector("#review-count");
+          const count = parseInt(reviewCount.innerText, 10) + 1;
+          reviewCount.innerText = count;
+
+          // Remove 0 reviews notice msg
+          const zeroReviewsNotice = document.querySelector("#zero-reviews-notice");
+          if (zeroReviewsNotice) {
+            this.zeroReviewsNoticeTarget.outerHTML = ""
+          }
         }
         this.formTarget.outerHTML = data.form;
       })
