@@ -6,7 +6,7 @@ class ChompSessionsController < ApplicationController
 
   def dashboard
     @chomp_sessions = ChompSession.where(user: current_user).order(status: :desc, date: :asc)
-    @responses = Response.where(user: current_user)
+    @responses = Response.where(user: current_user).order(created_at: :desc)
   end
 
   def new
