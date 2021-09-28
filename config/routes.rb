@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :restaurants, only: %i[index show] do
     resources :reviews, only: %i[create update]
   end
-
+  
+  get 'dashboard', to: 'chomp_sessions#dashboard'
   resources :chomp_sessions, only: %i[new create edit update]
   resources :chomp_sessions, only: :show do
     resources :responses, only: %i[create show update]
