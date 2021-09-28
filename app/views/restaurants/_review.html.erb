@@ -1,7 +1,7 @@
 <div id="reviews">
   <div data-insert-in-list-target="items">
     <% if restaurant.reviews.blank? %>
-      <p data-insert-in-list-target="zeroReviewsNotice" class="m-4">Be the first to leave a review for <%= restaurant.name %></p>
+      <p data-insert-in-list-target="zeroReviewsNotice" class="m-4" id="zero-reviews-notice">Be the first to leave a review for <%= restaurant.name %></p>
     <% else %>
       <% restaurant.reviews.reverse.each do |review| %>
         <div data-controller="edit-review" data-edit-review-target="card">

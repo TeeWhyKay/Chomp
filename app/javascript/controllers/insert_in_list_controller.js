@@ -24,7 +24,8 @@ export default class extends Controller {
           reviewCount.innerText = count;
 
           // Remove 0 reviews notice msg
-          if (this.zeroReviewsNoticeTarget) {
+          const zeroReviewsNotice = document.querySelector("#zero-reviews-notice");
+          if (zeroReviewsNotice) {
             this.zeroReviewsNoticeTarget.outerHTML = ""
           }
         }
