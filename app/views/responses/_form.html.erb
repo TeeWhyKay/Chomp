@@ -2,7 +2,7 @@
   <%= simple_form_for([chomp_session, response], remote: true) do |f| %>
     <%= hidden_field_tag 'location', 'none'%>
     <%= f.input :budget,
-                collection: [5, 10, 15, 20, 25], selected: 5,
+                collection: [5, 10, 25, 50, 100], selected: 5,
                 required: true %>
     <label for="response_location">Location *</label>
     <div class="search-form-control form-group">
