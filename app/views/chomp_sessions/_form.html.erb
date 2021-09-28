@@ -1,4 +1,4 @@
-<%= simple_form_for(chomp_session, remote: true) do |f| %>
+<%= simple_form_for(chomp_session) do |f| %>
   <%= f.input :name, label:"Meeting Name", required: false,
     placeholder: "I can't decide on a name on #{Time.now}",
     input_html: { value: f.object.name || [
