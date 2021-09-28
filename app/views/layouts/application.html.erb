@@ -14,11 +14,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <% if current_page?(controller: 'pages', action: 'home') %>
-  <body id="home-body">
-  <% else %>
+  
   <body>
-  <% end %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
