@@ -4,17 +4,16 @@
 
 @font-face {
   font-family: 'loveloline_bold';
-  src: url('lovelo-linebold-webfont.woff2') format('woff2'),
-  url('lovelo-linebold-webfont.woff') format('woff');
+  src: asset-url('lovelo-linebold-webfont.woff2') format('woff2'),
+  asset-url('lovelo-linebold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
   font-family: 'loveloline_light';
-  src: url('lovelo-linelight-webfont.woff2') format('woff2'),
-  url('lovelo-linelight-webfont.woff') format('woff');
+  src: asset-url('lovelo-linelight-webfont.woff2') format('woff2'),
+  asset-url('lovelo-linelight-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
@@ -22,8 +21,8 @@
 
 @font-face {
   font-family: 'loveloblack';
-  src: url('lovelo-black-webfont.woff2') format('woff2'),
-  url('lovelo-black-webfont.woff') format('woff');
+  src: asset-url('lovelo-black-webfont.woff2') format('woff2'),
+  asset-url('lovelo-black-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
