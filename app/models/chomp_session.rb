@@ -25,7 +25,7 @@ class ChompSession < ApplicationRecord
   end
 
   def time_cannot_be_in_the_past
-    if date < Date.today && time.strftime("%H:%M").to_time < Time.now.strftime("%H:%M").to_time
+    if date == Date.today && time.strftime("%H:%M").to_time < Time.now.strftime("%H:%M").to_time
       errors.add(:time, "can't be in the past")
     end
   end
