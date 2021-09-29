@@ -3,18 +3,22 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-8">
       <div class="form-login">
-        <ul class="list-inline tabs-underlined">
+        <div class="tabs-underlined justify-content-center">
+          <a href="#" class="tab-underlined active">Account Settings</a>
+          <a href="#" class="tab-underlined">My Preferences</a>
+        </div>
+        <%# <ul class="list-inline tabs-underlined">
           <li>
             <a href="#" class="tab-underlined active">Account Settings</a>
           </li>
           <li>
             <a href="#" class="tab-underlined">My Preferences</a>
           </li>
-        </ul>
+        </ul> %>
 
         <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, remote: true) do |f| %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
 
           <div class="form-inputs">

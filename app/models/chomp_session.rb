@@ -12,7 +12,7 @@ class ChompSession < ApplicationRecord
 
   belongs_to :user
   belongs_to :restaurant, optional: true
-  has_many :responses
+  has_many :responses, dependent: :destroy
   validates :name, :date, :time, presence: true
   validate :date_cannot_be_in_the_past, :time_cannot_be_in_the_past, :invitees_optional, :expiry_time_validation
   attribute :status, :string, default: "pending"

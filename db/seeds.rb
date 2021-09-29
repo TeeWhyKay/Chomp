@@ -121,7 +121,7 @@ puts "Seeding ChompSessions completed, but will only work if you created a user 
 # chompSession for response_generation
 ykbday = ChompSession.create(
     name: "Yong kee's birthday",
-    date: Date.today,
+    date: Date.tomorrow,
     time: Time.now,
     status: "pending",
     user: User.second
