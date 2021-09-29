@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+         :omniauthable, omniauth_providers: [:google_oauth2]
+
   acts_as_favoritor
   after_create :send_email
   # Include default devise modules. Others available are:
@@ -7,10 +11,6 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :chomp_sessions, dependent: :destroy
   has_many :responses, dependent: :destroy
-
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:google_oauth2]
 
   def send_email
     UserMailer.with(user: self).welcome.deliver_later

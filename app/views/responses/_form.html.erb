@@ -1,5 +1,5 @@
 <div data-controller="selecting-cuisines">
-  <%= simple_form_for([chomp_session, response], remote: true) do |f| %>
+  <%= simple_form_for([chomp_session, response]) do |f| %>
     <%= hidden_field_tag 'location', 'none'%>
     <% if response.budget %>
       <%= f.input :budget,
@@ -20,7 +20,7 @@
       <a href="#" id="get_location"><i class="fas fa-map-marker-alt"></i></a>
     </div>
     <div id="cuisine-selections">
-      <%= f.input :cuisine,
+      <%= f.input :cuisine, label: "Preferred cuisine type(s)",
                   as: :check_boxes,
                   input_html: {
                     class: "tag-selector",

@@ -29,7 +29,7 @@
   bottom: 0;
   right: 0;
 
-  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.pexels.com/photos/5778894/pexels-photo-5778894.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3)), url('https://images.pexels.com/photos/5778894/pexels-photo-5778894.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
   background-position: center center;
   background-repeat:no-repeat;
   background-size:cover;
@@ -37,13 +37,6 @@
 
 .form-login {
   background-color: transparent;
-}
-
-#brand-title {
-  font-size: 64px;
-
-  // animation: tada; /* referring directly to the animation's @keyframe declaration */
-  // animation-duration: 1.5s; /* don't forget to set a duration! */
 }
 
 #brand-subtitle {
@@ -65,4 +58,12 @@
 
 #home-body {
   background-color: black;
+}
+
+#home-navbar {
+  background-color: transparent;
+
+  .nav-link, #navbarDropdown {
+    color: white;
+  }
 }
