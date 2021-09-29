@@ -4,8 +4,12 @@ class GenerateRestaurantJob < ApplicationJob
   def perform(chomp_session_id)
     chomp_session = ChompSession.find(chomp_session_id)
     if chomp_session.status == "pending"
-      restaurant = generate_restaurant(chomp_session).first
-      restaurant = Restaurant.all.sample if restaurant.nil?
+      if chomp_session.responses == []
+        restaurant = Restaurant.all.sample
+      else
+        restaurant = generate_restaurant(chomp_session).first 
+        restaurant = Restaurant.all.sample if restaurant.nil?
+      end
       chomp_session.restaurant = restaurant
       chomp_session.status = "closed"
       chomp_session.save
@@ -29,7 +33,7 @@ class GenerateRestaurantJob < ApplicationJob
     # Get middleground of all location responses and get the highest rated restaurant with the specified cuisine.
     responses = chomp_session.responses
     lowest_budget = responses.minimum('budget')
-    restaurant_pricing = determine_pricing(lowest_budget)
+    restaurant_pricing = determine_pricing(lowest_budget.to_i)
 
     cuisine_arr = []
     responses.each do |response|
