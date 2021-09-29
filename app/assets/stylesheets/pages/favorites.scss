@@ -3,6 +3,8 @@
     font-size: 3rem;
   }
 
+
+
   h3 {
     font-family: $chomp-font-black;
     font-size: 2rem;
@@ -14,16 +16,15 @@
     font-size: 1rem;
   }
   margin: 2rem;
-}
-
-.card-product {
-  flex-wrap: wrap;
+  flex: 0 0 100%;
+  max-width: 100%;
 }
 
 .img-card {
-  height: 200px;
-  weight: 200px;
-  padding-top: 30px;
+  img {
+    height: 300px;
+  }
+  align-items: center;
 }
 
 .fa-star {
