@@ -3,19 +3,6 @@
   <div class="row justify-content-center">
     <div class="col-12 col-lg-8">
       <div class="form-login">
-        <div class="tabs-underlined justify-content-center">
-          <a href="#" class="tab-underlined active">Account Settings</a>
-          <a href="#" class="tab-underlined">My Preferences</a>
-        </div>
-        <%# <ul class="list-inline tabs-underlined">
-          <li>
-            <a href="#" class="tab-underlined active">Account Settings</a>
-          </li>
-          <li>
-            <a href="#" class="tab-underlined">My Preferences</a>
-          </li>
-        </ul> %>
-
         <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -48,8 +35,7 @@
           </div>
         <% end %>
           <%= link_to "<< Go Back", :back %>
-        <h3 class="mt-3">Cancel my account</h3>
-        <p>Unhappy?</p>
+        <h3 class="mt-3">Unhappy? Cancel my account</h3>
         <div class="mb-3">
           <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ,class: "btn btn-danger btn-sm rounded"%>
         </div>
