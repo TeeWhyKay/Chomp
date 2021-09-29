@@ -73,10 +73,15 @@ class ChompSessionsController < ApplicationController
     redirect_to restaurant_path(@restaurant)
   end
 
+  def loading
+    sleep 10
+    redirect_to restaurant_path(@chomp_session.restaurant)
+  end
+
   private
 
   def chomp_params
-    params.require(:chomp_session).permit(:name, :date, :time, :session_expiry)
+    params.require(:chomp_session).permit(:name, :date, :time, :session_expiry, :invitees)
   end
 
   def set_chomp_session

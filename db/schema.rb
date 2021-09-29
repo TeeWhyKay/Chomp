@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_27_072812) do
+ActiveRecord::Schema.define(version: 2021_09_29_042213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_09_27_072812) do
     t.datetime "updated_at", precision: 6, null: false
     t.time "time"
     t.string "sidekiq_jid"
+    t.integer "invitees"
     t.index ["public_uid"], name: "index_chomp_sessions_on_public_uid", unique: true
     t.index ["restaurant_id"], name: "index_chomp_sessions_on_restaurant_id"
     t.index ["user_id"], name: "index_chomp_sessions_on_user_id"
