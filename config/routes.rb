@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # test
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
     resources :reviews, only: %i[create update]
   end
-  
+
   get 'dashboard', to: 'chomp_sessions#dashboard'
   resources :chomp_sessions, only: %i[new create edit update]
   resources :chomp_sessions, only: :show do
