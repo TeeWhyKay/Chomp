@@ -4,7 +4,7 @@
       <div class="form-login">
         <h2>Log in</h2>
 
-        <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
+        <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post %>
 
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
           <div class="form-inputs">
