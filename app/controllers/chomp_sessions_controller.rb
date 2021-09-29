@@ -33,6 +33,8 @@ class ChompSessionsController < ApplicationController
   def update
     @chomp_session.update(chomp_params)
     if @chomp_session.save
+      job = Sidekiq::ScheduledSet.new.find_job(@chomp_session.sidekiq_jid)
+      job.reschedule(Time.now + @chomp_session.session_expiry.hours)
       ChompSessionMailer.with(chomp_session: @chomp_session).update_chomp.deliver_later
       redirect_to chomp_session_success_url(@chomp_session)
     else
