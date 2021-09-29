@@ -33,6 +33,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'turbolinks_render'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 # Sidekiq
 gem 'sidekiq'
