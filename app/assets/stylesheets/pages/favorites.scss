@@ -4,18 +4,28 @@
   }
 
   h3 {
+    font-family: $chomp-font-black;
     font-size: 2rem;
+    text-decoration: none !important;
+    cursor: pointer;
   }
 
   p {
     font-size: 1rem;
   }
-  font-family: $chomp-font-black;
   margin: 2rem;
 }
 
+.card-product {
+  flex-wrap: wrap;
+}
+
 .img-card {
-  justify-content: flex-end;
   height: 200px;
   weight: 200px;
+  padding-top: 30px;
+}
+
+.fa-star {
+  color: $sunset-red
 }
