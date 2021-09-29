@@ -17,9 +17,9 @@
     <div class="nav-item dropdown">
       <%= link_to current_user.email, "#", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-        <%= link_to "My Favourites", favorites_path, class: "dropdown-item" %>
         <%= link_to "Edit my details", edit_user_registration_path, class: "dropdown-item" %>
         <%= link_to "My Dashboard", dashboard_path, class: "dropdown-item" %>
+        <%= link_to "My Favourites", favorites_path, class: "dropdown-item" %>
         <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
       </div>
     </div>
