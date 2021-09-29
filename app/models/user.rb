@@ -12,9 +12,9 @@ class User < ApplicationRecord
   has_many :chomp_sessions, dependent: :destroy
   has_many :responses, dependent: :destroy
 
-  def send_email
-    UserMailer.with(user: self).welcome.deliver_later
-  end
+  # def send_email
+  #   UserMailer.with(user: self).welcome.deliver_later
+  # end
 
   def self.from_omniauth(auth)
     user = User.find_by(email: auth.info.email)
