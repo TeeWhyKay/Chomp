@@ -6,7 +6,7 @@ class ChompSessionsController < ApplicationController
 
   def dashboard
     @chomp_sessions = ChompSession.where(user: current_user).order(status: :desc, date: :asc)
-    @responses = Response.where(user: current_user)
+    @responses = Response.where(user: current_user).order(created_at: :desc)
   end
 
   def new
@@ -33,6 +33,8 @@ class ChompSessionsController < ApplicationController
   def update
     @chomp_session.update(chomp_params)
     if @chomp_session.save
+      job = Sidekiq::ScheduledSet.new.find_job(@chomp_session.sidekiq_jid)
+      job.reschedule(Time.now + @chomp_session.session_expiry.hours)
       ChompSessionMailer.with(chomp_session: @chomp_session).update_chomp.deliver_later
       redirect_to chomp_session_success_url(@chomp_session)
     else
@@ -74,7 +76,7 @@ class ChompSessionsController < ApplicationController
   private
 
   def chomp_params
-    params.require(:chomp_session).permit(:name, :date, :time, :session_expiry)
+    params.require(:chomp_session).permit(:name, :date, :time, :session_expiry, :invitees)
   end
 
   def set_chomp_session
@@ -92,7 +94,7 @@ class ChompSessionsController < ApplicationController
     # Get middleground of all location responses and get the highest rated restaurant with the specified cuisine.
     responses = chomp_session.responses
     lowest_budget = responses.minimum('budget')
-    restaurant_pricing = determine_pricing(lowest_budget)
+    restaurant_pricing = determine_pricing(lowest_budget.to_i)
 
     cuisine_arr = []
     responses.each do |response|

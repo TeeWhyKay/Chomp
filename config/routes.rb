@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :responses, only: [:edit]
-
+  
   get 'chomp_sessions/:chomp_session_id/result', to: 'chomp_sessions#result', as: 'chomp_session_result'
 
   post '/reverse_geocode', to: 'responses#reverse_geocode', defaults: { format: 'json' }
