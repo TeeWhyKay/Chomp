@@ -4,7 +4,9 @@
       <div class="form-login">
 
         <h1 class="success-header animate__animated animate__bounce">Group created</h1>
-        <p class="success-body">Congratulations! Your group has been created, share this link with you friends and get started on planning your next trip!</p>
+        <p class="success-body">Congratulations! Your group has been created. Share this link with you friends and get started on planning your upcoming meal!</p>
+
+        <%= render "shared/meetup_details" %>
 
         <div data-controller="clipboard" data-clipboard-success-content="Copied!" class="clipboard-form-control form-group mb-3">
           <input type="text" value="<%= chomp_session_url(@chomp_session) %>" data-clipboard-target="source" class="clipboard-text w-100 pl-2"/>
@@ -16,11 +18,9 @@
 
         <p>A confirmation email has been sent to <strong><%= current_user.email %></strong>. Please check your inbox/junk folder.</p>
 
-        <%= render "shared/meetup_details" %>
-
         <div class="d-flex align-items-center flex-column">
           <% if @chomp_session.user == current_user %>
-            <%= link_to "Submit my preferences", chomp_session_path(@chomp_session), class: "btn btn-primary btn-lg" %>
+            <%= link_to "Enter my food choices", chomp_session_path(@chomp_session), class: "btn btn-primary btn-lg" %>
             <%= link_to "Edit Chomp settings", edit_chomp_session_path(@chomp_session), class: "btn btn-info btn-lg" %>
           <% else %>
             <p class="success-body">You did not create this session!</p>

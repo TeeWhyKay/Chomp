@@ -4,11 +4,11 @@
     <div class="col-12 col-lg-8">
       <div class="form-login mx-auto text-center text-white">
         <%= image_tag "https://res.cloudinary.com/du5rqng8z/image/upload/v1632897252/letschomp/White_Brand_nxq04q.svg", alt: "chomp logo", id: "brand-title", class: "animate__animated animate__tada mb-2" %>
-        <p id="brand-subtitle">Can't decide what to eat?<br>Let Chomp decide for you</p>
+        <p id="brand-subtitle">Dunno where to eat?<br>Let us decide!</p>
         <%= link_to "Create a group & invite your friends", new_chomp_session_path, class: "btn btn-primary btn-block"%>
         <%= simple_form_for :chomp_session, url: root_path, method: :get do |f| %>
           <div id="home-form" class="search-form-control form-group d-flex align-items-center">
-            <input class="form-control text-center rounded-left" type="text" name="chomped" id="chomped" placeholder="Enter Session Code"/>
+            <input class="form-control text-center rounded-left" type="text" name="chomped" id="chomped" placeholder="Join session with code"/>
             <button name="button" type="submit" class="rounded-right mb-0"><i class="fas fa-arrow-right"></i></button>
           </div>
         <% end %>

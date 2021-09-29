@@ -19,7 +19,7 @@
             <% else %>
               <tr>
             <% end %>
-    
+
             <th scope="row"><%= chomp_session.public_uid %></th>
             <% if chomp_session.status == "pending" %>
               <td><%= chomp_session.name %>
@@ -34,11 +34,11 @@
                 <% end %>
               </td>
             <% end %>
-                
+
             <td><%= chomp_session.date.strftime("%e-%b-%y") %> <%= chomp_session.time.strftime("%I:%M %p") %></td>
             <td><%= Response.where(chomp_session: chomp_session).count %></td>
 
-            
+
             <% if chomp_session.status == "pending" %>
               <td><i class="far fa-pause-circle" class="btn btn-info btn-lg" data-toggle="modal" data-target="#generateFromDashboard<%= num %>"></i></td>
                 <!-- Modal -->
@@ -46,7 +46,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="generateFromDashboard<%= num %>Title">Generate Results</h5>
+                        <h5 class="modal-title" id="generateFromDashboard<%= num %>Title">Show me where to eat</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -65,13 +65,11 @@
             <% else %>
               <td><i class="fas fa-check-square"></i></td>
             <% end %>
-            
-        
+
+
             <% num += 1 %>
 
         <% end %>
         </tbody>
     </table>
 <% end %>
-
-
