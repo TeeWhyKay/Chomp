@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>My Favourites:</h1>
+  <div class="row favorites-card">
+    <% if current_user.all_favorites.empty? %>
+      <p>You do not have any restaurants in your favourites list</p>
+    <% else %>
+      <% @favorites.each do |favorite| %>
+        <div class="col-12 col-lg-6">
+          <img class="img-card w-100 mb-3 rounded-lg" src="https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=130" alt="Picture of restaurant">
+          <div class="card-product align-items-center mb-3">
+              <h3><%= link_to "#{favorite.name}", restaurant_url(favorite) %></h3>
+              <p><%= favorite.address.strip %></p>
+              <p><strong>Operating hours:</strong> <%= favorite.opening_time.strftime("%I:%M %p") %> ~ <%= favorite.closing_time.strftime("%I:%M %p") %><p>
+              <% unchecked_stars = (5 - favorite.google_rating).to_i %>
+              <% favorite.google_rating.to_i.times do |star| %>
+                <span class="fa fa-star checked"></span>
+              <% end %>
+              <%= favorite.google_rating %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

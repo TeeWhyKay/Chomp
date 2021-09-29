@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   post '/reverse_geocode', to: 'responses#reverse_geocode', defaults: { format: 'json' }
 
+  get '/favorites', to: 'pages#favorites'
+  
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do

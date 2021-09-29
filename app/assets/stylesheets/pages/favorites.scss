@@ -1,0 +1,32 @@
+.favorites-card {
+  h1 {
+    font-size: 3rem;
+  }
+
+
+
+  h3 {
+    font-family: $chomp-font-black;
+    font-size: 2rem;
+    text-decoration: none !important;
+    cursor: pointer;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+  margin: 2rem;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.img-card {
+  img {
+    height: 300px;
+  }
+  align-items: center;
+}
+
+.fa-star {
+  color: $sunset-red
+}
