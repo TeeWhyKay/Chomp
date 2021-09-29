@@ -94,7 +94,7 @@ class ChompSessionsController < ApplicationController
     # Get middleground of all location responses and get the highest rated restaurant with the specified cuisine.
     responses = chomp_session.responses
     lowest_budget = responses.minimum('budget')
-    restaurant_pricing = determine_pricing(lowest_budget)
+    restaurant_pricing = determine_pricing(lowest_budget.to_i)
 
     cuisine_arr = []
     responses.each do |response|
