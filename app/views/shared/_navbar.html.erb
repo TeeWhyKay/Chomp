@@ -3,9 +3,15 @@
 <% else %>
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
 <% end %>
+  <% if current_page?(controller: '/pages', action: 'home') %>
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://res.cloudinary.com/du5rqng8z/image/upload/v1632547642/letschomp/logo-horizontal-Tred-Blight_aiksfd.svg", alt: "chomp logo", id: "chomp-logo-shadow" %>
-    <% end %>
+    <%= image_tag "https://res.cloudinary.com/du5rqng8z/image/upload/v1632887027/letschomp/white_favicon_m2nwjd.svg", alt: "chomp logo" %>
+  <% end %>
+  <% else %>
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "https://res.cloudinary.com/du5rqng8z/image/upload/v1632887027/letschomp/orange_favicon_wagyin.svg", alt: "chomp logo" %>
+  <% end %>
+  <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

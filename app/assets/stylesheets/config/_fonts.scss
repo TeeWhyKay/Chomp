@@ -1,40 +1,15 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
-@font-face {
-  font-family: 'loveloline_bold';
-  src: asset-url('lovelo-linebold-webfont.woff2') format('woff2'),
-  asset-url('lovelo-linebold-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'loveloline_light';
-  src: asset-url('lovelo-linelight-webfont.woff2') format('woff2'),
-  asset-url('lovelo-linelight-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'loveloblack';
-  src: asset-url('lovelo-black-webfont.woff2') format('woff2'),
-  asset-url('lovelo-black-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-$chomp-font: "loveloline_bold";
-$chomp-font-light: "loveloline_light";
-$chomp-font-black: "loveloblack";
+$chomp-font: "Passion One";
+$chomp-font-black: "Open Sans";
 $chomp-subtitle-font: "Noto Serif", "Georgia", "serif";
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
+$body-font: "Open Sans", "Helvetica", "sans-serif";
 $headers-font: $chomp-font, "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
