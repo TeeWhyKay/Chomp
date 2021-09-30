@@ -1,4 +1,4 @@
-<%= simple_form_for(chomp_session) do |f| %>
+<%= simple_form_for(chomp_session, data: {controller: "chomp"}) do |f| %>
   <%= f.input :name, label:"Meeting Name", required: false,
     placeholder: "I can't decide on a name on #{Time.now}",
     input_html: { value: f.object.name || [
@@ -24,12 +24,13 @@
   <label class="integer optional mb-3" for="chomp_session_invitees">Number of Friends (optional)</label>
   <div class="flex-between">
     <a class="round-bordered incrementer minus" data-offset="-1">-</a>
-    <span id="counter" data-count="1">1</span>
-    <a href="#" class="round-bordered incrementer" data-offset="1" type="button">+</a>
+    <span id="counter" data-chomp-target="total">1</span>
+    <a href="#" class="round-bordered incrementer" type="button" data-action="click->chomp#increment">+</a>
   </div>
 
   <div class="form-group integer optional chomp_session_invitees">
     <input type="number" class="form-control numeric integer optional" placeholder="Optional" step="1" name="chomp_session[invitees]" id="chomp_session_invitees" value="1">
+    <p id="restriction" data-chomp-target="alert">In light of current...</p>
   </div>
 
 
@@ -39,6 +40,7 @@
 
 
 <script>
+
   var updateCounter = (counter, count) => {
     counter.dataset.count = count;
     counter.innerText = count;
@@ -59,10 +61,10 @@
       event.preventDefault();
       updateCounter(counter, count);
       updateInput(count);
-      
+
     } else {
       event.preventDefault();
-      alert("In light of current COVID-19 restrictions, dine-in has been capped at 2.");
+      // alert("In light of current COVID-19 restrictions, dine-in has been capped at 2.");
     }
   };
 
