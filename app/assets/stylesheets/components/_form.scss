@@ -15,7 +15,6 @@
   }
 }
 
-
 .flex-between {
   display: flex;
   justify-content: center;
@@ -52,11 +51,9 @@
   display: none;
 }
 
-
 .slider {
   width: 100%;
 }
-
 
 input[type="range"] {
   -webkit-appearance: none !important; /*Needed to reset default slider styles */
@@ -68,7 +65,6 @@ input[type="range"] {
   transition: all 0.3s ease;
 }
 
-
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none !important;
   width: 20px;
@@ -79,8 +75,6 @@ input[type="range"]::-webkit-slider-thumb {
 
 }
 
-
-
 #rangevalue {
   text-align: center;
   font-size: 18px;
@@ -90,7 +84,6 @@ input[type="range"]::-webkit-slider-thumb {
   width: 100%;
   color: #EA4B5C;
 }
-
 
 #response_budget {
   display: none;
