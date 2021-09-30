@@ -1,4 +1,5 @@
 require 'sidekiq/api'
+
 class ChompSessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
   before_action :set_chomp_session, only: %i[edit update show]
@@ -21,7 +22,6 @@ class ChompSessionsController < ApplicationController
       job = GenerateRestaurantJob.set(wait_until: @chomp_session.session_expiry.hours.from_now).perform_later(@chomp_session.id)
       @chomp_session.sidekiq_jid = job.provider_job_id
       @chomp_session.save
-      ChompSessionMailer.with(chomp_session: @chomp_session).create_chomp.deliver_later
       redirect_to chomp_session_success_url(@chomp_session)
     else
       render :new
@@ -35,7 +35,6 @@ class ChompSessionsController < ApplicationController
     if @chomp_session.save
       job = Sidekiq::ScheduledSet.new.find_job(@chomp_session.sidekiq_jid)
       job.reschedule(Time.now + @chomp_session.session_expiry.hours)
-      ChompSessionMailer.with(chomp_session: @chomp_session).update_chomp.deliver_later
       redirect_to chomp_session_success_url(@chomp_session)
     else
       render :new
