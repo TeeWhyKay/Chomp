@@ -2,15 +2,15 @@
   <%= simple_form_for([chomp_session, response]) do |f| %>
     <%= hidden_field_tag 'location', 'none'%>
     <% if response.budget %>
-      <%= f.input :budget,
+      <%= f.input :budget, label: "Budget ($)",
                   collection: [5, 10, 25, 50], selected: response.budget,
                   include_blank: false, include_hidden: false %>
     <% else %>
-      <%= f.input :budget,
+      <%= f.input :budget, label: "Budget ($)",
                   collection: [5, 10, 25, 50], selected: 5,
                   include_blank: false, include_hidden: false %>
     <% end %>
-    <label for="response_location">Location *</label>
+
     <div class="search-form-control form-group">
       <% if response.address %>
         <%= f.input :address, label: false, input_html: { value: response.address, onClick: "this.setSelectionRange(0, this.value.length)" } %>
@@ -19,8 +19,9 @@
       <% end %>
       <a href="#" id="get_location"><i class="fas fa-map-marker-alt"></i></a>
     </div>
+
     <div id="cuisine-selections">
-      <%= f.input :cuisine, label: "Preferred cuisine type(s)",
+      <%= f.input :cuisine, label: "Select preferred cuisines (optional)",
                   as: :check_boxes,
                   input_html: {
                     class: "tag-selector",
