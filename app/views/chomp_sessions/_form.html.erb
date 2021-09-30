@@ -20,12 +20,11 @@
     "Dogs > Cats"
     ].sample,
     id: "chomp-session-name",
-    data: { chomp_target: "name", action: "keyup->chomp#autofillTime" }
-    } %>
+    data: { chomp_target: "name", action: "keyup->chomp#autofillTime" },
+    onClick: "this.setSelectionRange(0, this.value.length)" } %>
   <%= f.input :date, html5: true, min: "#{Date.today.iso8601}"%>
   <%= f.input :time, html5: true, min: "#{Time.now.iso8601}", input_html: { id: "chomp-session-time", data: {chomp_target: "timeOutput"} } %>
   <%= f.input :session_expiry, label:"Link Expiry Time (Hours)", hint: "Set the time that you want your poll to be active" %>
-  <%# <%= f.input :invitees, label:"Number of Friends (optional)", placeholder:"Optional" %>
 
   <label class="integer optional mb-3" for="chomp_session_invitees">Number of Friends (optional)</label>
   <div class="flex-between">
@@ -38,11 +37,8 @@
     <input type="number" class="form-control numeric integer optional" placeholder="Optional" step="1" name="chomp_session[invitees]" id="chomp_session_invitees" value="1">
   </div>
 
-
-
   <%= f.submit value:"Create Invite Link", class:"btn btn-primary btn-block" %>
 <% end %>
-
 
 <script>
   var updateCounter = (counter, count) => {
