@@ -68,8 +68,9 @@ cuisine_arr.each do |cuisine|
       if !uuid_thumbnail.nil?
         url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid_thumbnail}?apikey=#{apikey}"
         file = URI.open(url_to_download_restaurant_img)
-        restaurant_instance.image.attach(io: file, filename: "#{restaurant["name"]}.png", content_type: 'image/png')
+        restaurant_instance.images.attach(io: file, filename: "#{restaurant["name"]}.png", content_type: 'image/png')
       end
+
       images = restaurant['images']
       images.each_with_index do |element, index|
         uuid = element['uuid']
@@ -80,7 +81,7 @@ cuisine_arr.each do |cuisine|
           .resize_to_limit(800, 800)
           .strip
           .call
-        restaurant_instance.image.attach(io: processed, filename: "#{restaurant["name"]}_#{index}.png", content_type: 'image/png')
+        restaurant_instance.images.attach(io: processed, filename: "#{restaurant["name"]}_#{index}.png", content_type: 'image/png')
       end
       # if uuid.nil?
       #   # photos = client.photos.search('restaurant', size: :small, orientation: :landscape)
