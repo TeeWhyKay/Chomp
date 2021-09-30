@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
 static targets = ["alert", "deduct", "total",
-                  "add", "warning", "submit", "inviteesinput"]
+  "add", "warning", "submit", "inviteesinput", "name", "timeOutput" ]
 
   connect() {
     console.log('connected!');
@@ -56,7 +56,8 @@ static targets = ["alert", "deduct", "total",
       this.warningTarget.classList.add('d-none');
       this.submitTarget.disabled = false;
     }
-  static targets = [ "name", "timeOutput" ]
+  }
+  // static targets = [ ];
 
   autofillTime(event) {
     console.log(this.nameTarget.value);
@@ -81,6 +82,5 @@ static targets = ["alert", "deduct", "total",
     } else if (thereIsSupper) {
       this.timeOutputTarget.value = "22:00:00"
     }
-
   }
 }
