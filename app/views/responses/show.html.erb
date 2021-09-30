@@ -21,13 +21,13 @@
           <%= link_to "Edit preferences", edit_response_path(@response), class: "btn btn-primary btn-lg" %>
         </div>
         <% end %>
-        <p style="font-size:0.7rem">*Note: You will need to sign in/up before you can edit your response*</p>
+        <p style="font-size:0.7rem;" class="text-info text-center">*Note: You will need to sign in/up before you can edit your preferences*</p>
         <% if @chomp_session.user == current_user %>
-          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModalCenter">
-            End the poll now and show me where to eat!
+          <button type="button" class="btn btn-info btn-lg text-white" data-toggle="modal" data-target="#exampleModalCenter">
+            Show me where to eat
           </button>
         <% end %>
-        <p style="text-align: center"> Number of Responses: <%= @chomp_session.responses.count %></p>
+        <p class="text-center text-info"> Number of Responses: <%= @chomp_session.responses.count %></p>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">End the poll now and show me where to eat!</h5>
+        <p class="modal-title" id="exampleModalCenterTitle">Show me where to eat</p>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

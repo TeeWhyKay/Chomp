@@ -46,14 +46,14 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="generateFromDashboard<%= num %>Title">End the poll now and show me where to eat!</h5>
+                <p class="modal-title" id="generateFromDashboard<%= num %>Title">Show me where to eat</p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                 There are currently only <%= pluralize(Response.where(chomp_session: chomp_session).count, "response") %>.<br>
-                Are you sure that you want to end the poll prematurely and generate your restaurant result?
+                Are you sure that you want to end the poll prematurely and see your restaurant result?
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-success btn-modal" data-dismiss="modal">No</button>
