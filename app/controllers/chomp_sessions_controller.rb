@@ -31,6 +31,7 @@ class ChompSessionsController < ApplicationController
   def edit; end
 
   def update
+    binding.pry
     @chomp_session.update(chomp_params)
     if @chomp_session.save
       job = Sidekiq::ScheduledSet.new.find_job(@chomp_session.sidekiq_jid)
