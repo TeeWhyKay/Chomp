@@ -37,4 +37,4 @@ document.addEventListener('turbolinks:load', () => {
 import "controllers"
 
 // for maps
-import mapboxgl from 'mapbox-gl';import { initTextParser } from '../plugins/init_text_parser';
+import mapboxgl from 'mapbox-gl';
