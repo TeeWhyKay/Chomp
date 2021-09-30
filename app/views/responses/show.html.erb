@@ -24,7 +24,7 @@
         <p style="font-size:0.7rem">*Note: You will need to sign in/up before you can edit your response*</p>
         <% if @chomp_session.user == current_user %>
           <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModalCenter">
-            Show me where to eat
+            End the poll now and show me where to eat!
           </button>
         <% end %>
         <p style="text-align: center"> Number of Responses: <%= @chomp_session.responses.count %></p>
@@ -40,7 +40,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Show me where to eat</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">End the poll now and show me where to eat!</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -49,8 +49,8 @@
         Are you sure that you want to end the poll prematurely and see your restaurant result?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-        <%= link_to "Yes", chomp_session_result_path, class: "btn btn-primary", id: "bootstrap-overrides" %>
+        <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+        <%= link_to "Yes", chomp_session_result_path(@chomp_session), class: "btn btn-primary", id: "bootstrap-overrides" %>
       </div>
     </div>
   </div>

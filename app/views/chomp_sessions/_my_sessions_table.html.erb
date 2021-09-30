@@ -1,75 +1,74 @@
 <% if @chomp_sessions == [] %>
-    <p class="success-body">You have not created any sessions yet<p>
+  <p class="success-body">You have not created any sessions yet<p>
 <% else %>
-    <table class="table table-light table-sm w-100">
-        <thead class="table-light">
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col"><i class="far fa-clock"></th>
-            <th scope="col"><i class="fas fa-users"></i></th>
-            <th scope="col"><i class="fas fa-pencil-ruler"></i></th>
-            </tr>
-        </thead>
-        <tbody>
-        <% num = 1 %>
-        <% @chomp_sessions.each do |chomp_session| %>
-            <% if chomp_session.status == "pending" %>
-              <tr style="background-color: #FDF4D6">
-            <% else %>
-              <tr>
-            <% end %>
+  <table class="table table-light table-sm w-100">
+    <thead class="table-light">
+      <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col"><i class="far fa-clock"></th>
+      <th scope="col"><i class="fas fa-users"></i></th>
+      <th scope="col"><i class="fas fa-pencil-ruler"></i></th>
+      </tr>
+    </thead>
+    <tbody>
 
-            <th scope="row"><%= chomp_session.public_uid %></th>
-            <% if chomp_session.status == "pending" %>
-              <td><%= chomp_session.name %>
-                <%= link_to edit_chomp_session_path(chomp_session) do%>
-                  <i class="fas fa-edit"></i>
-                <% end %>
-              </td>
-            <% else %>
-              <td><%= chomp_session.name %> (<%= chomp_session.public_uid %>)
-                <%= link_to restaurant_path(chomp_session.restaurant) do%>
-                  <i class="fas fa-link"></i>
-                <% end %>
-              </td>
-            <% end %>
+    <% num = 1 %>
+    <% @chomp_sessions.each do |chomp_session| %>
+      <% if chomp_session.status == "pending" %>
+        <tr style="background-color: #FDF4D6">
+      <% else %>
+        <tr>
+      <% end %>
 
-            <td><%= chomp_session.date.strftime("%e-%b-%y") %> <%= chomp_session.time.strftime("%I:%M %p") %></td>
-            <td><%= Response.where(chomp_session: chomp_session).count %></td>
+      <th scope="row"><%= chomp_session.public_uid %></th>
+        <% if chomp_session.status == "pending" %>
+        <td><%= chomp_session.name %>
+          <%= link_to edit_chomp_session_path(chomp_session) do%>
+            <i class="fas fa-edit"></i>
+          <% end %>
+        </td>
+      <% else %>
+        <td><%= chomp_session.name %> (<%= chomp_session.public_uid %>)
+          <%= link_to restaurant_path(chomp_session.restaurant) do%>
+            <i class="fas fa-link"></i>
+          <% end %>
+        </td>
+      <% end %>
 
+      <td><%= chomp_session.date.strftime("%e-%b-%y") %> <%= chomp_session.time.strftime("%I:%M %p") %></td>
+      <td><%= Response.where(chomp_session: chomp_session).count %></td>
 
-            <% if chomp_session.status == "pending" %>
-              <td><i class="far fa-pause-circle" class="btn btn-info btn-lg" data-toggle="modal" data-target="#generateFromDashboard<%= num %>"></i></td>
-                <!-- Modal -->
-                <div class="modal fade" id="generateFromDashboard<%= num %>" tabindex="-1" role="dialog" aria-labelledby="generateFromDashboard<%= num %>Title" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="generateFromDashboard<%= num %>Title">Show me where to eat</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        There are currently only <%= Response.where(chomp_session: chomp_session).count %> response(s).<br>
-                        Are you sure that you want to end the poll prematurely and generate your restaurant result?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success btn-modal" data-dismiss="modal">Close</button>
-                        <%= link_to "Yes", chomp_session_result_path(chomp_session), class: "btn btn-primary btn-modal", id: "bootstrap-overrides" %>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            <% else %>
-              <td><i class="fas fa-check-square"></i></td>
-            <% end %>
+      <% if chomp_session.status == "pending" %>
+        <td><i class="far fa-pause-circle" class="btn btn-info btn-lg" data-toggle="modal" data-target="#generateFromDashboard<%= num %>"></i></td>
+        <!-- Modal -->
+        <div class="modal fade" id="generateFromDashboard<%= num %>" tabindex="-1" role="dialog" aria-labelledby="generateFromDashboard<%= num %>Title" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="generateFromDashboard<%= num %>Title">End the poll now and show me where to eat!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                There are currently only <%= pluralize(Response.where(chomp_session: chomp_session).count, "response") %>.<br>
+                Are you sure that you want to end the poll prematurely and generate your restaurant result?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-modal" data-dismiss="modal">No</button>
+                <%= link_to "Yes", chomp_session_result_path(chomp_session), class: "btn btn-primary btn-modal", id: "bootstrap-overrides" %>
+              </div>
+            </div>
+          </div>
+        </div>
 
+      <% else %>
+        <td><i class="fas fa-check-square"></i></td>
+      <% end %>
+      <% num += 1 %>
 
-            <% num += 1 %>
-
-        <% end %>
-        </tbody>
-    </table>
+    <% end %>
+    </tbody>
+  </table>
 <% end %>
