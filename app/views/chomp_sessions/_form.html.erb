@@ -2,7 +2,7 @@
                     data: {
                       controller: "chomp"
                     }) do |f| %>
-  <%= f.input :name, label:"Meeting Name", required: false,
+  <%= f.input :name, label: "Meeting Name", required: false,
     placeholder: "I can't decide on a name on #{Time.now}",
     input_html: { value: f.object.name || [
     "Chomping since #{Time.now}",
