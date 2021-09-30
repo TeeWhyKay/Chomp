@@ -3,7 +3,7 @@
     <%= hidden_field_tag 'location', 'none'%>
 
     <label class="integer required mb-3" for="response_budget">Budget ($) <abbr title="required">*</abbr></label>
-    <div class="slider px-4">
+    <div class="slider px-3">
       <input type = "range" min="5" max="50" step="5" onchange="rangevalue.value=value" data-selecting-cuisines-target="slider" data-action="change->selecting-cuisines#budget"/>
       <output id="rangevalue" data-selecting-cuisines-target="slidervalue">5</output>
     </div>
