@@ -40,6 +40,7 @@
           <p id="restaurant-description" class="text-left"><%=h truncate(@restaurant.description, length: 150) %></p>
 
           <%= render "map" %>
+        </div>  
 
         <div data-controller="insert-in-list" data-insert-in-list-position-value="afterbegin">
           <%= render partial: "reviews/form", locals: { restaurant: @restaurant, review: @review } %>
