@@ -15,7 +15,6 @@
   }
 }
 
-
 .flex-between {
   display: flex;
   justify-content: center;
@@ -50,4 +49,8 @@
 
 #chomp_session_invitees {
   display: none;
+}
+
+.text-danger {
+  font-size: 14px;
 }

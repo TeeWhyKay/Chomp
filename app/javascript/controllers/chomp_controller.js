@@ -8,15 +8,13 @@ static targets = ["alert", "deduct", "total", "add", "warning", "submit"]
   }
 
   increment() {
-    console.log('clicking');
     this.totalCount += 1
     this.totalTarget.innerText = this.totalCount
     this.checkTotal()
   }
 
   decrement() {
-    console.log('clicking');
-    this.totalCount -= 1
+    this.totalCount = this.totalCount - 1 == 0 ? 1 : this.totalCount - 1
     this.totalTarget.innerText = this.totalCount
     this.checkTotal()
   }
