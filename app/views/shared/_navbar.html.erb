@@ -1,17 +1,11 @@
 <% if current_page?(controller: '/pages', action: 'home') %>
-<div class="navbar navbar-expand-sm navbar-dark navbar-lewagon" id="home-navbar">
+<div class="navbar navbar-expand-sm navbar-dark navbar-lewagon justify-content-end" id="home-navbar">
 <% else %>
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-<% end %>
-  <% if current_page?(controller: '/pages', action: 'home') %>
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://res.cloudinary.com/du5rqng8z/image/upload/v1632887027/letschomp/white_favicon_m2nwjd.svg", alt: "chomp logo" %>
-  <% end %>
-  <% else %>
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "https://res.cloudinary.com/du5rqng8z/image/upload/v1632887027/letschomp/orange_favicon_wagyin.svg", alt: "chomp logo" %>
   <% end %>
-  <% end %>
+<% end %>
 
   <% if user_signed_in? %>
     <div class="nav-item dropdown">
@@ -24,7 +18,12 @@
       </div>
     </div>
   <% else %>
+
+    <% if current_page?(controller: '/pages', action: 'home') %>
+    <div class="nav-item d-flex" id="login-signup-nav">
+    <% else %>
     <div class="nav-item d-flex">
+    <% end %>
       <%= link_to "Login", new_user_session_path, class: "nav-link btn mr-2" %>
       <%= link_to "Sign Up", new_user_registration_path, class: "nav-link btn bg-white text-primary" %>
     </div>
