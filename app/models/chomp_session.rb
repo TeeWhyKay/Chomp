@@ -19,14 +19,18 @@ class ChompSession < ApplicationRecord
   attribute :session_expiry, :integer, default: 24
 
   def date_cannot_be_in_the_past
-    if date < Date.today
-      errors.add(:date, "can't be in the past")
+    unless date.nil?
+      if date < Date.today
+        errors.add(:date, "can't be in the past")
+      end
     end
   end
 
   def time_cannot_be_in_the_past
-    if date == Date.today && time.strftime("%H:%M").to_time < Time.now.strftime("%H:%M").to_time
-      errors.add(:time, "can't be in the past")
+    unless time.nil?
+      if date == Date.today && time.strftime("%H:%M").to_time < Time.now.strftime("%H:%M").to_time
+        errors.add(:time, "can't be in the past")
+      end
     end
   end
 
@@ -37,9 +41,11 @@ class ChompSession < ApplicationRecord
   end
 
   def expiry_time_validation
-    meeting_date = "#{date.strftime("%Y-%m-%d")} #{time.strftime("%H:%M")}".to_time
-    if meeting_date - Time.now < (session_expiry * 3600)
-      errors.add(:session_expiry, "is after the meeting time")
+    if !date.nil? || !time.nil?
+      meeting_date = "#{date.strftime("%Y-%m-%d")} #{time.strftime("%H:%M")}".to_time
+      if meeting_date - Time.now < (session_expiry * 3600)
+        errors.add(:session_expiry, "is after the meeting time")
+      end
     end
   end
 end

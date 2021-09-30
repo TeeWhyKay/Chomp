@@ -19,6 +19,55 @@
   <%= f.input :date, html5: true, min: "#{Date.today.iso8601}"%>
   <%= f.input :time, html5: true, min: "#{Time.now.iso8601}" %>
   <%= f.input :session_expiry, label:"Link Expiry Time (Hours)", hint: "Set the time that you want your poll to be active" %>
-  <%= f.input :invitees, label:"Number of Friends (optional)", placeholder:"Optional" %>
+  <%# <%= f.input :invitees, label:"Number of Friends (optional)", placeholder:"Optional" %>
+  
+  <label class="integer optional mb-3" for="chomp_session_invitees">Number of Friends (optional)</label>
+  <div class="flex-between">
+    <a class="round-bordered incrementer minus" data-offset="-1">-</a>
+    <span id="counter" data-count="1">1</span>
+    <a href="#" class="round-bordered incrementer" data-offset="1" type="button">+</a>
+  </div>
+
+  <div class="form-group integer optional chomp_session_invitees">
+    <input type="number" class="form-control numeric integer optional" placeholder="Optional" step="1" name="chomp_session[invitees]" id="chomp_session_invitees" value="1">
+  </div>
+  
+  
+  
   <%= f.submit value:"Create Invite Link", class:"btn btn-primary btn-block" %>
 <% end %>
+
+
+<script>
+  var updateCounter = (counter, count) => {
+    counter.dataset.count = count;
+    counter.innerText = count;
+  };
+
+  var updateInput = (count) => {
+    let input = document.getElementById('chomp_session_invitees');
+    input.value = count;
+  };
+
+
+  var updateForm = (event) => {
+    //converting string to integer from clicking on the plus and minus signs
+    let offset = Number.parseInt(event.currentTarget.dataset.offset, 10);
+    let counter = document.getElementById('counter');
+    let count = Number.parseInt(counter.dataset.count, 10) + offset;
+    if (count >= 1 ) {
+      event.preventDefault();
+      updateCounter(counter, count);
+      updateInput(count);
+    } else {
+      event.preventDefault();
+    }
+  };
+
+  var updateFormOnButtonClick = (button) => {
+    button.addEventListener('click', updateForm);
+  };
+
+  var buttons = document.querySelectorAll('.incrementer');
+  buttons.forEach(updateFormOnButtonClick);
+</script>
