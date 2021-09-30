@@ -56,7 +56,7 @@ class ResponsesController < ApplicationController
     if @response.save
       redirect_to chomp_session_response_url(@chomp_session, @response)
     else
-      render :new
+      render :edit
     end
   end
 
