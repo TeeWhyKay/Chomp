@@ -16,9 +16,11 @@
     "Cats > Dogs",
     "Dogs > Cats"
     ].sample,
+    id: "chomp-session-name",
+    data: { chomp_target: "name", action: "keyup->chomp#autofillTime" },
     onClick: "this.setSelectionRange(0, this.value.length)" } %>
   <%= f.input :date, html5: true, min: "#{Date.today.iso8601}"%>
-  <%= f.input :time, html5: true, min: "#{Time.now.iso8601}" %>
+  <%= f.input :time, html5: true, min: "#{Time.now.iso8601}", input_html: { id: "chomp-session-time", data: {chomp_target: "timeOutput"} } %>
   <%= f.input :session_expiry, label:"Link Expiry Time (Hours)", hint: "Set the time that you want your poll to be active" %>
 
   <label class="integer optional mb-3" for="chomp_session_invitees">Number of Friends (optional)</label>

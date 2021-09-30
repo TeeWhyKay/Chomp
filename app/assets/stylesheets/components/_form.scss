@@ -1,7 +1,6 @@
 .form-login {
   background: white;
   padding: 10px 20px;
-  // margin-top: 50px; // This is making small screens have to scroll down more than needed
   border-radius: 3px;
 
   .btn {
@@ -13,6 +12,14 @@
     width: 20%;
     font-size: 0.8rem;
   }
+}
+
+#sticky-div {
+  position : sticky;
+  top : 0;
+  background-color:  white;
+  width: 100%;
+  z-index: 1;
 }
 
 .flex-between {
@@ -27,18 +34,13 @@
   margin: 0 15px;
 }
 
-.round-bordered {
-  border: 1px solid #5a5a5a;
-  border-radius: 50%;
-  width: 35px;
-  font-size: 18px;
+.incrementer {
+  width: 40px;
+  font-size: 22px;
   font-weight: bold;
-  background-color: #F2AD7B;
-  color: white;
-  height: 35px;
-  padding-left: 12px;
-  padding-top: 3px;
-  text-decoration: none;
+  height: 40px;
+  padding: 5px;
+  text-align: center;
 
   &:hover,
   &:focus {

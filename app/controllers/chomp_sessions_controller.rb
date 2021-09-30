@@ -46,8 +46,8 @@ class ChompSessionsController < ApplicationController
   def show
     @response = Response.new
     respond_to do |f|
-     f.html { redirect_to restaurant_path(@chomp_session.restaurant) if @chomp_session.status == "closed" }
-     f.json { render json: @chomp_session }
+      f.html { redirect_to restaurant_path(@chomp_session.restaurant) if @chomp_session.status == "closed" }
+      f.json { render json: @chomp_session }
     end
   end
 
