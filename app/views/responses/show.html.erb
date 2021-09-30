@@ -18,7 +18,7 @@
         <p>Made a mistake? Have no fear! Edit your preferences again.</p>
         <% if user_signed_in? %>
         <div class="d-flex justify-content-center">
-          <%= link_to "Edit preferences", edit_response_path(@response), class: "btn btn-primary btn-lg" %>
+          <%= link_to "Edit preferences", edit_response_path(@response), class: "btn btn-info text-white btn-lg" %>
         </div>
         <% end %>
 
@@ -27,7 +27,7 @@
         <% end %>
 
         <% if @chomp_session.user == current_user %>
-          <button type="button" class="btn btn-info btn-lg text-white" data-toggle="modal" data-target="#exampleModalCenter">
+          <button type="button" class="btn btn-success btn-lg text-white" data-toggle="modal" data-target="#exampleModalCenter">
             Show me where to eat
           </button>
         <% end %>
@@ -53,7 +53,7 @@
         Are you sure that you want to end the poll prematurely and see your restaurant result?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-success text-white" data-dismiss="modal">No</button>
         <%= link_to "Yes", chomp_session_result_path(@chomp_session), class: "btn btn-primary", id: "bootstrap-overrides" %>
       </div>
     </div>
