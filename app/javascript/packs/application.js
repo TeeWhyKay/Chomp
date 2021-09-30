@@ -33,9 +33,10 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initLocation();
+  initTextParser();
 });
 
 import "controllers"
 
 // for maps
-import mapboxgl from 'mapbox-gl';
+import mapboxgl from 'mapbox-gl';import { initTextParser } from '../plugins/init_text_parser';

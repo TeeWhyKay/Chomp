@@ -20,7 +20,7 @@
   <%= f.input :time, html5: true, min: "#{Time.now.iso8601}" %>
   <%= f.input :session_expiry, label:"Link Expiry Time (Hours)", hint: "Set the time that you want your poll to be active" %>
   <%# <%= f.input :invitees, label:"Number of Friends (optional)", placeholder:"Optional" %>
-  
+
   <label class="integer optional mb-3" for="chomp_session_invitees">Number of Friends (optional)</label>
   <div class="flex-between">
     <a class="round-bordered incrementer minus" data-offset="-1">-</a>
@@ -31,9 +31,9 @@
   <div class="form-group integer optional chomp_session_invitees">
     <input type="number" class="form-control numeric integer optional" placeholder="Optional" step="1" name="chomp_session[invitees]" id="chomp_session_invitees" value="1">
   </div>
-  
-  
-  
+
+
+
   <%= f.submit value:"Create Invite Link", class:"btn btn-primary btn-block" %>
 <% end %>
 
@@ -48,7 +48,6 @@
     let input = document.getElementById('chomp_session_invitees');
     input.value = count;
   };
-
 
   var updateForm = (event) => {
     //converting string to integer from clicking on the plus and minus signs
