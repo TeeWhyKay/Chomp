@@ -31,9 +31,8 @@
 
   <div class="form-group integer optional chomp_session_invitees">
     <input type="number" class="form-control numeric integer optional" placeholder="Optional" step="1" name="chomp_session[invitees]" id="chomp_session_invitees" value="1">
+    <div class="invalid-feedback d-block"></div>
   </div>
-
-
 
   <%= f.submit value:"Create Invite Link", class:"btn btn-primary btn-block", data: { 'chomp-target': 'submit' } %>
 <% end %>
