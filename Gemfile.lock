@@ -145,6 +145,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    mailgun-ruby (1.2.5)
+      rest-client (>= 2.0.2)
     marcel (1.0.2)
     method_source (1.0.0)
     mime-types (3.3.1)
@@ -344,6 +346,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   letter_opener
   listen (~> 3.2)
+  mailgun-ruby (~> 1.2.5)
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   pexels
