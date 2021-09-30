@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  height: 70px
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -25,6 +26,7 @@
   filter: drop-shadow( 0px 0px 1px rgba(234, 75, 92, 1));
 }
 
-#login-signup-nav {
-  margin-top: 10px;
+.navbar-light .navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
 }
