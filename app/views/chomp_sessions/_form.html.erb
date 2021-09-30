@@ -1,5 +1,8 @@
-<%= simple_form_for(chomp_session) do |f| %>
-  <%= f.input :name, label:"Meeting Name", required: false,
+<%= simple_form_for(chomp_session,
+                    data: {
+                      controller: "chomp"
+                    }) do |f| %>
+  <%= f.input :name, label: "Meeting Name", required: false,
     placeholder: "I can't decide on a name on #{Time.now}",
     input_html: { value: f.object.name || [
     "Chomping since #{Time.now}",
@@ -16,9 +19,11 @@
     "Cats > Dogs",
     "Dogs > Cats"
     ].sample,
+    id: "chomp-session-name",
+    data: { chomp_target: "name", action: "keyup->chomp#autofillTime" },
     onClick: "this.setSelectionRange(0, this.value.length)" } %>
   <%= f.input :date, html5: true, min: "#{Date.today.iso8601}"%>
-  <%= f.input :time, html5: true, min: "#{Time.now.iso8601}" %>
+  <%= f.input :time, html5: true, min: "#{Time.now.iso8601}", input_html: { id: "chomp-session-time", data: {chomp_target: "timeOutput"} } %>
   <%= f.input :session_expiry, label:"Link Expiry Time (Hours)", hint: "Set the time that you want your poll to be active" %>
 
   <label class="integer optional mb-3" for="chomp_session_invitees">Number of Friends (optional)</label>
@@ -47,7 +52,6 @@
     let input = document.getElementById('chomp_session_invitees');
     input.value = count;
   };
-
 
   var updateForm = (event) => {
     //converting string to integer from clicking on the plus and minus signs
