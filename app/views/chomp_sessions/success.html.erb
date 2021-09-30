@@ -8,6 +8,10 @@
 
         <%= render "shared/meetup_details" %>
 
+        <% if @chomp_session.user == current_user %>
+          <%= link_to "Enter my food choices", chomp_session_path(@chomp_session), class: "btn btn-primary btn-block btn-lg", role: "button" %>
+        <% end %>
+
         <div data-controller="clipboard" data-clipboard-success-content="Copied!" class="clipboard-form-control form-group mb-3">
           <input type="text" value="<%= chomp_session_url(@chomp_session) %>" data-clipboard-target="source" class="clipboard-text w-100 pl-2"/>
 
@@ -16,16 +20,11 @@
           </button>
         </div>
 
-        <p>A confirmation email has been sent to <strong><%= current_user.email %></strong>. Please check your inbox/junk folder.</p>
-
-        <div class="d-flex align-items-center flex-column">
-          <% if @chomp_session.user == current_user %>
-            <%= link_to "Enter my food choices", chomp_session_path(@chomp_session), class: "btn btn-primary btn-lg", role: "button" %>
-            <%= link_to "Edit session settings", edit_chomp_session_path(@chomp_session), class: "btn btn-info btn-lg text-white", role: "button" %>
-          <% else %>
-            <p class="success-body">You did not create this session!</p>
-          <% end %>
-        </div>
+        <% if @chomp_session.user == current_user %>
+          <%= link_to "Edit session settings", edit_chomp_session_path(@chomp_session), class: "btn btn-info btn-lg btn-block text-white", role: "button" %>
+        <% else %>
+          <p class="success-body">You did not create this session!</p>
+        <% end %>
 
       </div>
     </div>
