@@ -54,6 +54,9 @@ gem 'acts_as_favoritor'
 # pgsearch for full text search
 gem 'pg_search'
 
+# mailgun for mailing
+gem 'mailgun-ruby', '~>1.2.5'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
