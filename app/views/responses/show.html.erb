@@ -21,7 +21,11 @@
           <%= link_to "Edit preferences", edit_response_path(@response), class: "btn btn-primary btn-lg" %>
         </div>
         <% end %>
+
+        <% unless user_signed_in? %>
         <p style="font-size:0.7rem;" class="text-info text-center">*Note: You will need to sign in/up before you can edit your preferences*</p>
+        <% end %>
+
         <% if @chomp_session.user == current_user %>
           <button type="button" class="btn btn-info btn-lg text-white" data-toggle="modal" data-target="#exampleModalCenter">
             Show me where to eat
