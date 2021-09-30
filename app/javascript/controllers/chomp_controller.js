@@ -1,26 +1,33 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-static targets = ["alert", "total"]
+static targets = ["alert", "deduct", "total", "add", "warning", "submit"]
 
   connect() {
-    // console.log(this.alertTarget);
+    this.totalCount = 1;
   }
 
   increment() {
-    this.totalTarget.innerHTML = "+1"
+    console.log('clicking');
+    this.totalCount += 1
+    this.totalTarget.innerText = this.totalCount
     this.checkTotal()
   }
 
   decrement() {
-  // this.totalTarget.innerHTML = ""
-// check if number can be reduced, if yes reduce if not don't --> AFTER THAT CHECK TOTAL
+    console.log('clicking');
+    this.totalCount -= 1
+    this.totalTarget.innerText = this.totalCount
     this.checkTotal()
   }
 
   checkTotal() {
-
-    this.alertTarget.innerHTML = "blah blah"
-
+    if (this.totalCount > 2) {
+      this.warningTarget.classList.remove('d-none');
+      this.submitTarget.disabled = true;
+    } else {
+      this.warningTarget.classList.add('d-none');
+      this.submitTarget.disabled = false;
+    }
   }
 }

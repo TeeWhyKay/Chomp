@@ -24,10 +24,11 @@
 
   <label class="integer optional mb-3" for="chomp_session_invitees">Number of Friends (optional)</label>
   <div class="flex-between">
-    <a class="round-bordered incrementer minus" data-offset="-1">-</a>
-    <span id="counter" data-count="1">1</span>
-    <a href="#" class="round-bordered incrementer" data-offset="1" type="button">+</a>
+    <a class="round-bordered incrementer minus" data-chomp-target="deduct" data-action="click->chomp#decrement">-</a>
+    <span id="counter" data-chomp-target="total">1</span>
+    <a class="round-bordered incrementer" data-chomp-target="add" data-action="click->chomp#increment" type="button">+</a>
   </div>
+    <span data-chomp-target="warning" class="text-danger text-center d-none"> Current Measures do not allow for more than 2 people dining together. </span>
 
   <div class="form-group integer optional chomp_session_invitees">
     <input type="number" class="form-control numeric integer optional" placeholder="Optional" step="1" name="chomp_session[invitees]" id="chomp_session_invitees" value="1">
@@ -35,11 +36,11 @@
 
 
 
-  <%= f.submit value:"Create Invite Link", class:"btn btn-primary btn-block" %>
+  <%= f.submit value:"Create Invite Link", class:"btn btn-primary btn-block", data: { 'chomp-target': 'submit' } %>
 <% end %>
 
 
-<script>
+<%# <script>
   var updateCounter = (counter, count) => {
     counter.dataset.count = count;
     counter.innerText = count;
@@ -73,4 +74,4 @@
 
   var buttons = document.querySelectorAll('.incrementer');
   buttons.forEach(updateFormOnButtonClick);
-</script>
+</script> %>
