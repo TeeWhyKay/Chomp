@@ -2,7 +2,7 @@ class Restaurant < ApplicationRecord
   acts_as_favoritable
   has_many :reviews, dependent: :destroy
   has_many :chomp_sessions
-  has_one_attached :image
+  has_many_attached :images
   validates :name, :address, presence: true
   geocoded_by :address,
               latitude: :fetched_latitude,
