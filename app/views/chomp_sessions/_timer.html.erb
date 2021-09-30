@@ -4,8 +4,6 @@
   </div>
 </div>
 
-
-
 <script>
 // Set the date we're counting down to
 var countDownDate = new Date("<%= (@chomp_session.updated_at + @chomp_session.session_expiry.hours).to_s %>").getTime();

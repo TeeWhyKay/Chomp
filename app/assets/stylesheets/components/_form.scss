@@ -35,18 +35,17 @@
   margin: 0 15px;
 }
 
-.round-bordered {
+.incrementer {
   border: 1px solid #5a5a5a;
-  border-radius: 50%;
-  width: 35px;
-  font-size: 18px;
+  width: 40px;
+  font-size: 22px;
   font-weight: bold;
   background-color: #F2AD7B;
   color: white;
-  height: 35px;
-  padding-left: 12px;
-  padding-top: 3px;
+  height: 40px;
   text-decoration: none;
+  padding: 5px;
+  text-align: center;
 
   &:hover,
   &:focus {
