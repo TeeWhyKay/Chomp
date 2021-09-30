@@ -79,7 +79,7 @@
 }
 
 .hidden-card {
-  background-color: white; 
+  background-color: white;
   border: none;
 }
 
@@ -88,10 +88,9 @@
 }
 
 #accordion > div.rounded-lg {
-  background-color: white; 
+  background-color: white;
   border: none;
 }
-
 
 .btn-link {
   text-decoration: none;
@@ -106,4 +105,8 @@
 
 button.btn:focus {
   box-shadow: none;
+}
+
+#zero-reviews-notice {
+  font-size: 1.25rem;
 }
