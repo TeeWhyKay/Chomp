@@ -24,7 +24,7 @@ static targets = ["alert", "deduct", "total", "add", "warning", "submit"]
   checkTotal() {
     if (this.totalCount > 2) {
       this.warningTarget.classList.remove('d-none');
-      this.submitTarget.disabled = true;
+      this.submitTarget.disabled = false;
     } else {
       this.warningTarget.classList.add('d-none');
       this.submitTarget.disabled = false;

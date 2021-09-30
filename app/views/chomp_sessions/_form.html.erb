@@ -1,4 +1,3 @@
-<%# implement data-controller in form %>
 <%= simple_form_for(chomp_session, data: {controller: "chomp"}) do |f| %>
   <%= f.input :name, label:"Meeting Name", required: false,
     placeholder: "I can't decide on a name on #{Time.now}",
@@ -37,40 +36,3 @@
 
   <%= f.submit value:"Create Invite Link", class:"btn btn-primary btn-block", data: { 'chomp-target': 'submit' } %>
 <% end %>
-
-
-<%# <script>
-  var updateCounter = (counter, count) => {
-    counter.dataset.count = count;
-    counter.innerText = count;
-  };
-
-  var updateInput = (count) => {
-    let input = document.getElementById('chomp_session_invitees');
-    input.value = count;
-  };
-
-
-  var updateForm = (event) => {
-    //converting string to integer from clicking on the plus and minus signs
-    let offset = Number.parseInt(event.currentTarget.dataset.offset, 10);
-    let counter = document.getElementById('counter');
-    let count = Number.parseInt(counter.dataset.count, 10) + offset;
-    if (count <= 2) {
-      event.preventDefault();
-      updateCounter(counter, count);
-      updateInput(count);
-
-    } else {
-      event.preventDefault();
-      // alert("In light of current COVID-19 restrictions, dine-in has been capped at 2.");
-    }
-  };
-
-  var updateFormOnButtonClick = (button) => {
-    button.addEventListener('click', updateForm);
-  };
-
-  var buttons = document.querySelectorAll('.incrementer');
-  buttons.forEach(updateFormOnButtonClick);
-</script> %>
