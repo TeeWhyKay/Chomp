@@ -92,3 +92,4 @@ gem 'devise'
 
 # for generation of randomized string for unique session
 gem 'public_uid'
+gem "image_processing", "~> 1.0"

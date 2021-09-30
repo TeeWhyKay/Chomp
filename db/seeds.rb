@@ -1,32 +1,34 @@
 require 'open-uri'
+require "image_processing/mini_magick"
 
 puts "Clearing restaurants db"
 Response.destroy_all
 ChompSession.destroy_all
 Restaurant.destroy_all
 puts "Seeding db with restaurants"
-apikey = "ytxKCmRhV2kPY8fEpKXN63SuuQSkVmPw"
+apikey = ENV['STB_API_KEY']
 # api to download images based on uuid
 # url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&language=en&apikey=#{apikey}"
 cuisine_arr = %w[Asian Chinese Western Japanese Italian Halal Indian Thai Korean Local Steamboat Desserts]
 client = Pexels::Client.new
 cuisine_arr.each do |cuisine|
   puts "--- searching #{cuisine} --- "
-  url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&keyword=#{cuisine}&sortBy=rating&sortOrder=desc&language=en&apikey=#{apikey}"
+  url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&keyword=#{cuisine}&filtersource=stb&sortBy=rating&sortOrder=desc&language=en&apikey=#{apikey}"
   count = 0
+  restaurant_counter = 0
   loop do
     count += 1
     fnb_serialized = URI.open(url).read
     fnb_parsed = JSON.parse(fnb_serialized)
     next_token = fnb_parsed["nextToken"]
     # puts "next token is: #{next_token}"
-    random_index_arr = (0..19).to_a.shuffle!
-    # length_of_results = fnb_parsed["data"]["results"].length
-    # length_of_results.times do |index|
-    price =  1
-    4.times do
-      index = random_index_arr.pop
+    # random_index_arr = (0..19).to_a.shuffle!
+    price=1
+    length_of_results = fnb_parsed["data"]["results"].length
+    length_of_results.times do |index|
       restaurant = fnb_parsed["data"]["results"][index]
+      next if restaurant["thumbnails"].empty? && restaurant["images"].empty?
+
       address = restaurant["address"]
       full_address = "
       #{address['block']}
@@ -59,24 +61,38 @@ cuisine_arr.each do |cuisine|
         cuisine: restaurant["cuisine"],
         pricing: price,
         description: restaurant["description"],
-        body: restaurant["body"].delete('\n'),
         website: website
       )
       price += 1
-      # uuid = restaurant['thumbnails'].first['uuid'] if !restaurant['thumbnails'].empty? && !restaurant['thumbnails'].first['uuid'].empty?
+      uuid_thumbnail = restaurant['thumbnails'].first['uuid'] if !restaurant['thumbnails'].empty? && !restaurant['thumbnails'].first['uuid'].empty?
+      if !uuid_thumbnail.nil?
+        url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid_thumbnail}?apikey=#{apikey}"
+        file = URI.open(url_to_download_restaurant_img)
+        restaurant_instance.image.attach(io: file, filename: "#{restaurant["name"]}.png", content_type: 'image/png')
+      end
+      images = restaurant['images']
+      images.each_with_index do |element, index|
+        uuid = element['uuid']
+        url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}?apikey=#{apikey}"
+        file = URI.open(url_to_download_restaurant_img)
+        processed = ImageProcessing::MiniMagick
+          .source(file)
+          .resize_to_limit(800, 800)
+          .strip
+          .call
+        restaurant_instance.image.attach(io: processed, filename: "#{restaurant["name"]}_#{index}.png", content_type: 'image/png')
+      end
       # if uuid.nil?
       #   # photos = client.photos.search('restaurant', size: :small, orientation: :landscape)
       #   file = URI.open("https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=130")
       # else
-      #   url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}?apikey=#{apikey}"
-      #   file = URI.open(url_to_download_restaurant_img)
-      # end
-      # restaurant_instance.image.attach(io: file, filename: 'restaurant["name"].png', content_type: 'image/png')
-      restaurant_instance.save
+      restaurant_instance.save!
       puts "seeded #{restaurant["name"]}"
+      restaurant_counter += 1
+      break if restaurant_counter == 4
     end
     # break if next_token==""
-    break if count == 1
+    break if restaurant_counter == 4
     # url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&nextToken=#{next_token}&language=en&apikey=#{apikey}"
   end
 end
