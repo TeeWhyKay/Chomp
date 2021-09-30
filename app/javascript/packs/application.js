@@ -24,7 +24,10 @@ import { initLocation } from '../plugins/init_location';
 
 // External imports
 import "bootstrap";
+<<<<<<< HEAD
 // import "animate";
+=======
+>>>>>>> master
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';

@@ -9,7 +9,7 @@ $chomp-font-black: "Open Sans";
 $chomp-subtitle-font: "Noto Serif", "Georgia", "serif";
 
 // Define fonts for body and headers
-$body-font: "Open Sans", "Helvetica", "sans-serif";
+$body-font: $chomp-font-black, "Helvetica", "sans-serif";
 $headers-font: $chomp-font, "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
