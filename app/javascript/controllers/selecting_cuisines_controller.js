@@ -2,9 +2,13 @@ import { each } from "jquery";
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ['selection'];
+  static targets = ['selection','slidervalue','money','slider'];
 
   connect() {
+    // console.log(this.moneyTarget.value);
+    // console.log(this.slidervalueTarget.innerHTML);
+    this.sliderTarget.value = this.moneyTarget.value ;
+    this.slidervalueTarget.innerHTML = this.moneyTarget.value ;
     const initialCheckedStatus = document.querySelectorAll(".tag-selector[checked='checked']");
     initialCheckedStatus.forEach(element => {
       const cuisineLabel = element.nextSibling;
@@ -21,5 +25,9 @@ export default class extends Controller {
       cuisineLabel.innerHTML = cuisineName;
     }
 
+  }
+
+  budget() {
+    this.moneyTarget.value = this.slidervalueTarget.innerHTML
   }
 }

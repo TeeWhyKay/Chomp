@@ -1,14 +1,21 @@
 <div data-controller="selecting-cuisines">
   <%= simple_form_for([chomp_session, response]) do |f| %>
     <%= hidden_field_tag 'location', 'none'%>
+
+    <label class="integer required mb-3" for="response_budget">Budget ($) <abbr title="required">*</abbr></label>
+    <div class="slider">
+      <input type = "range" min="0" max="50" step="5" onchange="rangevalue.value=value" data-selecting-cuisines-target="slider" data-action="change->selecting-cuisines#budget"/>
+      <output id="rangevalue" data-selecting-cuisines-target="slidervalue">25</output>
+    </div>
+
     <% if response.budget %>
-      <%= f.input :budget, label: "Budget ($)",
-                  collection: [5, 10, 25, 50], selected: response.budget,
-                  include_blank: false, include_hidden: false %>
+      <div class="form-group integer required response_budget">
+        <input class="form-control numeric integer required budget-selector" data-selecting-cuisines-target="money" value=<%= response.budget %> type="number" step="1" name="response[budget]" id="response_budget" >
+      </div>
     <% else %>
-      <%= f.input :budget, label: "Budget ($)",
-                  collection: [5, 10, 25, 50], selected: 5,
-                  include_blank: false, include_hidden: false %>
+      <div class="form-group integer required response_budget">
+        <input class="form-control numeric integer required budget-selector" data-selecting-cuisines-target="money" value="25" type="number" step="1" name="response[budget]" id="response_budget">
+      </div>
     <% end %>
 
     <div class="search-form-control form-group">
