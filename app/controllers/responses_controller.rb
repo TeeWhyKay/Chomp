@@ -12,7 +12,6 @@ class ResponsesController < ApplicationController
     @response.latitude = coords[:latitude]
     @response.longitude = coords[:longitude]
     if @response.save
-      ResponseMailer.with(response: @response, chomp_session: @chomp_session).create_response.deliver_later if user_signed_in?
       # check invitees limit, check if user inputted any user-limit and if responses count already exceeded
       if @chomp_session.invitees != nil && @chomp_session.responses.count == (@chomp_session.invitees + 1)
         GenerateRestaurantJob.perform_now(@chomp_session.id)
@@ -55,7 +54,6 @@ class ResponsesController < ApplicationController
     @response.update(response_params)
     @chomp_session = @response.chomp_session
     if @response.save
-      ResponseMailer.with(response: @response, chomp_session: @chomp_session).update_response.deliver_later if user_signed_in?
       redirect_to chomp_session_response_url(@chomp_session, @response)
     else
       render :new
