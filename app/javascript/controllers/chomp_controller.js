@@ -8,7 +8,7 @@ static targets = ["alert", "total"]
   }
 
   increment() {
-    this.totalTarget.innerHTML = ""
+    this.totalTarget.innerHTML = "+1"
     this.checkTotal()
   }
 

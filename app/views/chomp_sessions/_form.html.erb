@@ -1,3 +1,4 @@
+<%# implement data-controller in form %>
 <%= simple_form_for(chomp_session, data: {controller: "chomp"}) do |f| %>
   <%= f.input :name, label:"Meeting Name", required: false,
     placeholder: "I can't decide on a name on #{Time.now}",
@@ -15,29 +16,30 @@
     "Turtles are cute",
     "Cats > Dogs",
     "Dogs > Cats"
-    ].sample,
-    onClick: "this.setSelectionRange(0, this.value.length)" } %>
+    ].sample } %>
   <%= f.input :date, html5: true, min: "#{Date.today.iso8601}"%>
   <%= f.input :time, html5: true, min: "#{Time.now.iso8601}" %>
   <%= f.input :session_expiry, label:"Link Expiry Time (Hours)", hint: "Set the time that you want your poll to be active" %>
+  <%# <%= f.input :invitees, label:"Number of Friends (optional)", placeholder:"Optional" %>
 
   <label class="integer optional mb-3" for="chomp_session_invitees">Number of Friends (optional)</label>
   <div class="flex-between">
     <a class="round-bordered incrementer minus" data-offset="-1">-</a>
-    <span id="counter" data-chomp-target="total">1</span>
-    <a href="#" class="round-bordered incrementer" type="button" data-action="click->chomp#increment">+</a>
+    <span id="counter" data-count="1">1</span>
+    <a href="#" class="round-bordered incrementer" data-offset="1" type="button">+</a>
   </div>
 
   <div class="form-group integer optional chomp_session_invitees">
     <input type="number" class="form-control numeric integer optional" placeholder="Optional" step="1" name="chomp_session[invitees]" id="chomp_session_invitees" value="1">
-    <p id="restriction" data-chomp-target="alert">In light of current...</p>
   </div>
+
+
 
   <%= f.submit value:"Create Invite Link", class:"btn btn-primary btn-block" %>
 <% end %>
 
-<script>
 
+<script>
   var updateCounter = (counter, count) => {
     counter.dataset.count = count;
     counter.innerText = count;
