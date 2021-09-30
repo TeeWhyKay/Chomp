@@ -29,7 +29,7 @@
   </div>
 
   <div class="form-group integer optional chomp_session_invitees">
-    <input type="number" disabled class="form-control numeric integer optional" placeholder="Optional" step="1" name="chomp_session[invitees]" id="chomp_session_invitees" value="nil">
+    <input type="number" class="form-control numeric integer optional" placeholder="Optional" step="1" name="chomp_session[invitees]" id="chomp_session_invitees" value="1">
   </div>
   
   
@@ -39,23 +39,23 @@
 
 
 <script>
-  const updateCounter = (counter, count) => {
+  var updateCounter = (counter, count) => {
     counter.dataset.count = count;
     counter.innerText = count;
   };
 
-  const updateInput = (count) => {
-    const input = document.getElementById('chomp_session_invitees');
+  var updateInput = (count) => {
+    let input = document.getElementById('chomp_session_invitees');
     input.value = count;
   };
 
 
-  const updateForm = (event) => {
+  var updateForm = (event) => {
     //converting string to integer from clicking on the plus and minus signs
-    const offset = Number.parseInt(event.currentTarget.dataset.offset, 10);
-    const counter = document.getElementById('counter');
-    const count = Number.parseInt(counter.dataset.count, 10) + offset;
-    if (count >= 1) {
+    let offset = Number.parseInt(event.currentTarget.dataset.offset, 10);
+    let counter = document.getElementById('counter');
+    let count = Number.parseInt(counter.dataset.count, 10) + offset;
+    if (count >= 1 ) {
       event.preventDefault();
       updateCounter(counter, count);
       updateInput(count);
@@ -64,10 +64,10 @@
     }
   };
 
-  const updateFormOnButtonClick = (button) => {
+  var updateFormOnButtonClick = (button) => {
     button.addEventListener('click', updateForm);
   };
 
-  const buttons = document.querySelectorAll('.incrementer');
+  var buttons = document.querySelectorAll('.incrementer');
   buttons.forEach(updateFormOnButtonClick);
 </script>
