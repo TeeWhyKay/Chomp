@@ -1,33 +1,28 @@
 require 'open-uri'
 require "image_processing/mini_magick"
 
+apikey = ENV['STB_API_KEY']
+time_start= Time.now
 puts "Clearing restaurants db"
 Response.destroy_all
 ChompSession.destroy_all
 Restaurant.destroy_all
 puts "Seeding db with restaurants"
-apikey = ENV['STB_API_KEY']
-# api to download images based on uuid
-# url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&language=en&apikey=#{apikey}"
 cuisine_arr = %w[Asian Chinese Western Japanese Italian Halal Indian Thai Korean Local Steamboat Desserts]
-client = Pexels::Client.new
+# client = Pexels::Client.new
 cuisine_arr.each do |cuisine|
   puts "--- searching #{cuisine} --- "
   url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&keyword=#{cuisine}&filtersource=stb&sortBy=rating&sortOrder=desc&language=en&apikey=#{apikey}"
-  count = 0
   restaurant_counter = 0
   loop do
-    count += 1
     fnb_serialized = URI.open(url).read
     fnb_parsed = JSON.parse(fnb_serialized)
     next_token = fnb_parsed["nextToken"]
-    # puts "next token is: #{next_token}"
-    # random_index_arr = (0..19).to_a.shuffle!
-    price=1
+    price = 1
     length_of_results = fnb_parsed["data"]["results"].length
     length_of_results.times do |index|
       restaurant = fnb_parsed["data"]["results"][index]
-      next if restaurant["thumbnails"].empty? && restaurant["images"].empty?
+      next if restaurant["images"].empty?
 
       address = restaurant["address"]
       full_address = "
@@ -64,37 +59,34 @@ cuisine_arr.each do |cuisine|
         website: website
       )
       price += 1
-      uuid_thumbnail = restaurant['thumbnails'].first['uuid'] if !restaurant['thumbnails'].empty? && !restaurant['thumbnails'].first['uuid'].empty?
-      if !uuid_thumbnail.nil?
-        url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid_thumbnail}?apikey=#{apikey}"
-        file = URI.open(url_to_download_restaurant_img)
-        restaurant_instance.images.attach(io: file, filename: "#{restaurant["name"]}.png", content_type: 'image/png')
-      end
 
       images = restaurant['images']
-      images.each_with_index do |element, index|
-        uuid = element['uuid']
+      first_5_images = images.first(5)
+      first_5_images.each_with_index do |image, idx|
+        lib_uuid = image['libraryUuid']
+        url_to_check_img_size = "https://tih-api.stb.gov.sg/media/v1/library/uuid/#{lib_uuid}?apikey=#{apikey}"
+        library_parsed = JSON.parse(URI.open(url_to_check_img_size).read)
+        if !library_parsed["data"]["thumbnail1080HUuid"].empty?
+          uuid = library_parsed["data"]["thumbnail1080HUuid"]
+        elsif !library_parsed["data"]["primaryFileMediumUuid"].empty?
+          uuid = library_parsed["data"]["primaryFileMediumUuid"]
+        elsif !library_parsed["data"]["primaryFileSmallUuid"].empty?
+          uuid = library_parsed["data"]["primaryFileSmallUuid"]
+        else
+          uuid = library_parsed["data"]["primaryFile"]
+        end
         url_to_download_restaurant_img = "https://tih-api.stb.gov.sg/media/v1/download/uuid/#{uuid}?apikey=#{apikey}"
         file = URI.open(url_to_download_restaurant_img)
-        processed = ImageProcessing::MiniMagick
-          .source(file)
-          .resize_to_limit(800, 800)
-          .strip
-          .call
-        restaurant_instance.images.attach(io: processed, filename: "#{restaurant["name"]}_#{index}.png", content_type: 'image/png')
+        restaurant_instance.images.attach(io: file, filename: "#{restaurant['name']}_#{idx}.png", content_type: 'image/png')
       end
-      # if uuid.nil?
-      #   # photos = client.photos.search('restaurant', size: :small, orientation: :landscape)
-      #   file = URI.open("https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=130")
-      # else
       restaurant_instance.save!
-      puts "seeded #{restaurant["name"]}"
+      puts "seeded #{restaurant['name']}"
       restaurant_counter += 1
       break if restaurant_counter == 4
     end
-    # break if next_token==""
-    break if restaurant_counter == 4
-    # url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&nextToken=#{next_token}&language=en&apikey=#{apikey}"
+    break if next_token == "" || restaurant_counter == 4
+
+    url = "https://tih-api.stb.gov.sg/content/v1/search/all?dataset=food_beverages&nextToken=#{next_token}keyword=#{cuisine}&filtersource=stb&sortBy=rating&sortOrder=desc&language=en&apikey=#{apikey}"
   end
 end
 
@@ -137,11 +129,11 @@ puts "Seeding ChompSessions completed, but will only work if you created a user 
 
 # chompSession for response_generation
 ykbday = ChompSession.create!(
-    name: "Yong kee's birthday",
-    date: Time.now + 2.days,
-    time: Time.now + 2.hours,
-    status: "pending",
-    user: User.second
+  name: "Yong kee's birthday",
+  date: Time.now + 2.days,
+  time: Time.now + 2.hours,
+  status: "pending",
+  user: User.second
 )
 
 puts "ykbday valid? #{ykbday.valid?}"
@@ -162,7 +154,7 @@ response3 = Response.new(budget: 25, address: "Woodlands, Singapore", cuisine: [
 response3.chomp_session = ykbday
 response3.save!
 puts "Seeded response 3"
-
 puts "Seeded fake responses"
-
-puts "Seeding completed!"
+time_end = Time.now
+time_taken = time_end - time_start
+puts "Seeding completed! Took #{time_taken} seconds."
