@@ -56,7 +56,6 @@ export default class extends Controller {
   }
 
   autofillTime(event) {
-    console.log(this.nameTarget.value);
     const whatTime = (givenTime) => {
       return this.nameTarget.value.toLowerCase().includes(givenTime)
     }
