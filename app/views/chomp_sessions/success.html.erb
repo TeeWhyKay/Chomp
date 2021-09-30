@@ -5,9 +5,9 @@
 
         <h1 class="success-header animate__animated animate__bounce">Group created</h1>
         <p class="success-body">Congratulations! Your group has been created, share this link with you friends and get started on planning your next trip!</p>
-
-        <div data-controller="clipboard" data-clipboard-success-content="Copied!" class="clipboard-form-control form-group mb-3">
-          <input type="text" value="<%= chomp_session_url(@chomp_session) %>" data-clipboard-target="source" class="clipboard-text w-100 pl-2"/>
+        <button class="btn btn-primary btn-lg" id="share-button">Share the link <i class="fas fa-share-alt"></i></button>
+        <div style="display: none;" data-controller="clipboard" data-clipboard-success-content="Copied!" class="clipboard-form-control form-group mb-3">
+          <input id="share-link" type="text" value="<%= chomp_session_url(@chomp_session) %>" data-clipboard-target="source" class="clipboard-text w-100 pl-2"/>
 
           <button type="button" data-action="clipboard#copy" data-clipboard-target="button" class="btn-flat border-0">
             <i class="fas fa-clipboard"></i> Copy
