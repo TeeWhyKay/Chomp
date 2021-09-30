@@ -1,7 +1,6 @@
 .form-login {
   background: white;
   padding: 10px 20px;
-  // margin-top: 50px; // This is making small screens have to scroll down more than needed
   border-radius: 3px;
 
   .btn {
@@ -15,7 +14,6 @@
   }
 }
 
-
 #sticky-div {
   position : sticky;
   top : 0;
@@ -23,6 +21,7 @@
   width: 100%;
   z-index: 1;
 }
+
 .flex-between {
   display: flex;
   justify-content: center;
@@ -52,4 +51,8 @@
 
 #chomp_session_invitees {
   display: none;
+}
+
+.text-danger {
+  font-size: 14px;
 }

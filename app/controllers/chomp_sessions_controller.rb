@@ -31,6 +31,7 @@ class ChompSessionsController < ApplicationController
   def edit; end
 
   def update
+    binding.pry
     @chomp_session.update(chomp_params)
     if @chomp_session.save
       job = Sidekiq::ScheduledSet.new.find_job(@chomp_session.sidekiq_jid)
@@ -45,7 +46,10 @@ class ChompSessionsController < ApplicationController
 
   def show
     @response = Response.new
-    redirect_to restaurant_path(@chomp_session.restaurant) if @chomp_session.status == "closed"
+    respond_to do |f|
+      f.html { redirect_to restaurant_path(@chomp_session.restaurant) if @chomp_session.status == "closed" }
+      f.json { render json: @chomp_session }
+    end
   end
 
   def result
