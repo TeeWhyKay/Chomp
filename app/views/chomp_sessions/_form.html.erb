@@ -30,7 +30,7 @@
     <span data-chomp-target="warning" class="text-danger text-center d-none"> In light of the current COVID-19 restrictions, dine-in has been capped at 2pax. </span>
 
   <div class="form-group integer optional chomp_session_invitees">
-    <input type="number" class="form-control numeric integer optional" placeholder="Optional" step="1" name="chomp_session[invitees]" id="chomp_session_invitees" value="1">
+    <input data-chomp-target="inviteesinput" type="number" class="form-control numeric integer optional" placeholder="Optional" step="1" name="chomp_session[invitees]" id="chomp_session_invitees" value="1">
   </div>
 
   <%= f.submit value:"Create Invite Link", class:"btn btn-primary btn-block", data: { 'chomp-target': 'submit' } %>
