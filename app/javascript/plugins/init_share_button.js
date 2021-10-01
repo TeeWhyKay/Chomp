@@ -2,6 +2,7 @@ const initShareButton = () => {
   const shareButton = document.querySelector('#share-button');
   if (shareButton != null) {
     shareButton.addEventListener('click', event => {
+      console.log("button clicked!");
       const link = document.querySelector('#share-link');
       if (navigator.share) { // on android chrome
         navigator.share({
