@@ -32,6 +32,7 @@
               <i class="far fa-star"></i>
             <% end %>
             <%= @restaurant.google_rating.round(2) %>
+            <br>
             <span class="text-success">User Reviews:
               <span id="review-count"><%= @restaurant.reviews.size %></span>
             </span>
@@ -40,7 +41,7 @@
           <p id="restaurant-description" class="text-left"><%=h truncate(@restaurant.description, length: 150) %></p>
 
           <%= render "map" %>
-        </div>  
+        </div>
 
         <div data-controller="insert-in-list" data-insert-in-list-position-value="afterbegin">
           <% if @restaurant.reviews.blank? %>
