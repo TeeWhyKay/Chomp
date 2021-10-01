@@ -12,11 +12,11 @@
     <% restaurant.images.each_with_index do |image, index| %>
       <% if index==0 %>
         <div class="carousel-item active">
-          <%= cl_image_tag image.key, height: "250px",class: "d-block w-100 rounded-lg" %>
+          <%= cl_image_tag image.key, height: "250px",class: "d-block w-100" %>
         </div>
       <% else %>
         <div class="carousel-item">
-          <%= cl_image_tag image.key, height: "250px",class: "d-block w-100 rounded-lg" %>
+          <%= cl_image_tag image.key, height: "250px",class: "d-block w-100" %>
         </div>
       <% end %>
     <% end %>
