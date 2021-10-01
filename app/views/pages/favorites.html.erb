@@ -6,7 +6,7 @@
     <% else %>
       <% @favorites.each do |favorite| %>
         <div class="col-12 col-lg-6">
-          <img class="img-card w-100 mb-3 rounded-lg" src="https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=130" alt="Picture of restaurant">
+          <%= cl_image_tag favorite.images.first.key, class: "img-card w-100 mb-3 rounded-lg" %>
           <div class="card-product align-items-center mb-3">
               <h3><%= link_to "#{favorite.name}", restaurant_url(favorite) %></h3>
               <p><%= favorite.address.strip %></p>
