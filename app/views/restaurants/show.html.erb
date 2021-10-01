@@ -12,10 +12,7 @@
             <%= @restaurant.address %><br>
             <%= @restaurant.opening_time.strftime("%I:%M %p") %> ~ <%= @restaurant.closing_time.strftime("%I:%M %p") %>
           </p>
-          <%= render partial: "carousel", locals: {restaurant: @restaurant} %>
           <div class="restaurant-image-container">
-            <%# <%= image_tag "https://images.pexels.com/photos/1484516/pexels-photo-1484516.jpeg?auto=compress&cs=tinysrgb&h=130", id: "restaurant-image", class: "center-cropped mb-3" %>
-            <%# <%= cl_image_tag(@restaurant.images.first.key) %>
             <%= link_to toggle_favorite_restaurant_path, method: :post do %>
               <% if user_signed_in? && current_user.favorited?(@restaurant) %>
                 <i class="fas fa-heart animate__animated animate__rubberBand"></i>
@@ -23,6 +20,7 @@
                 <i class="far fa-heart animate__animated animate__rubberBand"></i>
               <% end %>
             <% end %>
+            <%= render partial: "carousel", locals: {restaurant: @restaurant} %>
           </div>
           <p id="average-review" class="text-left">
             <% @restaurant.google_rating.to_i.times do |star| %>
