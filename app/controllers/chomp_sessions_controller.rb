@@ -7,7 +7,7 @@ class ChompSessionsController < ApplicationController
 
   def dashboard
     @chomp_sessions = ChompSession.where(user: current_user).order(status: :desc, date: :asc)
-    @responses = Response.joins(:chomp_session).where(chomp_sessions: { status: 'pending' }).where(user: current_user).order(created_at: :desc)
+    @responses = Response.joins(:chomp_session).where(chomp_sessions: { status: 'pending' }).where(user: current_user).order(created_at: :asc)
   end
 
   def new
