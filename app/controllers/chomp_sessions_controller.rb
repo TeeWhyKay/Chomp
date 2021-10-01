@@ -41,11 +41,17 @@ class ChompSessionsController < ApplicationController
     end
   end
 
-  def success; end
+  def success
+    @search_exist = Response.where(user: current_user, chomp_session: @chomp_session)
+  end
 
   def show
     @response = Response.new
     redirect_to restaurant_path(@chomp_session.restaurant) if @chomp_session.status == "closed"
+    # this line is to search if the current user already submitted his preference
+    # if yes, redirect to the "preference submitted page"
+    @search_exist = Response.where(user: current_user, chomp_session: @chomp_session)
+    redirect_to chomp_session_response_url(@chomp_session,@search_exist.first) unless @search_exist == []
   end
 
   def result
