@@ -2,20 +2,20 @@
   <%= simple_form_for([chomp_session, response]) do |f| %>
     <%= hidden_field_tag 'location', 'none'%>
     <% if response.budget %>
-      <%= f.input :budget, label: "Budget ($)",
+      <%= f.input :budget, label: "How much you are willing to spend ($)",
                   collection: [5, 10, 25, 50], selected: response.budget,
                   include_blank: false, include_hidden: false %>
     <% else %>
-      <%= f.input :budget, label: "Budget ($)",
+      <%= f.input :budget, label: "How much you are willing to spend ($)",
                   collection: [5, 10, 25, 50], selected: 5,
                   include_blank: false, include_hidden: false %>
     <% end %>
 
     <div class="search-form-control form-group">
       <% if response.address %>
-        <%= f.input :address, label: false, input_html: { value: response.address, onClick: "this.setSelectionRange(0, this.value.length)" } %>
+        <%= f.input :address, label: "Where you wish to meet at", input_html: { value: response.address, onClick: "this.setSelectionRange(0, this.value.length)" } %>
       <% else %>
-        <%= f.input :address, label: false, input_html: { value: "19 Cuppage Rd, Singapore 229451", onClick: "this.setSelectionRange(0, this.value.length)" } %>
+        <%= f.input :address, label: "Where you wish to meet at", input_html: { value: "19 Cuppage Rd, Singapore 229451", onClick: "this.setSelectionRange(0, this.value.length)" } %>
       <% end %>
       <a href="#" id="get_location"><i class="fas fa-map-marker-alt"></i></a>
     </div>
