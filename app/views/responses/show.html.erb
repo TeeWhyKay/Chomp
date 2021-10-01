@@ -8,9 +8,9 @@
 
         <%= render "shared/meetup_details" %>
         <button class="btn btn-primary btn-lg" id="share-button">Share the link <i class="fas fa-share-alt"></i></button>
-        <div style="display: none;" data-controller="clipboard" data-clipboard-success-content="Copied!" class="clipboard-form-control form-group mb-3">
-          <input type="text" value="<%= chomp_session_url(@chomp_session) %>" data-clipboard-target="source" class="clipboard-text w-100 pl-2"/>
 
+        <div style="opacity:0;position:absolute;pointer-events:none;" data-controller="clipboard" data-clipboard-success-content="Copied!" class="clipboard-form-control form-group mb-3">
+          <input id="share-link" type="text" value="<%= chomp_session_url(@chomp_session) %>" data-clipboard-target="source" class="clipboard-text w-100 pl-2"/>
           <button type="button" data-action="clipboard#copy" data-clipboard-target="button" class="btn-flat btn-outline-info">
             <i class="fas fa-clipboard"></i> Copy
           </button>
