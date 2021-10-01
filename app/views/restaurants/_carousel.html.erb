@@ -8,15 +8,15 @@
     <% end %>
   <% end %>
   </ol>
-  <div class="carousel-inner">
+  <div class="carousel-inner rounded-lg">
     <% restaurant.images.each_with_index do |image, index| %>
       <% if index==0 %>
         <div class="carousel-item active">
-          <%= cl_image_tag image.key, height: "250px",class: "d-block w-100" %>
+          <%= cl_image_tag image.key, height: "250px",class: "d-block w-100 rounded-lg" %>
         </div>
       <% else %>
         <div class="carousel-item">
-          <%= cl_image_tag image.key, height: "250px",class: "d-block w-100" %>
+          <%= cl_image_tag image.key, height: "250px",class: "d-block w-100 rounded-lg" %>
         </div>
       <% end %>
     <% end %>
