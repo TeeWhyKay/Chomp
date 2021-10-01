@@ -5,12 +5,9 @@ export default class extends Controller {
     "add", "warning", "submit", "inviteesinput", "name", "timeOutput" ]
 
   connect() {
-    // if I am on new,
-    // url = chomp_sessions/new
     if (window.location.pathname.includes('new')) {
       this.totalCount = 1;
     } else {
-      // url = chomp_sessions/4848393/edit
       let chompId = /\d+/.exec(window.location.pathname)[0]
       fetch(`/chomp_sessions/${chompId}`, {
             method: 'GET',
@@ -19,10 +16,6 @@ export default class extends Controller {
         .then( res => res.json())
         .then( data => this.updateInvitees(data.invitees))
     }
-    // if I am on edit
-    // fetch the current number of people for chomp
-    // update totalCount
-    // update the innerText of totalTarget
   }
 
   updateInvitees(invitees) {
