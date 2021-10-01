@@ -41,12 +41,18 @@ class ChompSessionsController < ApplicationController
     end
   end
 
-  def success; end
+  def success
+    @search_exist = Response.where(user: current_user, chomp_session: @chomp_session)
+  end
 
   def show
     @response = Response.new
+    @search_exist = Response.where(user: current_user, chomp_session: @chomp_session)
     respond_to do |f|
-      f.html { redirect_to restaurant_path(@chomp_session.restaurant) if @chomp_session.status == "closed" }
+      f.html do
+        redirect_to restaurant_path(@chomp_session.restaurant) if @chomp_session.status == "closed"
+        redirect_to chomp_session_response_url(@chomp_session,@search_exist.first) unless @search_exist == []
+      end
       f.json { render json: @chomp_session }
     end
   end
