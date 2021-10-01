@@ -20,9 +20,9 @@
 
     <div class="search-form-control form-group">
       <% if response.address %>
-        <%= f.input :address, label: false, input_html: { value: response.address, onClick: "this.setSelectionRange(0, this.value.length)" } %>
+        <%= f.input :address, label: "Where you wish to meet at", input_html: { value: response.address, onClick: "this.setSelectionRange(0, this.value.length)" } %>
       <% else %>
-        <%= f.input :address, label: false, input_html: { value: "19 Cuppage Rd, Singapore 229451", onClick: "this.setSelectionRange(0, this.value.length)" } %>
+        <%= f.input :address, label: "Where you wish to meet at", input_html: { value: "19 Cuppage Rd, Singapore 229451", onClick: "this.setSelectionRange(0, this.value.length)" } %>
       <% end %>
       <a href="#" id="get_location"><i class="fas fa-map-marker-alt"></i></a>
     </div>
