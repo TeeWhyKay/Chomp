@@ -15,7 +15,6 @@
   }
 }
 
-
 #sticky-div {
   position : sticky;
   top : 0;
@@ -23,6 +22,7 @@
   width: 100%;
   z-index: 1;
 }
+
 .flex-between {
   display: flex;
   justify-content: center;
@@ -51,5 +51,42 @@
 }
 
 #chomp_session_invitees {
+  display: none;
+}
+
+.slider {
+  width: 100%;
+}
+
+input[type="range"] {
+  -webkit-appearance: none !important; /*Needed to reset default slider styles */
+  width: 100%;
+  height: 15px;
+  background-color: #FDF4D6;
+  border-radius: 10px;
+  margin: auto;
+  transition: all 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  width: 20px;
+  height: 20px;
+  background-color: #EA4B5C;
+  border-radius: 30px;
+  transition: all 0.5s ease;
+}
+
+#rangevalue {
+  text-align: center;
+  font-size: 18px;
+  display: block;
+  margin: auto;
+  padding: 10px 0px;
+  width: 100%;
+  color: #EA4B5C;
+}
+
+#response_budget {
   display: none;
 }

@@ -42,9 +42,11 @@ class ChompSession < ApplicationRecord
 
   def expiry_time_validation
     if !date.nil? || !time.nil?
-      meeting_date = "#{date.strftime("%Y-%m-%d")} #{time.strftime("%H:%M")}".to_time
-      if meeting_date - Time.now < (session_expiry * 3600)
-        errors.add(:session_expiry, "is after the meeting time")
+      unless time.nil? || date.nil?
+        meeting_date = "#{date.strftime("%Y-%m-%d")} #{time.strftime("%H:%M")}".to_time
+        if meeting_date - Time.now < (session_expiry * 3600)
+          errors.add(:session_expiry, "is after the meeting time")
+        end
       end
     end
   end
