@@ -25,9 +25,9 @@ export default class extends Controller {
   }
 
   increment() {
-    this.totalCount += 1
+    this.totalCount += 1;
     this.inviteesinputTarget.setAttribute('value', this.totalCount);
-    this.totalTarget.innerText = this.totalCount
+    this.totalTarget.innerText = this.totalCount;
     this.checkTotal()
   }
 
