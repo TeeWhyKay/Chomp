@@ -5,6 +5,13 @@
     <% if review.user == current_user %>
     <i class="far fa-edit review-edit-btn ml-2" data-action="click->edit-review#displayForm"></i>
     <% end %>
+
+    <% if review.user.username.nil? %>
+      <p class="text-muted"><em><%= review.user.email %></em></p>
+    <% else %>
+      <p class="text-muted"><em><%= review.user.username %></em></p>
+    <% end %>
+
     <p class="review-content mt-2"><%= review.content %></p>
 
   </div>
