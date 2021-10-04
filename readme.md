@@ -1,5 +1,5 @@
 # Chomp
-[Chomp](https://letschomp.herokuapp.com) is a food recommendation web app that helps groups decide on where to eat in Singapore. It features a recommendation algorithm, email notifications and real world data provided from STB API.
+[Chomp](https://letschomp.herokuapp.com) is a food recommendation web app that helps groups decide on where to eat in Singapore. It features a recommendation algorithm, email notifications and real world data provided from [STB API](https://tih-dev.stb.gov.sg/).
 
 # Usage
 1. Create a group
