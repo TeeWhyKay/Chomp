@@ -59,7 +59,7 @@
           <% end %>
           <% end %>
 
-          <% if user_signed_in? %>
+          <% if user_signed_in? && @restaurant.reviews.find_by(user: current_user).nil? %>
             <%= render partial: "reviews/form", locals: { restaurant: @restaurant, review: @review } %>
           <% end %>
           <%= render partial: "restaurants/review", locals: { restaurant: @restaurant } %>

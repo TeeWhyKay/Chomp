@@ -5,7 +5,6 @@
     <% if review.user == current_user %>
     <i class="far fa-edit review-edit-btn ml-2" data-action="click->edit-review#displayForm"></i>
     <% end %>
-    <h3 class="review-title mt-2"><%= review.title %></h3>
     <p class="review-content mt-2"><%= review.content %></p>
 
   </div>
