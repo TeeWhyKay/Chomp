@@ -51,6 +51,8 @@
           <%= render "map" %>
         </div>
 
+        <%# ================= REVIEWS =================%>
+        <h3 class="mt-5">Reviews:</h3>
         <div data-controller="insert-in-list" data-insert-in-list-position-value="afterbegin">
           <% if @restaurant.reviews.blank? %>
           <p data-insert-in-list-target="zeroReviewsNotice" class="font-weight-bold text-center text-primary" id="zero-reviews-notice">Be the first to leave a review for <%= @restaurant.name %></p>
@@ -64,6 +66,7 @@
           <% end %>
           <%= render partial: "restaurants/review", locals: { restaurant: @restaurant } %>
         </div>
+        <%# ================ END OF REVIEWS =============== %>
       </div>
     </div>
   </div>
