@@ -2,8 +2,13 @@ import { Controller } from "stimulus";
 import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ['items', 'form', 'zeroReviewsNotice'];
-  static values = { position: String }
+  static targets = ['items', 'form', 'zeroReviewsNotice','ratingDesc','1star','2star','3star','4star','5star','rating'];
+  static values = { position: String };
+
+  connect() {
+    // console.log(this.ratingDescTarget.innerHTML);
+  };
+
 
   send(event) {
     event.preventDefault();
@@ -31,5 +36,12 @@ export default class extends Controller {
         }
         this.formTarget.outerHTML = data.form;
       })
+  }
+
+  rate(event) {
+    event.preventDefault();
+    // console.log(event.currentTarget.getAttribute('value'));
+    
+    this.ratingTarget.value = event.currentTarget.getAttribute('value');
   }
 }
