@@ -3,22 +3,22 @@
                   insert_in_list_target: "form",
                   action: 'submit->insert-in-list#send'
                 }) do |f| %>
-  <%= f.input :rating, collection: [['1 - Blegh!', 1], ['2 - Below Average', 2], ['3 - Alright', 3], ['4 - Not Bad', 4], ['5 - Amazing!', 5]], selected: 3 %>
+  <%# <%= f.input :rating, collection: [['1 - Blegh!', 1], ['2 - Below Average', 2], ['3 - Alright', 3], ['4 - Not Bad', 4], ['5 - Amazing!', 5]], selected: 3 %>
     <label class="select required" for="review_rating">Rating <abbr title="required">*</abbr></label><br>
     <div class="d-flex justify-content-center w-100" style="font-size:2.5rem">
-      <i class="fas fa-star" value="1" data-insert-in-list-target="1star" data-action="click->insert-in-list#rate"></i>
-      <i class="far fa-star" value="2" data-insert-in-list-target="2star" data-action="click->insert-in-list#rate"></i>
-      <i class="far fa-star" value="3" data-insert-in-list-target="3star" data-action="click->insert-in-list#rate"></i>
-      <i class="far fa-star" value="4" data-insert-in-list-target="4star" data-action="click->insert-in-list#rate"></i>
-      <i class="far fa-star" value="5" data-insert-in-list-target="5star" data-action="click->insert-in-list#rate"></i>
+      <i class="fas fa-star" value="1" data-insert-in-list-target="onestar" data-action="click->insert-in-list#rate"></i>
+      <i class="far fa-star" value="2" data-insert-in-list-target="twostar" data-action="click->insert-in-list#rate"></i>
+      <i class="far fa-star" value="3" data-insert-in-list-target="threestar" data-action="click->insert-in-list#rate"></i>
+      <i class="far fa-star" value="4" data-insert-in-list-target="fourstar" data-action="click->insert-in-list#rate"></i>
+      <i class="far fa-star" value="5" data-insert-in-list-target="fivestar" data-action="click->insert-in-list#rate"></i>
     </div>
 
-    <span data-insert-in-list-target="ratingDesc">
-    </span> 
+    <p data-insert-in-list-target="ratingDesc" class="ratingDesc my-3">
+    </p> 
     
   
   <div class="form-group integer required review_rating">
-    <input class="form-control numeric integer required" type="number" step="1" name="review[rating]" id="review_rating" data-insert-in-list-target="rating" value="1">
+    <input class="form-control numeric integer required create_review" type="number" step="1" name="review[rating]" id="review_rating" data-insert-in-list-target="rating" value="1">
   </div>
 
 
