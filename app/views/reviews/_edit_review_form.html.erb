@@ -8,7 +8,7 @@
     <%# <%= f.input :rating, collection: [['1 - Blegh!', 1], ['2 - Below Average', 2], ['3 - Alright', 3], ['4 - Not Bad', 4], ['5 - Amazing!', 5]], selected: review.rating %>
     
 
-    <label class="select required" for="review_rating">Rating <abbr title="required">*</abbr></label>
+    <label class="select required mb-3" for="review_rating">Rating <abbr title="required">*</abbr></label>
     <div class="d-flex justify-content-center w-100" style="font-size:2.5rem">
       <i class="fas fa-star" value="1" data-edit-review-target="onestar" data-action="click->edit-review#rate"></i>
       <i class="far fa-star" value="2" data-edit-review-target="twostar" data-action="click->edit-review#rate"></i>
