@@ -2,8 +2,8 @@ import { Controller } from "stimulus";
 import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ['items', 'form', 'zeroReviewsNotice'];
-  static values = { position: String }
+  static targets = ['items', 'form', 'zeroReviewsNotice','ratingDesc','onestar','twostar','threestar','fourstar','fivestar','rating'];
+  static values = { position: String };
 
   send(event) {
     event.preventDefault();
@@ -31,5 +31,45 @@ export default class extends Controller {
         }
         this.formTarget.outerHTML = "";
       })
+  }
+
+  rate(event) {
+    event.preventDefault();
+    const filled = "fas";
+    const unfilled = "far";
+    // console.log(event.currentTarget.getAttribute('value'));
+    // console.log(event.currentTarget.classList);
+    this.ratingTarget.value = event.currentTarget.getAttribute('value');
+    if (this.ratingTarget.value == 1){
+      this.twostarTarget.classList.replace(filled, unfilled);
+      this.threestarTarget.classList.replace(filled, unfilled);
+      this.fourstarTarget.classList.replace(filled, unfilled);
+      this.fivestarTarget.classList.replace(filled, unfilled);
+      this.ratingDescTarget.innerHTML = "Blegh!";
+    } else if (this.ratingTarget.value == 2) {
+      this.twostarTarget.classList.replace(unfilled, filled);
+      this.threestarTarget.classList.replace(filled, unfilled);
+      this.fourstarTarget.classList.replace(filled, unfilled);
+      this.fivestarTarget.classList.replace(filled, unfilled);
+      this.ratingDescTarget.innerHTML = "Below Average";
+    } else if (this.ratingTarget.value == 3){
+      this.twostarTarget.classList.replace(unfilled, filled);
+      this.threestarTarget.classList.replace(unfilled, filled);
+      this.fourstarTarget.classList.replace(filled, unfilled);
+      this.fivestarTarget.classList.replace(filled, unfilled);
+      this.ratingDescTarget.innerHTML = "Alright";
+    } else if (this.ratingTarget.value == 4){
+      this.twostarTarget.classList.replace(unfilled, filled);
+      this.threestarTarget.classList.replace(unfilled, filled);
+      this.fourstarTarget.classList.replace(unfilled, filled);
+      this.fivestarTarget.classList.replace(filled, unfilled);
+      this.ratingDescTarget.innerHTML = "Not Bad";
+    } else {
+      this.twostarTarget.classList.replace(unfilled, filled);
+      this.threestarTarget.classList.replace(unfilled, filled);
+      this.fourstarTarget.classList.replace(unfilled, filled);
+      this.fivestarTarget.classList.replace(unfilled, filled);
+      this.ratingDescTarget.innerHTML = "Amazing!";
+    }
   }
 }
