@@ -34,7 +34,7 @@ export default class extends Controller {
             this.zeroReviewsNoticeTarget.outerHTML = ""
           }
         }
-        this.formTarget.outerHTML = data.form;
+        this.formTarget.outerHTML = "";
       })
   }
 

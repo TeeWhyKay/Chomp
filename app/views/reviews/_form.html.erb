@@ -15,14 +15,11 @@
 
     <p data-insert-in-list-target="ratingDesc" class="ratingDesc my-3">
     </p> 
-    
   
   <div class="form-group integer required review_rating">
     <input class="form-control numeric integer required create_review" type="number" step="1" name="review[rating]" id="review_rating" data-insert-in-list-target="rating" value="1">
   </div>
 
-
-  <%= f.input :title, as: :string %>
-  <%= f.input :content, as: :text %>
+  <%= f.input :content, as: :text, placeholder: "Optional" %>
   <%= f.button :submit , class: "btn btn-primary btn-block btn-lg"%>
 <% end %>

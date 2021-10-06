@@ -47,7 +47,7 @@ class ChompSessionsController < ApplicationController
 
   def show
     @response = Response.new
-    @search_exist = Response.where(user: current_user, chomp_session: @chomp_session)
+    @search_exist = Response.where(user: current_user, chomp_session: @chomp_session).where.not(user: nil)
     respond_to do |f|
       f.html do
         if @chomp_session.status == "closed"
