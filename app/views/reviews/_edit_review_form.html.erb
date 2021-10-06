@@ -6,6 +6,24 @@
               }
           }) do |f| %>
     <%= f.input :rating, collection: [['1 - Blegh!', 1], ['2 - Below Average', 2], ['3 - Alright', 3], ['4 - Not Bad', 4], ['5 - Amazing!', 5]], selected: review.rating %>
+    
+
+    <label class="select required" for="review_rating">Rating <abbr title="required">*</abbr></label>
+    <div class="d-flex justify-content-center w-100" style="font-size:2.5rem">
+      <i class="fas fa-star" value="1" data-edit-review-target="onestar" data-action="click->edit-review#rate"></i>
+      <i class="far fa-star" value="2" data-edit-review-target="twostar" data-action="click->edit-review#rate"></i>
+      <i class="far fa-star" value="3" data-edit-review-target="threestar" data-action="click->edit-review#rate"></i>
+      <i class="far fa-star" value="4" data-edit-review-target="fourstar" data-action="click->edit-review#rate"></i>
+      <i class="far fa-star" value="5" data-edit-review-target="fivestar" data-action="click->edit-review#rate"></i>
+    </div>
+
+    <p data-edit-review-target="ratingDesc" class="ratingDesc my-3">
+    </p> 
+
+    <div class="form-group integer required review_rating form-group-valid">
+      <input class="form-control is-valid numeric integer required edit_review" type="number" step="1" value=<%= review.rating %> name="review[rating]" id="review_rating" data-edit-review-target="rating">
+    </div>
+
     <%= f.input :content, as: :text %>
     <%= f.submit :Edit, class: "btn btn-lg btn-info text-white" %>
   <% end %>
