@@ -5,11 +5,6 @@ export default class extends Controller {
   static targets = ['items', 'form', 'zeroReviewsNotice','ratingDesc','onestar','twostar','threestar','fourstar','fivestar','rating'];
   static values = { position: String };
 
-  connect() {
-    // console.log(this.ratingDescTarget.innerHTML);
-  };
-
-
   send(event) {
     event.preventDefault();
 
